@@ -1,0 +1,68 @@
+@charset "UTF-8";
+@import "~bootstrap/scss/bootstrap";
+@import "~select2/src/scss/core";
+@import "~@ttskch/select2-bootstrap4-theme/src/layout";
+
+// Fonts
+$mdi-font-path: "~@mdi/font/fonts" !default;
+@import "~@mdi/font/scss/materialdesignicons";
+@import "components/font";
+// Color
+@import "components/color-variables";
+// Mixins
+@import "mixins/border-radius";
+@import "mixins/gradient";
+// Variables
+@import "components/variables";
+// Reset
+@import "components/normalize";
+// Functions
+@import "components/functions";
+// Form components
+@import "components/form";
+
+// Layout
+@import "components/header";
+@import "components/navbar";
+@import "components/menuburger";
+
+body {
+  background-color: $mine-shaft;
+  margin-top:       65px;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.mr-10 {
+  margin-right: 10px;
+}
+
+div.container > .container {
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 10vh;
+  }
+
+  background-color: $white;
+  margin-top:       5px;
+  width:            95%;
+  padding:          5px 0;
+  font-family:      Montserrat-Regular, sans-serif;
+  border-radius:    5px;
+}
+
+div.input-field {
+  padding: 0 10px;
+}
+
+h2.title {
+  font-weight: bold;
+  font-size:   1.5em;
+  font-family: Montserrat, sans-serif;
+  padding:     15px 20px;
+}

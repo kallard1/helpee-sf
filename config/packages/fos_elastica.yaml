@@ -1,0 +1,19 @@
+fos_elastica:
+  clients:
+    default: { host: localhost, port: 9200 }
+  indexes:
+#    app_city:
+#      types:
+#        city:
+#          properties:
+#            id: ~
+#            zipCode: ~
+#            name: ~
+#            slug: ~
+#            latitude: ~
+#            longitude: ~
+#          persistence:
+#            driver: orm
+#            model: App\Entity\City
+#            provider: ~
+#            finder: ~

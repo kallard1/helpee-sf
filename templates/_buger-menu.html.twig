@@ -1,0 +1,63 @@
+<div class="block-nav">
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <div class="container-profil">
+            <a href="">
+                <div id="img-profil">
+                    <% if (user.imageName !== 'none') { %>
+                    <img src="/uploads/avatars/<%= user.imageName %>" width="84" height="84"
+                         alt="Votre image de profil"/>
+                    <% } else { %>
+                    <img src="/uploads/default/img-profile.png" width="84" height="84"
+                         alt="Votre image de profil temporaire"/>
+                    <% } %>
+                </div>
+                <div id="display-name">
+                    <div class="user"><%= user.firstname %></div>
+                    <div class="user userlast"><%= user.lastname %></div>
+                    <a class="underline-mb">Mon profil</a>
+                </div>
+            </a>
+        </div>
+    {% else %}
+        <ul class="block-nav-ul">
+            {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <li class="log">
+                    <a href="">{{ 'sign_in'|trans }}</a>
+                </li>
+                <li class="log">
+                    <a href="{{ path('registration') }}">{{ 'sign_up'|trans }}</a>
+                </li>
+            {% else %}
+                <li>
+                    <a href="">Poster une annonce</a>
+                </li>
+                <li>Gérer les annonces</li>
+                <li>Annonces favorites</li>
+                <li>Ma communauté</li>
+                <li>Mes Amis</li>
+                <li>Réglages</li>
+                <li>
+                    <a href="">Se déconnecter</a>
+                </li>
+            {% endif %}
+        </ul>
+
+    {% endif %}
+</div>
+
+<script type="text/javascript">
+  const buttonBurger = document.getElementById('burger-icon')
+  buttonBurger.onclick = active
+
+  function active () {
+    const burgerContainer = document.getElementById('burger-nav')
+    const element = document.querySelector('#burger-nav')
+    if (element.classList.contains('active')) {
+      burgerContainer.classList.remove('active')
+      burgerContainer.classList.add('inactive')
+    } else {
+      burgerContainer.classList.remove('inactive')
+      burgerContainer.classList.add('active')
+    }
+  }
+</script>

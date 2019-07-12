@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <!-- HOMEPAGE -->
+            <trans-unit id="button.propose">
+                <source>button.propose</source>
+                <target>I propose...</target>
+            </trans-unit>
+
+            <trans-unit id="button.look-for">
+                <source>button.look-for</source>
+                <target>I look for...</target>
+            </trans-unit>
+
+            <trans-unit id="select.category">
+                <source>select.category</source>
+                <target>Select a category</target>
+            </trans-unit>
+
+            <trans-unit id="keywords">
+                <source>keywords</source>
+                <target>Keyword(s)</target>
+            </trans-unit>
+
+            <trans-unit id="search">
+                <source>search</source>
+                <target>Search</target>
+            </trans-unit>
+
+            <trans-unit id="website_in_some_figures">
+                <source>website_in_some_figures</source>
+                <target>{site_name} in some figures</target>
+            </trans-unit>
+
+            <trans-unit id="num_of_communities">
+                <source>num_of_communities</source>
+                <target>{count, plural, =0 {Community} one {Community} other {Communities}}</target>
+            </trans-unit>
+
+            <trans-unit id="num_of_traded_uev">
+                <source>num_of_traded_uev</source>
+                <target>{count, plural, =0 {UEV traded} one {UEV traded} other {UEV traded}}</target>
+            </trans-unit>
+
+            <trans-unit id="num_of_users">
+                <source>num_of_users</source>
+                <target>{count, plural, =0 {Member} one {Member} other {Members}}</target>
+            </trans-unit>
+
+            <trans-unit id="how_it_works">
+                <source>how_it_works</source>
+                <target>How it works?</target>
+            </trans-unit>
+
+            <!-- Nav -->
+            <trans-unit id="sign_in">
+                <source>sign_in</source>
+                <target>Sign in</target>
+            </trans-unit>
+
+            <trans-unit id="sign_up">
+                <source>sign_up</source>
+                <target>Sign up</target>
+            </trans-unit>
+
+            <!-- Registration -->
+            <trans-unit id="registration.label.firstname">
+                <source>registration.label.firstname</source>
+                <target>Firstname</target>
+            </trans-unit>
+
+            <trans-unit id="registration.label.lastname">
+                <source>registration.label.lastname</source>
+                <target>Lastname</target>
+            </trans-unit>
+
+            <trans-unit id="registration.label.email">
+                <source>registration.label.email</source>
+                <target>E-mail address</target>
+            </trans-unit>
+
+            <trans-unit id="registration.label.password">
+                <source>registration.label.password</source>
+                <target>Password</target>
+            </trans-unit>
+
+            <trans-unit id="registration.label.password_confirmation">
+                <source>registration.label.password_confirmation</source>
+                <target>Confirm your password</target>
+            </trans-unit>
+
+            <trans-unit id="registration.label.address">
+                <source>registration.label.address</source>
+                <target>Street...</target>
+            </trans-unit>
+
+            <trans-unit id="registration.label.address_1">
+                <source>registration.label.address_1</source>
+                <target>Street 2...</target>
+            </trans-unit>
+
+            <trans-unit id="registration.label.city">
+                <source>registration.label.city</source>
+                <target>City</target>
+            </trans-unit>
+
+            <trans-unit id="registration.label.phone">
+                <source>registration.label.phone</source>
+                <target>Phone</target>
+            </trans-unit>
+
+            <trans-unit id="registration.button.register">
+                <source>registration.button.register</source>
+                <target>Register</target>
+            </trans-unit>
+
+            <trans-unit id="registration.flash.message.success">
+                <source>registration.flash.message.success</source>
+                <target>Account created</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

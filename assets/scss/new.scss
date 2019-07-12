@@ -1,0 +1,90 @@
+// Color
+@import "components/color-variables";
+@import "components/color-classes";
+@import "components/variables";
+
+@media #{$small-and-down} {
+  .picture-container {
+    position:         relative;
+    float:            left;
+    height:           80px;
+    width:            80px;
+    background-color: rgba(#a3418f, 0.2);
+    border:           1px solid #A3418F;
+    padding:          0;
+    border-radius:    4px;
+    text-align:       center;
+    cursor:           pointer;
+
+    & > p {
+      display: none;
+    }
+
+    & > img {
+      height:        80px;
+      width:         80px;
+      position:      absolute;
+      left:          0;
+      border-radius: 4px;
+      padding:       0;
+    }
+
+    & > i {
+      &.mdi {
+        font-size: 3.7rem
+      }
+
+      &.mdi-close-circle {
+        position: absolute;
+        top:      -45px;
+        right:    -12px;
+        cursor:   pointer;
+      }
+    }
+  }
+}
+
+@media #{$medium-and-up} {
+  .picture-container {
+    position:         relative;
+    float:            left;
+    height:           152px;
+    width:            170px;
+    background-color: rgba(#a3418f, 0.2);
+    border:           1px solid #A3418F;
+    padding:          0;
+    border-radius:    4px;
+    text-align:       center;
+    cursor:           pointer;
+
+    & > img {
+      height:        152px;
+      width:         170px;
+      position:      absolute;
+      left:          0;
+      top:           0;
+      border-radius: 4px;
+      padding:       0;
+    }
+
+    & > i {
+      &.mdi {
+        font-size: 2.7rem
+      }
+
+      &.mdi-close-circle {
+        position: absolute;
+        top:      -30px;
+        right:    -12px;
+      }
+    }
+  }
+}
+
+.alert-info {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}

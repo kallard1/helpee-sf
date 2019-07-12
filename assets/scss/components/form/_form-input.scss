@@ -1,0 +1,53 @@
+/* Validation Sass Placeholders */
+%valid-input-style {
+  border-bottom: 1px solid $input-success-color;
+  box-shadow:    0 1px 0 0 $input-success-color;
+}
+
+%invalid-input-style {
+  border-bottom: $input-invalid-border;
+  box-shadow:    0 1px 0 0 $input-error-color;
+}
+
+%hidden-text {
+  color:          transparent;
+  user-select:    none;
+  pointer-events: none;
+}
+
+%custom-success-message {
+  content: attr(data-success);
+  color:   $input-success-color;
+}
+
+%custom-error-message {
+  content: attr(data-error);
+  color:   $input-error-color;
+}
+
+%input-after-style {
+  display:    block;
+  content:    "";
+  position:   absolute;
+  top:        100%;
+  left:       0;
+  opacity:    0;
+  transition: .2s opacity ease-out, .2s color ease-out;
+}
+
+.form-group {
+  & > label {
+    color:            $input-border-color;
+    position:         absolute;
+    top:              0;
+    left:             0;
+    font-size:        1rem;
+    cursor:           text;
+    transition:       transform .2s ease-out, color .2s ease-out;
+    transform-origin: 35px 0;
+    text-align:       initial;
+    transform:        translateY(-9px) translateX(15px) scale(.8);
+    padding:          0 2px;
+    background-color: #FFFFFF;
+  }
+}
