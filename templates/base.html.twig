@@ -1,12 +1,38 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale = 1.0, minimum-scale = 1.0, maximum-scale=1.0,user-scalable = no">
+    <title>{% block title %}{% endblock %} {{ site_name }}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+    {% endblock %}
+</head>
+<body>
+<noscript>
+    You need to enable JavaScript to run this app.
+</noscript>
+<header>
+    <div class="content-header">
+        <a href="{{ path('homepage') }}">
+            <div class="header-image"></div>
+        </a>
+    </div>
+</header>
+<div class="container">
+    <div class="navbar-container">
+        {% include "_navbar.html.twig" %}
+    </div>
+
+    <div id="burger-nav" class="inactive">
+        {% include "_buger-menu.html.twig" %}
+    </div>
+
+    {% block body %}{% endblock %}
+
+</div>
+{% block javascripts %}
+{% endblock %}
+</body>
 </html>

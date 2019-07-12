@@ -1,0 +1,33 @@
+{
+    "devDependencies": {
+        "@symfony/webpack-encore": "^0.27.0",
+        "autoprefixer": "^9.6.0",
+        "core-js": "^3.0.0",
+        "cssnano": "latest",
+        "mini-css-extract-plugin": "^0.7.0",
+        "node-sass": "^4.12.0",
+        "postcss-import": "^12.0.1",
+        "postcss-loader": "^3.0.0",
+        "postcss-preset-env": "^6.6.0",
+        "sass-loader": "^7.1.0",
+        "webpack-notifier": "^1.6.0"
+    },
+    "license": "UNLICENSED",
+    "private": true,
+    "scripts": {
+        "dev-server": "encore dev-server",
+        "dev": "encore dev",
+        "watch": "encore dev --watch",
+        "build": "encore production --progress"
+    },
+    "dependencies": {
+        "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+        "@mdi/font": "^3.7.95",
+        "@ttskch/select2-bootstrap4-theme": "^1.2.2",
+        "bootstrap": "^4.3.1",
+        "elastica": "ruflin/elastica",
+        "jquery": "^3.4.1",
+        "popper.js": "^1.15.0",
+        "select2": "^4.0.7"
+    }
+}
