@@ -22,11 +22,7 @@ class UserChecker implements UserCheckerInterface
             return;
         }
 
-        if (true !== $user->getIsEnabled() && false === $user->getIsBanned()) {
-            throw new DisabledException('This account is disabled.');
-        }
-
-        if (true !== $user->getIsEnabled() && true === $user->getIsBanned()) {
+        if (true === $user->isBanned()) {
             throw new DisabledException('This account is banned.');
         }
     }

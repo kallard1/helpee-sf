@@ -54,14 +54,19 @@
             </trans-unit>
 
             <!-- Nav -->
-            <trans-unit id="sign_in">
-                <source>sign_in</source>
+            <trans-unit id="nav.sign_in">
+                <source>nav.sign_in</source>
                 <target>Sign in</target>
             </trans-unit>
 
-            <trans-unit id="sign_up">
-                <source>sign_up</source>
+            <trans-unit id="nav.sign_up">
+                <source>nav.sign_up</source>
                 <target>Sign up</target>
+            </trans-unit>
+
+            <trans-unit id="nav.my_profile">
+                <source>nav.my_profile</source>
+                <target>My profile</target>
             </trans-unit>
 
             <!-- Registration -->
@@ -118,6 +123,27 @@
             <trans-unit id="registration.flash.message.success">
                 <source>registration.flash.message.success</source>
                 <target>Account created</target>
+            </trans-unit>
+
+            <!-- Security -->
+            <trans-unit id="security.login.email">
+                <source>security.login.email</source>
+                <target>E-mail address</target>
+            </trans-unit>
+
+            <trans-unit id="security.login.password">
+                <source>security.login.password</source>
+                <target>Password</target>
+            </trans-unit>
+
+            <trans-unit id="security.login.remember_me">
+                <source>security.login.remember_me</source>
+                <target>Remember me</target>
+            </trans-unit>
+
+            <trans-unit id="security.login.sign_in">
+                <source>security.login.sign_in</source>
+                <target>Sign in</target>
             </trans-unit>
         </body>
     </file>
