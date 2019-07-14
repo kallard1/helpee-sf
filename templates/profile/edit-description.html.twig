@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <h2 class="title">Edit description</h2>
+    {{ form_start(form) }}
+    <div class="form-group col-12">
+        {{ form_widget(form.description) }}
+        {{ form_label(form.description, 'profile.label.description') }}
+    </div>
+
+    <div class="form-group btn-container col-12">
+        <button type="submit" class="btn btn-fit btn-submit col-12 active">{{ 'profile.description.button.submit'|trans }}</button>
+    </div>
+    {{ form_end(form) }}
+</div>
+{% endblock %}
+
