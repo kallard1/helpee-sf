@@ -180,6 +180,38 @@
                 <source>security.login.sign_in</source>
                 <target>Sign in</target>
             </trans-unit>
+
+            <!-- Profile -->
+            <trans-unit id="profile.title">
+                <source>profile.title</source>
+                <target>Profile</target>
+            </trans-unit>
+
+            <!-- Profile - Edit Password -->
+            <trans-unit id="profile.edit_password">
+                <source>profile.edit_password</source>
+                <target>Edit password</target>
+            </trans-unit>
+
+            <trans-unit id="profile.edit_password.current_password">
+                <source>profile.label.current_password</source>
+                <target>Old password</target>
+            </trans-unit>
+
+            <trans-unit id="profile.edit_password.first_password">
+                <source>profile.label.first_password</source>
+                <target>New password</target>
+            </trans-unit>
+
+            <trans-unit id="profile.edit_password.second_password">
+                <source>profile.label.second_password</source>
+                <target>Confirm your new password</target>
+            </trans-unit>
+
+            <trans-unit id="profile.button.submit">
+                <source>profile.button.submit</source>
+                <target>Edit password</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

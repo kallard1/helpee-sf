@@ -1,7 +1,7 @@
 <div class="block-nav">
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
         <div class="container-profil">
-            <a href="">
+            <a href="{{ path('profile_main') }}">
                 {#                <div id="img-profil">#}
                 {#                    <% if (user.imageName !== 'none') { %>#}
                 {#                    <img src="/uploads/avatars/<%= user.imageName %>" width="84" height="84"#}
@@ -14,7 +14,7 @@
                 <div id="display-name">
                     <div class="user">{{ app.user.firstname }}</div>
                     <div class="user userlast">{{ app.user.lastname }}</div>
-                    <a class="underline-mb">{{ 'nav.my_profile'|trans }}</a>
+                    <a href="{{ path('profile_main') }}" class="underline-mb">{{ 'nav.my_profile'|trans }}</a>
                 </div>
             </a>
         </div>
