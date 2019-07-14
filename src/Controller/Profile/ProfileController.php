@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Profile;
 
+use App\Form\Type\ChangeEmailType;
 use App\Form\Type\ChangePasswordType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,7 +20,8 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
  * @Route("/profile", name="profile")
  * @IsGranted("ROLE_USER")
  */
-class ProfileController extends AbstractController {
+class ProfileController extends AbstractController
+{
 
     /**
      * @Route("/", methods={"GET"}, name="_main")
@@ -39,7 +41,8 @@ class ProfileController extends AbstractController {
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function editPassword(Request $request, UserPasswordEncoderInterface $encoder): Response {
+    public function changePassword(Request $request, UserPasswordEncoderInterface $encoder): Response
+    {
         $user = $this->getUser();
 
         $form = $this->createForm(ChangePasswordType::class);
@@ -55,6 +58,32 @@ class ProfileController extends AbstractController {
 
         return $this->render('profile/edit-password.html.twig', [
             'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/edit-email", methods={"GET", "POST"}, name="_edit_email")
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function changeEmail(Request $request): Response
+    {
+        $user = $this->getUser();
+
+        $form = $this->createForm(ChangeEmailType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user->setEmail($form->get('email')->getData());
+
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('profile_main');
+        }
+
+        return $this->render('profile/edit-email.html.twig', [
+           'form' => $form->createView(),
         ]);
     }
 }

@@ -193,24 +193,40 @@
                 <target>Edit password</target>
             </trans-unit>
 
-            <trans-unit id="profile.edit_password.current_password">
+            <trans-unit id="profile.label.current_password">
                 <source>profile.label.current_password</source>
                 <target>Old password</target>
             </trans-unit>
 
-            <trans-unit id="profile.edit_password.first_password">
+            <trans-unit id="profile.label.first_password">
                 <source>profile.label.first_password</source>
                 <target>New password</target>
             </trans-unit>
 
-            <trans-unit id="profile.edit_password.second_password">
+            <trans-unit id="profile.label.second_password">
                 <source>profile.label.second_password</source>
                 <target>Confirm your new password</target>
             </trans-unit>
 
-            <trans-unit id="profile.button.submit">
-                <source>profile.button.submit</source>
+            <trans-unit id="profile.password.button.submit">
+                <source>profile.password.button.submit</source>
                 <target>Edit password</target>
+            </trans-unit>
+
+            <!-- Profile - Edit email -->
+            <trans-unit id="profile.edit_email">
+                <source>profile.edit_email</source>
+                <target>Edit email</target>
+            </trans-unit>
+
+            <trans-unit id="profile.label.email">
+                <source>profile.label.email</source>
+                <target>E-mail address</target>
+            </trans-unit>
+
+            <trans-unit id="profile.email.button.submit">
+                <source>profile.email.button.submit</source>
+                <target>Edit email address</target>
             </trans-unit>
         </body>
     </file>
