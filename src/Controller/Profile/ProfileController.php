@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Profile;
 
+use App\Form\Type\ChangeDescriptionType;
 use App\Form\Type\ChangeEmailType;
 use App\Form\Type\ChangePasswordType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -83,7 +84,33 @@ class ProfileController extends AbstractController
         }
 
         return $this->render('profile/edit-email.html.twig', [
-           'form' => $form->createView(),
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/edit-description", methods={"GET", "POST"}, name="_edit_description")
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function changeDescription(Request $request): Response
+    {
+        $user = $this->getUser();
+
+        $form = $this->createForm(ChangeDescriptionType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user->getInformationUser()->setDescription($form->get('description')->getData());
+
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('profile_main');
+        }
+
+        return $this->render('profile/edit-description.html.twig', [
+            'form' => $form->createView(),
         ]);
     }
 }

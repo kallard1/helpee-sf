@@ -228,6 +228,22 @@
                 <source>profile.email.button.submit</source>
                 <target>Edit email address</target>
             </trans-unit>
+
+            <!-- Profile - Edit description -->
+            <trans-unit id="profile.edit_description">
+                <source>profile.edit_description</source>
+                <target>Edit description</target>
+            </trans-unit>
+
+            <trans-unit id="profile.label.description">
+                <source>profile.label.description</source>
+                <target>User description</target>
+            </trans-unit>
+
+            <trans-unit id="profile.description.button.submit">
+                <source>profile.description.button.submit</source>
+                <target>Edit user description</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
