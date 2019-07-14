@@ -20,15 +20,15 @@
         </div>
         <ul class="block-nav-ul">
             <li>
-                <a href="">Poster une annonce</a>
+                <a href="">{{ 'nav.new_ad'|trans }}</a>
             </li>
-            <li>Gérer les annonces</li>
-            <li>Annonces favorites</li>
-            <li>Ma communauté</li>
-            <li>Mes Amis</li>
-            <li>Réglages</li>
+            <li>{{ 'nav.manage_ads'|trans }}</li>
+            <li>{{ 'nav.favorite_ads'|trans }}</li>
+            <li>{{ 'nav.communities'|trans({'count': 0}) }}</li>
+            <li>{{ 'nav.favorite_ads'|trans }}</li>
+            <li>{{ 'nav.settings'|trans }}</li>
             <li>
-                <a href="{{ path('logout') }}">Se déconnecter</a>
+                <a href="{{ path('logout') }}">{{ 'nav.logout'|trans }}</a>
             </li>
         </ul>
     {% else %}

@@ -69,6 +69,41 @@
                 <target>My profile</target>
             </trans-unit>
 
+            <trans-unit id="nav.new_ad">
+                <source>nav.new_ad</source>
+                <target>New ad</target>
+            </trans-unit>
+
+            <trans-unit id="nav.manage_ads">
+                <source>nav.manage_ads</source>
+                <target>Manage ads</target>
+            </trans-unit>
+
+            <trans-unit id="nav.favorite_ads">
+                <source>nav.favorite_ads</source>
+                <target>Favorite Ads</target>
+            </trans-unit>
+
+            <trans-unit id="nav.communities">
+                <source>nav.communities</source>
+                <target>{count, plural, =0 {My Community} one {My Community} other {My Communities}}</target>
+            </trans-unit>
+
+            <trans-unit id="nav.friends">
+                <source>nav.friends</source>
+                <target>Friends</target>
+            </trans-unit>
+
+            <trans-unit id="nav.settings">
+                <source>nav.settings</source>
+                <target>Settings</target>
+            </trans-unit>
+
+            <trans-unit id="nav.logout">
+                <source>nav.logout</source>
+                <target>Logout</target>
+            </trans-unit>
+
             <!-- Registration -->
             <trans-unit id="registration.label.firstname">
                 <source>registration.label.firstname</source>
