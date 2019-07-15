@@ -1,4 +1,10 @@
 @charset "UTF-8";
+
+$theme-colors:  (
+                        "dark-pink": rgba(#a3418f, 1),
+                        "light-pink": rgba(#E93959, 1)
+                );
+
 @import "~bootstrap/scss/bootstrap";
 @import "~select2/src/scss/core";
 @import "~@ttskch/select2-bootstrap4-theme/src/layout";
