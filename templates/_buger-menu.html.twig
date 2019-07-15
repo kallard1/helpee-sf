@@ -2,15 +2,15 @@
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
         <div class="container-profil">
             <a href="{{ path('profile_main') }}">
-                {#                <div id="img-profil">#}
-                {#                    <% if (user.imageName !== 'none') { %>#}
-                {#                    <img src="/uploads/avatars/<%= user.imageName %>" width="84" height="84"#}
-                {#                         alt="Votre image de profil"/>#}
-                {#                    <% } else { %>#}
-                {#                    <img src="/uploads/default/img-profile.png" width="84" height="84"#}
-                {#                         alt="Votre image de profil temporaire"/>#}
-                {#                    <% } %>#}
-                {#                </div>#}
+                <div id="img-profil">
+                    {% if app.user.personalImage is not null and app.user.personalImage is not empty %}
+                    <img src="{{ asset('uploads/personal_images/' ~ app.user.personalImage)}}" width="84" height="84"
+                         alt="Votre image de profil"/>
+                    {% else %}
+                    <img src="{{ asset('build/images/img-profile.png')}}" width="84" height="84"
+                         alt="Votre image de profil temporaire"/>
+                    {% endif %}
+                </div>
                 <div id="display-name">
                     <div class="user">{{ app.user.firstname }}</div>
                     <div class="user userlast">{{ app.user.lastname }}</div>

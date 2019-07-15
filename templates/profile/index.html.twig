@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block body %}
-<div class="container">
+<div class="container container-profile">
     <h2 class="title">{{ 'profile.title'|trans }}</h2>
     <div id="profile-image">
         {% if app.user.personalImage is not null and app.user.personalImage is not empty %}
