@@ -6,6 +6,7 @@
 parameters:
   locale: 'en'
   redis_url: '%env(resolve:REDIS_URL)%'
+  personal_images_directory: '%kernel.project_dir%/public/uploads/personal_images'
 services:
   # default configuration for services in *this* file
   _defaults:

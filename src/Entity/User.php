@@ -58,6 +58,12 @@ class User implements UserInterface, Serializable
     private $email;
 
     /**
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $personalImage;
+
+    /**
      * @var bool
      * @ORM\Column(name="is_verified", type="boolean", nullable=true)
      */
@@ -217,6 +223,22 @@ class User implements UserInterface, Serializable
     public function setEmail(string $email): void
     {
         $this->email = $email;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPersonalImage(): ?string
+    {
+        return $this->personalImage;
+    }
+
+    /**
+     * @param string $personalImage
+     */
+    public function setPersonalImage(string $personalImage): void
+    {
+        $this->personalImage = $personalImage;
     }
 
     /**
