@@ -187,6 +187,26 @@
                 <target>Profile</target>
             </trans-unit>
 
+            <trans-unit id="profile.index.address">
+                <source>profile.index.address</source>
+                <target>Address:</target>
+            </trans-unit>
+
+            <trans-unit id="profile.index.zip_code">
+                <source>profile.index.zip_code</source>
+                <target>Zip code:</target>
+            </trans-unit>
+
+            <trans-unit id="profile.index.city">
+                <source>profile.index.city</source>
+                <target>City:</target>
+            </trans-unit>
+
+            <trans-unit id="profile.index.phone">
+                <source>profile.index.phone</source>
+                <target>Phone:</target>
+            </trans-unit>
+
             <!-- Profile - Edit Password -->
             <trans-unit id="profile.edit_password">
                 <source>profile.edit_password</source>
