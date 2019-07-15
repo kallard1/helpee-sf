@@ -1,7 +1,55 @@
 {% extends "base.html.twig" %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('build/user/profile.css') }}">
+{% endblock %}
+
 {% block body %}
 <div class="container">
     <h2 class="title">{{ 'profile.title'|trans }}</h2>
+    <div id="profile-image">
+        {% if app.user.personalImage is not null and app.user.personalImage is not empty %}
+            <img src="{{ asset('uploads/personal_images/' ~ app.user.personalImage)}}" width="84" height="84"
+                 alt="Votre image de profil"/>
+        {% else %}
+            <img src="{{ asset('build/images/img-profile.png')}}" width="84" height="84"
+                 alt="Votre image de profil temporaire"/>
+        {% endif %}
+    </div>
+
+    <div class="edit-links text-center">
+        <a class="btn btn-outline-primary" href="{{ path('profile_edit_password') }}">Edit password</a>
+        <a class="btn btn-outline-primary" href="{{ path('profile_edit_email') }}">Edit e-mail</a>
+    </div>
+
+    <div class="display-name">
+        <h2>{{ app.user.firstname }} {{ app.user.lastname }}</h2>
+        <h3>{{ app.user.email }}</h3>
+    </div>
+
+    <div class="container-flex">
+        <div class="display-address">
+            <p><span class="bold">{{ 'profile.index.address'|trans }}</span> {{ app.user.informationUser.address }}</p>
+            <p><span class="bold">{{ 'profile.index.zip_code'|trans }}</span> {{ app.user.informationUser.city.zipCode }}</p>
+            <p><span class="bold">{{ 'profile.index.city'|trans }}</span> {{ app.user.informationUser.city.name }}</p>
+            <p><span class="bold">{{ 'profile.index.phone'|trans }}</span><meta name="format-detection" content="telephone=no"> {{ app.user.informationUser.phone }}</p>
+        </div>
+    </div>
+
+    <div class="div-after"></div>
+    <div class="button">
+        <button class="btn-circle" type="submit">
+            <a href="{{ path('profile_edit_description')}}"><i class="mdi mdi-pencil mdi-24px"></i></a>
+        </button>
+    </div>
+    <div class="display-description">
+        <p>{{ app.user.informationUser.description }}</p>
+    </div>
 </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('user/profile') }}
 {% endblock %}

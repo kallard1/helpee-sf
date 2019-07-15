@@ -25,6 +25,7 @@ Encore
    */.
   addEntry('app', './assets/js/app.js').
   addEntry('homepage', './assets/js/homepage.js').
+  addEntry('user/profile', './assets/js/user/profile.js').
   addEntry('auth/registration', './assets/js/auth/registration.js').
   addEntry('search/city', './assets/js/search/city.js')
   //.addEntry('page1', './assets/js/page1.js')
