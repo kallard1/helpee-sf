@@ -264,6 +264,22 @@
                 <source>profile.description.button.submit</source>
                 <target>Edit user description</target>
             </trans-unit>
+
+            <!-- Community - New -->
+            <trans-unit id="community.flash.message.success">
+                <source>community.flash.message.success</source>
+                <target>Community created with success!</target>
+            </trans-unit>
+
+            <trans-unit id="community.label.name">
+                <source>community.label.name</source>
+                <target>Name</target>
+            </trans-unit>
+
+            <trans-unit id="community.label.description">
+                <source>community.label.description</source>
+                <target>Description</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
