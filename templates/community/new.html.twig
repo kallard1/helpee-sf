@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="container">
+    <h2 class="title">New community</h2>
+    {{ form_start(form) }}
+
+    <div class="form-group col-12">
+        {{ form_widget(form.name) }}
+        {{ form_label(form.name) }}
+    </div>
+
+    <div class="form-group col-12">
+        {{ form_widget(form.description) }}
+        {{ form_label(form.description) }}
+    </div>
+
+    <div class="form-group col-12">
+        <select class="js-data-cities form-control" name="_city" id="city"></select>
+        <label for="city" class="active"></label>
+    </div>
+
+    <div class="form-group col-12">
+        <button type="submit" class="btn btn-light-pink col-12">Create community</button>
+    </div>
+
+    {{ form_end(form) }}
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('search/city') }}
+{% endblock %}

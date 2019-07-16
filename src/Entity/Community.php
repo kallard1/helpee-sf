@@ -43,7 +43,12 @@ class Community {
     private $description;
 
     /**
-     * @var string
+     * @ORM\ManyToOne(targetEntity="City")
+     * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
+     */
+    private $city;
+
+    /**
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(name="user_creator_id", referencedColumnName="id")
      */
@@ -60,12 +65,6 @@ class Community {
      * @ORM\Column(name="is_enabled", type="boolean", nullable=false)
      */
     private $enabled;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="City")
-     * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
-     */
-    private $city;
 
     /**
      * @var \DateTime
@@ -86,6 +85,7 @@ class Community {
     public function __construct()
     {
         $this->members = new ArrayCollection();
+        $this->enabled = true;
     }
 
     /**
@@ -99,7 +99,7 @@ class Community {
     /**
      * @return string
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -123,7 +123,7 @@ class Community {
     /**
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -137,17 +137,17 @@ class Community {
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getCreator(): string
+    public function getCreator()
     {
         return $this->creator;
     }
 
     /**
-     * @param string $creator
+     * @param mixed $creator
      */
-    public function setCreator(string $creator): void
+    public function setCreator($creator): void
     {
         $this->creator = $creator;
     }
