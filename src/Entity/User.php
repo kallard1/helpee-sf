@@ -387,6 +387,14 @@ class User implements UserInterface, Serializable
     }
 
     /**
+     * @return mixed
+     */
+    public function getCommunities()
+    {
+        return $this->communities;
+    }
+
+    /**
      * @param \App\Entity\Order $order
      *
      * @return $this

@@ -24,7 +24,7 @@
             </li>
             <li>{{ 'nav.manage_ads'|trans }}</li>
             <li>{{ 'nav.favorite_ads'|trans }}</li>
-            <li>{{ 'nav.communities'|trans({'count': 0}) }}</li>
+            <li>{{ 'nav.communities'|trans({'count': app.user.communities|length}) }}</li>
             <li>{{ 'nav.favorite_ads'|trans }}</li>
             <li>{{ 'nav.settings'|trans }}</li>
             <li>
