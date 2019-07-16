@@ -54,8 +54,8 @@ class CommunityController extends AbstractController
 
             $city = $request->request->get('_city');
             $city = $entityManager->getRepository(City::class)->findOneBy(['id' => $city]);
-            dump($city);
             $community->setCity($city);
+            $community->addMember($this->getUser());
 
             $entityManager->persist($community);
             $entityManager->flush();
@@ -65,7 +65,7 @@ class CommunityController extends AbstractController
                 $this->translator->trans('community.flash.message.success')
             );
 
-            return $this->redirectToRoute('homepage');
+//            return $this->redirectToRoute('homepage');
         }
 
         return $this->render('community/new.html.twig', [

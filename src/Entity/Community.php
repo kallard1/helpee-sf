@@ -56,7 +56,8 @@ class Community {
 
     /**
      * Many Groups have Many Users.
-     * @ORM\ManyToMany(targetEntity="User", mappedBy="communities")
+     * @ORM\ManyToMany(targetEntity="User", inversedBy="communities", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="communities_users")
      */
     private $members;
 

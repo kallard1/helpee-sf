@@ -103,8 +103,7 @@ class User implements UserInterface, Serializable
 
     /**
      * Many Users have Many Groups.
-     * @ORM\ManyToMany(targetEntity="Community", inversedBy="members", cascade={"persist", "remove"})
-     * @ORM\JoinTable(name="users_communities")
+     * @ORM\ManyToMany(targetEntity="Community", mappedBy="members")
      */
     private $communities;
 
