@@ -65,7 +65,7 @@ class CommunityController extends AbstractController
                 $this->translator->trans('community.flash.message.success')
             );
 
-//            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('homepage');
         }
 
         return $this->render('community/new.html.twig', [
