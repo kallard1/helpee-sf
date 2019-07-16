@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container">
+    <div class="jumbotron">
         <div class="btn-group btn-group-toggle col-12" data-toggle="buttons">
             <label class="btn btn-dark-pink col-6">
                 <input type="radio" name="search" id="propose" autocomplete="off" checked /> {{ 'button.propose'|trans }}
@@ -50,8 +50,8 @@
         </form>
     </div>
 
-    <div class="container">
-        <h3>{{ "website_in_some_figures"|trans({'%site_name%': site_name}) }}</h3>
+    <div class="jumbotron">
+        <h4>{{ "website_in_some_figures"|trans({'%site_name%': site_name}) }}</h4>
 
         <div class="count-container">
             <div class="count-container-group">
@@ -72,8 +72,8 @@
         </div>
     </div>
 
-    <div class="container">
-        <h3>{{ 'how_it_works'|trans }}</h3>
+    <div class="jumbotron">
+        <h4>{{ 'how_it_works'|trans }}</h4>
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
