@@ -1,38 +1,37 @@
 .count-container {
-  display:        flex;
-  align-content:  center;
-  flex-direction: row;
-  height:         105px;
+  align-content: center;
 
   & > .count-container-group {
-    display:        flex;
-    flex-direction: column;
-    flex:           1 1;
-    text-align:     center;
-    align-items:    center;
+    text-align:  center;
+    align-items: center;
 
     .count-icon {
-      display:         flex;
       align-items:     center;
       justify-content: center;
       height:          24px;
       width:           24px;
 
       &.icon-communities:before {
-        content: url("../icons/group.svg");
+        align-items:     center;
+        justify-content: center;
+        content:         url("../icons/group.svg");
       }
 
       &.icon-money:before {
-        content: url("../icons/coin-stack.svg");
+        align-items:     center;
+        justify-content: center;
+        content:         url("../icons/coin-stack.svg");
       }
 
       &.icon-users:before {
-        content: url("../icons/users-group.svg");
+        align-items:     center;
+        justify-content: center;
+        content:         url("../icons/users-group.svg");
       }
     }
 
     .common-count {
-      margin-top:  15px;
+      margin-top:  5px;
       font-family: Montserrat-Bold, sans-serif;
       font-size:   18px;
 

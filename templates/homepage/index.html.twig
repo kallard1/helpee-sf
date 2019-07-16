@@ -9,11 +9,11 @@
     <div class="jumbotron">
         <div class="btn-group btn-group-toggle col-12" data-toggle="buttons">
             <label class="btn btn-dark-pink col-6">
-                <input type="radio" name="search" id="propose" autocomplete="off" checked /> {{ 'button.propose'|trans }}
+                <input type="radio" name="search" id="propose" autocomplete="off" checked/> {{ 'button.propose'|trans }}
             </label>
 
             <label class="btn btn-light-pink col-6">
-                <input type="radio" name="search" id="search" autocomplete="off" />{{ 'button.look-for'|trans }}
+                <input type="radio" name="search" id="search" autocomplete="off"/>{{ 'button.look-for'|trans }}
             </label>
         </div>
 
@@ -41,7 +41,7 @@
 
             <div class="form-group col-12">
                 <select class="js-data-cities form-control" id="city"></select>
-                <label for="city" class="active"></label>
+                <label for="city" class="active">{{ "city"| trans }}</label>
             </div>
 
             <div class="form-group col-12">
@@ -53,18 +53,18 @@
     <div class="jumbotron">
         <h4>{{ "website_in_some_figures"|trans({'%site_name%': site_name}) }}</h4>
 
-        <div class="count-container">
-            <div class="count-container-group">
+        <div class="row count-container">
+            <div class="count-container-group col-4">
                 <i class="count-icon icon-communities"></i>
                 <p class="common-count purple-text">{{ count_communities }}</p>
                 <p class="common-count text purple-text">{{ 'num_of_communities'|trans({'count': count_communities}) }}</p>
             </div>
-            <div class="count-container-group">
+            <div class="count-container-group col-4">
                 <i class="count-icon icon-money"></i>
                 <p class="common-count yellow-text">{{ count_uev }}</p>
                 <p class="common-count text yellow-text">{{ 'num_of_traded_uev'|trans({'count': count_uev}) }}</p>
             </div>
-            <div class="count-container-group">
+            <div class="count-container-group col-4">
                 <i class="count-icon icon-users"></i>
                 <p class="common-count amaranth-text">{{ count_users }}</p>
                 <p class="common-count text amaranth-text">{{ 'num_of_users'|trans({'count': count_users}) }}</p>
@@ -77,13 +77,13 @@
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{ asset('build/images/slide1.png')}}" class="d-block w-100" alt="...">
+                    <img src="{{ asset('build/images/slide1.png') }}" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('build/images/slide2.png')}}" class="d-block w-100" alt="...">
+                    <img src="{{ asset('build/images/slide2.png') }}" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('build/images/slide3.png')}}" class="d-block w-100" alt="...">
+                    <img src="{{ asset('build/images/slide3.png') }}" class="d-block w-100" alt="...">
                 </div>
             </div>
         </div>
