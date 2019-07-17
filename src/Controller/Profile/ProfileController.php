@@ -100,7 +100,7 @@ class ProfileController extends AbstractController
     {
         $user = $this->getUser();
 
-        $form = $this->createForm(ChangeDescriptionType::class);
+        $form = $this->createForm(ChangeDescriptionType::class, $user->getInformationUser());
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
