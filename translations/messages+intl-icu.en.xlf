@@ -23,6 +23,11 @@
                 <target>Keyword(s)</target>
             </trans-unit>
 
+            <trans-unit id="city">
+                <source>city</source>
+                <target>City</target>
+            </trans-unit>
+
             <trans-unit id="search">
                 <source>search</source>
                 <target>Search</target>
@@ -105,6 +110,11 @@
             </trans-unit>
 
             <!-- Registration -->
+            <trans-unit id="registration.title">
+                <source>registration.title</source>
+                <target>Sign up</target>
+            </trans-unit>
+
             <trans-unit id="registration.label.firstname">
                 <source>registration.label.firstname</source>
                 <target>Firstname</target>
@@ -161,6 +171,11 @@
             </trans-unit>
 
             <!-- Security -->
+            <trans-unit id="security.login.title">
+                <source>security.login.title</source>
+                <target>Sign in</target>
+            </trans-unit>
+
             <trans-unit id="security.login.email">
                 <source>security.login.email</source>
                 <target>E-mail address</target>
@@ -279,6 +294,27 @@
             <trans-unit id="community.label.description">
                 <source>community.label.description</source>
                 <target>Description</target>
+            </trans-unit>
+
+            <!-- Community - Show -->
+            <trans-unit id="community.show.administrator.icon">
+                <source>community.show.administrator.icon</source>
+                <target>You are a community administrator</target>
+            </trans-unit>
+
+            <trans-unit id="community.show.administrator">
+                <source>community.show.administrator</source>
+                <target>Administrator</target>
+            </trans-unit>
+
+            <trans-unit id="community.show.num_of_members">
+                <source>community.show.num_of_members</source>
+                <target>{count, plural, =0 {# member} one {# member} other {# members}}</target>
+            </trans-unit>
+
+            <trans-unit id="community.show.join">
+                <source>community.show.join</source>
+                <target>Join</target>
             </trans-unit>
         </body>
     </file>

@@ -1,17 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="container">
-    <h2 class="title">Edit personal image</h2>
-    {{ form_start(form) }}
-    <div class="form-group col-12">
-        {{ form_widget(form.personal_image) }}
-        {{ form_label(form.personal_image, 'profile.label.personal_image') }}
+    <div class="jumbotron">
+        <h3>Edit personal image</h3>
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="form-group col-12">
+                {{ form_label(form.personal_image, 'profile.label.personal_image') }}
+                {{ form_widget(form.personal_image, {'attr': {'class': 'form-control-lg'}}) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-12">
+                <button type="submit"
+                        class="btn btn-light-pink btn-lg col-12">{{ 'profile.description.button.submit'|trans }}</button>
+            </div>
+        </div>
+        {{ form_end(form) }}
     </div>
-
-    <div class="form-group col-12">
-        <button type="submit" class="btn btn-light-pink col-12">{{ 'profile.description.button.submit'|trans }}</button>
-    </div>
-    {{ form_end(form) }}
-</div>
 {% endblock %}

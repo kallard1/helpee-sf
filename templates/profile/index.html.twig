@@ -6,8 +6,8 @@
 {% endblock %}
 
 {% block body %}
-<div class="container container-profile">
-    <h2 class="title">{{ 'profile.title'|trans }}</h2>
+<div class="jumbotron">
+    <h3>{{ 'profile.title'|trans }}</h3>
     <div id="profile-image">
         {% if app.user.personalImage is not null and app.user.personalImage is not empty %}
             <img src="{{ asset('uploads/personal_images/' ~ app.user.personalImage)}}" width="84" height="84"
@@ -23,12 +23,12 @@
         <a class="btn btn-outline-light-pink" href="{{ path('profile_edit_email') }}">Edit e-mail</a>
     </div>
 
-    <div class="display-name">
-        <h2>{{ app.user.firstname }} {{ app.user.lastname }}</h2>
-        <h3>{{ app.user.email }}</h3>
+    <div class="display-user-infos">
+        <p class="profile-user-name">{{ app.user.firstname }} {{ app.user.lastname }}</p>
+        <p class="profile-user-email">{{ app.user.email }}</p>
     </div>
 
-    <div class="container-flex">
+    <div class="row col-12">
         <div class="display-address">
             <p><span class="bold">{{ 'profile.index.address'|trans }}</span> {{ app.user.informationUser.address }}</p>
             <p><span class="bold">{{ 'profile.index.zip_code'|trans }}</span> {{ app.user.informationUser.city.zipCode }}</p>
@@ -37,14 +37,14 @@
         </div>
     </div>
 
-    <div class="div-after"></div>
+    <hr>
     <div class="button">
         <button class="btn-circle" type="submit">
             <a href="{{ path('profile_edit_description')}}"><i class="mdi mdi-pencil mdi-24px"></i></a>
         </button>
     </div>
-    <div class="display-description">
-        <p>{{ app.user.informationUser.description }}</p>
+    <div class="row col-12">
+        <p>{{ app.user.informationUser.description | raw }}</p>
     </div>
 </div>
 {% endblock %}
