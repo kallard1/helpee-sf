@@ -2,7 +2,8 @@
 
 $theme-colors:  (
                         "dark-pink": rgba(#a3418f, 1),
-                        "light-pink": rgba(#E93959, 1)
+                        "light-pink": rgba(#E93959, 1),
+                        "light-grey": rgba(220, 218, 218, 1),
                 );
 
 @import "~bootstrap/scss/bootstrap";
