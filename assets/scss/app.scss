@@ -19,10 +19,6 @@ $mdi-font-path: "~@mdi/font/fonts" !default;
 // Form components
 @import "components/form";
 
-// Layout
-@import "components/navbar";
-@import "components/menuburger";
-
 body {
   background-color: $mine-shaft;
   margin-top:       65px;
