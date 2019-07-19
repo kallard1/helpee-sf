@@ -9,4 +9,32 @@
 require('../scss/app.scss');
 
 global.$ = global.jQuery = require('jquery');
+require('bootstrap')
 
+let enabled = false
+$(document).ready(() => {
+  $('.navbar-toggler').on('click', () => {
+    enabled = !enabled
+
+    if (enabled) {
+      $('.overlay').addClass('active');
+    } else {
+      $('.overlay').removeClass('active');
+    }
+  });
+});
+//
+// const buttonBurger = document.getElementById('burger-icon')
+// buttonBurger.onclick = active
+//
+// function active () {
+//   const burgerContainer = document.getElementById('burger-nav')
+//   const element = document.querySelector('#burger-nav')
+//   if (element.classList.contains('active')) {
+//     burgerContainer.classList.remove('active')
+//     burgerContainer.classList.add('inactive')
+//   } else {
+//     burgerContainer.classList.remove('inactive')
+//     burgerContainer.classList.add('active')
+//   }
+// }

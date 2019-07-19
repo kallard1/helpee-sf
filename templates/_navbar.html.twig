@@ -1,21 +1,65 @@
-<div class="container-navbar">
-    <div class="navbar">
-        <div class="navbar-button">
-            <a href="">
+<nav class="navbar fixed-bottom navbar-light bg-light-grey">
+    <ul class="nav nav-fill">
+        <li class="nav-item">
+            <a class="nav-link" href="#">
                 <span class="mdi mdi-newspaper mdi-36px"></span>
             </a>
-            <a href="">
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
                 <span class="mdi mdi-account-multiple mdi-36px"></span>
             </a>
-            <a href="{{ path('homepage') }}">
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="{{ path('homepage') }}">
                 <span class="mdi mdi-home mdi-36px"></span>
             </a>
-            <a href="">
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
                 <span class="mdi mdi-message-outline mdi-36px"></span>
             </a>
-            <a id="burger-icon" href="#">
-                <span class="mdi mdi-menu mdi-36px"></span>
-            </a>
-        </div>
+        </li>
+    </ul>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <li class="nav-item">
+                    <a class="nav-link" href="">{{ 'nav.new_ad'|trans }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">{{ 'nav.manage_ads'|trans }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">{{ 'nav.favorite_ads'|trans }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="#">{{ 'nav.communities'|trans({'count': app.user.communities|length}) }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">{{ 'nav.favorite_ads'|trans }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">{{ 'nav.settings'|trans }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('logout') }}">{{ 'nav.logout'|trans }}</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('login') }}">{{ 'nav.sign_in'|trans }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('registration') }}">{{ 'nav.sign_up'|trans }}</a>
+                </li>
+            {% endif %}
+        </ul>
     </div>
-</div>
+</nav>
