@@ -24,14 +24,12 @@ class Ad {
     private $id;
 
     /**
-     * @var string
      * @ORM\ManyToOne(targetEntity="Category", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id", nullable=false)
      */
     private $category;
 
     /**
-     * @var string
      * @ORM\ManyToOne(targetEntity="App\Entity\User", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
      */
@@ -99,33 +97,33 @@ class Ad {
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getCategory(): string
+    public function getCategory()
     {
         return $this->category;
     }
 
     /**
-     * @param string $category
+     * @param mixed $category
      */
-    public function setCategory(string $category): void
+    public function setCategory($category): void
     {
         $this->category = $category;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getUser(): string
+    public function getUser()
     {
         return $this->user;
     }
 
     /**
-     * @param string $user
+     * @param mixed $user
      */
-    public function setUser(string $user): void
+    public function setUser($user): void
     {
         $this->user = $user;
     }
@@ -133,7 +131,7 @@ class Ad {
     /**
      * @return string
      */
-    public function getTitle(): string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
@@ -157,7 +155,7 @@ class Ad {
     /**
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -189,7 +187,7 @@ class Ad {
     /**
      * @return int
      */
-    public function getUev(): int
+    public function getUev(): ?int
     {
         return $this->uev;
     }
