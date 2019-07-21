@@ -72,4 +72,16 @@ class CommunityController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    /**
+     * @Route("/{slug}", methods={"GET"}, name="_show")
+     * @param \App\Entity\Community $community
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function show(Community $community): Response
+    {
+        return $this->render('community/show.html.twig', [
+            'community' => $community
+        ]);
+    }
 }
