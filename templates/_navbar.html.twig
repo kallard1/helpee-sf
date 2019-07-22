@@ -11,7 +11,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" href="{{ path('homepage') }}">
+            <a class="nav-link {{ (app.request.get('_route') == 'homepage') ? 'active' : '' }} " href="{{ path('homepage') }}">
                 <span class="mdi mdi-home mdi-36px"></span>
             </a>
         </li>
@@ -49,7 +49,7 @@
                     <a class="nav-link" href="#">{{ 'nav.favorite_ads'|trans }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{{ 'nav.settings'|trans }}</a>
+                    <a class="nav-link {{ (app.request.get('_route') == 'profile_main') ? 'active' : '' }}" href="{{ path('profile_main') }}">{{ 'nav.my_profile'|trans }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('logout') }}">{{ 'nav.logout'|trans }}</a>
