@@ -11,20 +11,23 @@
                 {{ form_label(form.title) }}
             </div>
         </div>
+        {% if app.user.communities|length > 1 %}
+            <div class="row">
+                <div class="form-group col-12">
 
-        <div class="row">
-            <div class="form-group col-12">
-                {% if app.user.communities|length > 1 %}
                     <select name="_community" id="community" class="form-control form-control-lg">
                         {% for community in app.user.communities %}
                             <option value="{{ community.id }}">{{ community.name }}</option>
                         {% endfor %}
                     </select>
                     <label for="community">Community</label>
-                {% else %}
-                {% endif %}
+                </div>
             </div>
-        </div>
+        {% else %}
+            {% for community in app.user.communities %}
+                <input type="hidden" name="_community" value="{{ community.id }}"/>
+            {% endfor %}
+        {% endif %}
 
         <div class="row">
             <div class="form-group col-12">
