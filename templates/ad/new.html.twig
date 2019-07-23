@@ -4,6 +4,14 @@
     <div class="jumbotron">
         <h3>New ad</h3>
         {{ form_start(form) }}
+
+        <div class="row">
+            <div class="form-group col-12">
+                {{ form_widget(form.title, {'attr': {'class': 'form-control-lg'}}) }}
+                {{ form_label(form.title) }}
+            </div>
+        </div>
+
         <div class="row">
             <div class="form-group col-12">
                 {% if app.user.communities|length > 1 %}
@@ -17,17 +25,11 @@
                 {% endif %}
             </div>
         </div>
+
         <div class="row">
             <div class="form-group col-12">
                 {{ form_widget(form.category, {'attr': {'class': 'form-control-lg'}}) }}
                 {{ form_label(form.category) }}
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="form-group col-12">
-                {{ form_widget(form.title, {'attr': {'class': 'form-control-lg'}}) }}
-                {{ form_label(form.title) }}
             </div>
         </div>
 
