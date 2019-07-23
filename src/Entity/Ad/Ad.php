@@ -42,7 +42,7 @@ class Ad {
     private $title;
 
     /**
-     * @Gedmo\Slug(fields={"slug"})
+     * @Gedmo\Slug(fields={"title"})
      * @ORM\Column(length=128, unique=true)
      */
     private $slug;
