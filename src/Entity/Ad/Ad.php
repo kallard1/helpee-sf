@@ -66,9 +66,8 @@ class Ad {
     private $uev;
 
     /**
-     * @var string
-     * @ORM\ManyToOne(targetEntity="App\Entity\Community", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="community_id", referencedColumnName="id", nullable=false)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Community", inversedBy="ads")
+     * @ORM\JoinColumn(name="community_id", referencedColumnName="id")
      */
     private $community;
 
@@ -201,17 +200,17 @@ class Ad {
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getCommunity(): string
+    public function getCommunity()
     {
         return $this->community;
     }
 
     /**
-     * @param string $community
+     * @param mixed $community
      */
-    public function setCommunity(string $community): void
+    public function setCommunity($community): void
     {
         $this->community = $community;
     }

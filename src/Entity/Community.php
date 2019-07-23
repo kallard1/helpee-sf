@@ -62,6 +62,11 @@ class Community {
     private $members;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Ad\Ad", mappedBy="community")
+     */
+    private $ads;
+
+    /**
      * @var boolean
      * @ORM\Column(name="is_enabled", type="boolean", nullable=false)
      */
@@ -86,6 +91,7 @@ class Community {
     public function __construct()
     {
         $this->members = new ArrayCollection();
+        $this->ads = new ArrayCollection();
         $this->enabled = true;
     }
 
