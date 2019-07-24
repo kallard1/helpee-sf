@@ -7,47 +7,60 @@
 
 {% block body %}
     <div class="jumbotron">
-        <div class="btn-group btn-group-toggle btn-group-lg col-12" data-toggle="buttons">
-            <label class="btn btn-dark-pink col-6">
-                <input type="radio" name="search" id="propose" autocomplete="off" checked/> {{ 'button.propose'|trans }}
-            </label>
+        <div class="row">
+            <div class="btn-group btn-group-toggle btn-group-lg col-12" data-toggle="buttons">
+                <label class="btn btn-dark-pink col-6">
+                    <input type="radio" name="search" id="search" autocomplete="off"
+                           checked/>{{ 'button.look-for'|trans }}
+                </label>
 
-            <label class="btn btn-light-pink col-6">
-                <input type="radio" name="search" id="search" autocomplete="off"/>{{ 'button.look-for'|trans }}
-            </label>
+                <label class="btn btn-light-pink col-6">
+                    <input type="radio" name="search" id="propose" autocomplete="off"/> {{ 'button.propose'|trans }}
+                </label>
+            </div>
         </div>
 
-        <form action="" style="margin-top: 15px">
-            <div class="form-group col-12">
-                <select name="category" id="categories" class="form-control form-control-lg">
-                    <option selected disabled>{{ 'select.category'|trans }}</option>
-                    {% if categories %}
-                        {% for category in categories %}
-                            {% if category.level == 0 and category.slug != "autres" %}
-                                <option disabled>[{{ category.label }}]</option>
-                            {% else %}
-                                <option value="{{ category.slug }}">{{ category.label }}</option>
-                            {% endif %}
-                        {% endfor %}
-                    {% endif %}
-                </select>
-                <label for="categories" class="active">Categories</label>
+        <form action="" id="form-search" style="margin-top: 15px">
+            <div class="row">
+                <div class="form-group col-12">
+                    <select name="_category" id="categories" class="form-control form-control-lg">
+                        <option selected disabled>{{ 'select.category'|trans }}</option>
+                        {% if categories %}
+                            {% for category in categories %}
+                                {% if category.level == 0 and category.slug != "autres" %}
+                                    <option disabled>[{{ category.label }}]</option>
+                                {% else %}
+                                    <option value="{{ category.slug }}">{{ category.label }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    </select>
+                    <label for="categories" class="active">Categories</label>
+                </div>
             </div>
 
-            <div class="form-group col-12">
-                <input type="text" id="keywords" name="keywords" class="form-control form-control-lg">
-                <label for="keywords">{{ "keywords"|trans }}</label>
+            <div class="row">
+                <div class="form-group col-12">
+                    <input type="text" id="keywords" name="keywords" class="form-control form-control-lg">
+                    <label for="keywords">{{ "keywords"|trans }}</label>
+                </div>
             </div>
 
-            <div class="form-group col-12">
-                <select class="js-data-cities form-control" id="city"></select>
-                <label for="city" class="active">{{ "city"| trans }}</label>
+            <div class="row">
+                <div class="form-group col-12">
+                    <select class="js-data-cities form-control" id="city"></select>
+                    <label for="city" class="active">{{ "city"| trans }}</label>
+                </div>
             </div>
 
-            <div class="form-group col-12">
-                <button type="submit" class="btn col-12 btn-light-pink btn-lg">{{ "search"|trans }}</button>
+            <div class="row">
+                <div class="form-group col-12">
+                    <button type="submit" class="btn col-12 btn-light-pink btn-lg">{{ "search"|trans }}</button>
+                </div>
             </div>
         </form>
+
+        {% include "ad/_form.html.twig" %}
     </div>
 
     <div class="jumbotron">
