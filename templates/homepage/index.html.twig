@@ -60,7 +60,15 @@
             </div>
         </form>
 
-        {% include "ad/_form.html.twig" %}
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            {% include "ad/_form.html.twig" %}
+        {% else %}
+            <div class="row">
+                <div class="col-12 text-center">
+                    Please login for post new ad
+                </div>
+            </div>
+        {% endif %}
     </div>
 
     <div class="jumbotron">
