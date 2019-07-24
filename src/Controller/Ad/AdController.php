@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Class AdController
@@ -20,6 +21,18 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class AdController extends AbstractController
 {
+    private $translator;
+
+    /**
+     * RegisterController constructor.
+     *
+     * @param \Symfony\Contracts\Translation\TranslatorInterface $translator
+     */
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
+
     /**
      * @Route("/new", methods={"GET", "POST"}, name="_new")
      * @param \Symfony\Component\HttpFoundation\Request $request
@@ -42,6 +55,11 @@ class AdController extends AbstractController
 
             $entityManager->persist($ad);
             $entityManager->flush();
+
+            $this->addFlash(
+                'success',
+                $this->translator->trans('ad.flash.message.success')
+            );
 
             return $this->redirectToRoute('homepage');
         }

@@ -316,6 +316,12 @@
                 <source>community.show.join</source>
                 <target>Join</target>
             </trans-unit>
+
+            <!-- Ad - New -->
+            <trans-unit id="ad.flash.message.success">
+                <source>ad.flash.message.success</source>
+                <target>Ad created</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
