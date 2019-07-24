@@ -63,7 +63,7 @@
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
             {% include "ad/_form.html.twig" %}
         {% else %}
-            <div class="row">
+            <div class="row" id="form-propose">
                 <div class="col-12 text-center">
                     Please <a href="{{ path('login') }}">login</a> for post new ad
                 </div>
