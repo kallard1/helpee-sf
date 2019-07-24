@@ -61,6 +61,14 @@ div.jumbotron {
   }
 }
 
+.carousel-control-prev, .carousel-control-next {
+  color: rgba(#a3418f, 1);
+
+  &:hover {
+    color: rgba(#a3418f, 1);
+  }
+}
+
 div.input-field {
   padding: 0 10px;
 }
