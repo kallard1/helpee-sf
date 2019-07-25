@@ -63,7 +63,7 @@
 
             <trans-unit id="how_it_works">
                 <source>how_it_works</source>
-                <target>Comment a marche ?</target>
+                <target>Comment ça marche ?</target>
             </trans-unit>
 
             <!-- Nav -->
