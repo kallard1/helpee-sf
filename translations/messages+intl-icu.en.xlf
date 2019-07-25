@@ -18,6 +18,11 @@
                 <target>Select a category</target>
             </trans-unit>
 
+            <trans-unit id="homepage.label.category">
+                <source>homepage.label.category</source>
+                <target>Category</target>
+            </trans-unit>
+
             <trans-unit id="keywords">
                 <source>keywords</source>
                 <target>Keyword(s)</target>

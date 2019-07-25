@@ -21,6 +21,11 @@
                 <target>Selectionnez une catégorie</target>
             </trans-unit>
 
+            <trans-unit id="homepage.label.category">
+                <source>homepage.label.category</source>
+                <target>Catégorie</target>
+            </trans-unit>
+
             <trans-unit id="keywords">
                 <source>keywords</source>
                 <target>Mot(s) clé(s)</target>
