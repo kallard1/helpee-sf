@@ -13,8 +13,8 @@
                 <target>I look for...</target>
             </trans-unit>
 
-            <trans-unit id="select.category">
-                <source>select.category</source>
+            <trans-unit id="homepage.select.category">
+                <source>homepage.select.category</source>
                 <target>Select a category</target>
             </trans-unit>
 

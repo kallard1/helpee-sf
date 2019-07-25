@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="form-group col-12">
                     <select name="_category" id="categories" class="form-control form-control-lg">
-                        <option selected disabled>{{ 'select.category'|trans }}</option>
+                        <option selected disabled>{{ 'homepage.select.category'|trans }}</option>
                         {% if categories %}
                             {% for category in categories %}
                                 {% if category.level == 0 and category.slug != "autres" %}
