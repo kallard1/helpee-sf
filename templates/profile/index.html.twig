@@ -64,18 +64,22 @@
                     <div class="card-body">
                         <div class="col-12">
                             <div class="card-title">{{ community.name }}</div>
-                            <div class="card-text">
-                                <p class="community-city">{{ community.city.name }} </p>
-                                <a class="arrow arrow-next"
-                                   href="{{ path('community_show', {'slug': community.slug}) }}"></a>
-                                <p class="community-members">{{ 'community.show.num_of_members'|trans({'count': community.members|length}) }}</p>
+                            <div class="card-text row">
+                                <div class="col-10">
+                                    <p class="community-city">{{ community.city.name }} </p>
+                                    <p class="community-members">{{ 'community.show.num_of_members'|trans({'count': community.members|length}) }}</p>
+                                </div>
+                                <div class="col-1 align-middle">
+                                    <a class="mdi mdi-chevron-right mdi-48px text-dark-pink"
+                                       href="{{ path('community_show', {'slug': community.slug}) }}"></a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             {% endfor %}
         {% else %}
-            Vous ne faites parti d'aucune communauté. Cliquez ci-dessous pour créer ou rejoindre une communauté
+            You are not a member of any community Click below to create or join a community
         {% endif %}
         <div class="row">
             <div class="form-group col-12">

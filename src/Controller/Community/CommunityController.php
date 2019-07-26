@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Community;
 
+use App\Entity\Ad\Ad;
 use App\Entity\City;
 use App\Entity\Community;
 use App\Form\CommunityType;
@@ -69,19 +70,21 @@ class CommunityController extends AbstractController
         }
 
         return $this->render('community/new.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ]);
     }
 
     /**
      * @Route("/{slug}", methods={"GET"}, name="_show")
      * @param \App\Entity\Community $community
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function show(Community $community): Response
     {
         return $this->render('community/show.html.twig', [
-            'community' => $community
+            'community' => $community,
+            'ads' => $this->getDoctrine()->getManager()->getRepository(Ad::class)->getActiveAds(5),
         ]);
     }
 }

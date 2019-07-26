@@ -87,6 +87,11 @@ class Ad {
      */
     private $updatedAt;
 
+    public function __construct()
+    {
+        $this->enabled = true;
+    }
+
     /**
      * @return mixed
      */
