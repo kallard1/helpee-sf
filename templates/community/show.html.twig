@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('community') }}
+{% endblock %}
+
 {% block body %}
     <div class="jumbotron">
         <div class="card" style="margin-bottom: 0.5rem;">
@@ -39,23 +44,22 @@
         </h4>
 
         {% for ad in ads %}
-            <div class="card" style="margin-bottom: 0.5rem;">
-                <div class="card-body">
-                    <div class="card-title bold">{{ ad.title }}</div>
-                    <div class="card-text text-dark-pink">{{ ad.uev }} UEV</div>
-                    <div class="card-text">{{ ad.category.label }}</div>
+            <a title="{{ ad.title }}" rel="nofollow" href="{{ path('ad_show', {'slug': ad.slug}) }}">
+                <div class="card" style="margin-bottom: 0.5rem;">
+                    <div class="card-body">
+                        <div class="card-title bold">{{ ad.title }}</div>
+                        <div class="card-text text-dark-pink">{{ ad.uev }} UEV</div>
+                        <div class="card-text">{{ ad.category.label }}</div>
 
-                    {% if ad.createdAt|date("d/m/Y") == "now"|date("d/m/Y") %}
-                        <div class="card-text small">Today, {{ ad.createdAt|date("H:m") }}</div>
-                    {% else %}
-                        <div class="card-text small">{{ ad.createdAt|localizeddate('long', 'short', null, 'UTC') }}
-                            par {{ ad.user.firstname }} {{ ad.user.lastname }}</div>
-                    {% endif %}
+                        {% if ad.createdAt|date("d/m/Y") == "now"|date("d/m/Y") %}
+                            <div class="card-text small">Today, {{ ad.createdAt|date("H:m") }}</div>
+                        {% else %}
+                            <div class="card-text small">{{ ad.createdAt|localizeddate('long', 'short', null, 'UTC') }}
+                                par {{ ad.user.firstname }} {{ ad.user.lastname }}</div>
+                        {% endif %}
+                    </div>
                 </div>
-            </div>
-
-
-
+            </a>
         {% endfor %}
     </div>
 
@@ -68,6 +72,6 @@
 
 {% block javascripts %}
     {{ parent() }}
-    {{ encore_entry_script_tags('community/show') }}
+    {{ encore_entry_script_tags('community') }}
 {% endblock %}
 
