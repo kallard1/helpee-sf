@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="jumbotron">
+        <div class="card" style="margin-bottom: 0.5rem;">
+            <div class="card-body">
+                <h4 class="card-title">
+                    {{ community.name }}
+                    {% if community.creator.id == app.user.id %}
+                        <i class="mdi mdi-crown mdi-24px" data-toggle="tooltip"
+                           data-placement="left"
+                           title="{{ 'community.show.administrator.icon'|trans }}"></i>
+                    {% endif %}
+                </h4>
+
+                <p class="card-subtitle">{{ community.city.name }}</p>
+                <p class="card-subtitle">{{ 'community.show.num_of_members'|trans({'count': community.members|length}) }}</p>
+                {% if community.creator.id != app.user.id %}
+                    <p class="card-subtitle">{{ 'community.show.administrator'|trans }}{{ community.creator.firstname }} {{ community.creator.lastname }}</p>
+                {% endif %}
+
+            </div>
+        </div>
+
+        <h4 class="text-dark-pink text-center">
+            <span class="badge badge-pill badge-buttercup text-white">Description</span>
+        </h4>
+
+        <div class="card" style="margin-bottom: 0.5rem;">
+            <div class="card-body">
+                <div class="card-text">
+                    {{ community.description }}
+                </div>
+            </div>
+        </div>
+
+        <h4 class="text-dark-pink text-center">
+            <span class="badge badge-pill badge-dark-pink">Last ads</span>
+        </h4>
+
+        {% for ad in ads %}
+            <div class="card" style="margin-bottom: 0.5rem;">
+                <div class="card-body">
+                    <div class="card-title bold">{{ ad.title }}</div>
+                    <div class="card-text text-dark-pink">{{ ad.uev }} UEV</div>
+                    <div class="card-text">{{ ad.category.label }}</div>
+
+                    {% if ad.createdAt|date("d/m/Y") == "now"|date("d/m/Y") %}
+                        <div class="card-text small">Today, {{ ad.createdAt|date("H:m") }}</div>
+                    {% else %}
+                        <div class="card-text small">{{ ad.createdAt|localizeddate('long', 'short', null, 'UTC') }}
+                            par {{ ad.user.firstname }} {{ ad.user.lastname }}</div>
+                    {% endif %}
+                </div>
+            </div>
+
+
+
+        {% endfor %}
+    </div>
+
+    {% if app.user in community.members %}
+    {% else %}
+        <a href="" class="btn btn-light-pink">{{ 'community.show.join'|trans }}</a>
+    {% endif %}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('community/show') }}
+{% endblock %}
+
