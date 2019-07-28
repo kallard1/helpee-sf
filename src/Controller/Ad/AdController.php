@@ -68,4 +68,17 @@ class AdController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/{slug}", methods={"GET"}, name="_show")
+     * @param \App\Entity\Ad\Ad $ad
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function show(Ad $ad): Response
+    {
+        return $this->render('ad/show.html.twig', [
+            'ad' => $ad
+        ]);
+    }
 }

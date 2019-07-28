@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-12">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <h4>{{ ad.title }}</h4>
+                <p class="small">posté par : {{ ad.user.firstname }} {{ ad.user.lastname }}</p>
+                <p class="small">Le {{ ad.createdAt|localizeddate('long', 'short', null, 'UTC') }}</p>
+                <p class="small"><a href="{{ path('community_show', {'slug': ad.community.slug}) }}">{{ ad.community.name }}</a> à {{ ad.community.city.name }}</p>
+            </div>
+            <div class="col-4">
+                <span class="align-middle col-12 btn btn-light-pink">{{ ad.uev }} UEV</span>
+            </div>
+        </div>
+
+        <h4 class="text-dark-pink text-center">
+            <span class="badge badge-pill badge-buttercup text-white">Description</span>
+        </h4>
+
+        <div class="card" style="margin-bottom: 0.5rem;">
+            <div class="card-body">
+                <div class="card-text">
+                    {{ ad.description }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-12">
+                <a href="#" class="col-12 btn btn-light-pink">Contacter</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-12">
+                <a href="#" class="col-12 btn btn-light-pink">Commander</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
