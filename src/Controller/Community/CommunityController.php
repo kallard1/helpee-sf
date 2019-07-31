@@ -106,4 +106,28 @@ class CommunityController extends AbstractController
             'ads' => $this->getDoctrine()->getManager()->getRepository(Ad::class)->getActiveAds($community, 5),
         ]);
     }
+
+    /**
+     * @Route("/{slug}/join", name="_join")
+     * @param \App\Entity\Community $community
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function join(Community $community)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $userInCommunity = $entityManager->getRepository(Community::class)->userInCommunity($community, $this->getUser());
+
+        if (!$userInCommunity) {
+            $community->addMember($this->getUser());
+
+            $entityManager->persist($community);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('community_show', ['slug' => $community->getSlug()]);
+        }
+
+        return $this->redirectToRoute('community_show', ['slug' => $community->getSlug()]);
+    }
 }

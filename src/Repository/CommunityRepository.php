@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Repository;
 
 use App\Entity\Community;
+use App\Entity\User;
 use App\Pagination\Paginator;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
@@ -23,5 +24,20 @@ class CommunityRepository extends ServiceEntityRepository
             ->orderBy('c.name', 'ASC');
 
         return (new Paginator($qb))->paginate($page);
+    }
+
+    public function userInCommunity(Community $community, User $user)
+    {
+        $qb = $this->createQueryBuilder('c')
+            ->select('COUNT(c)')
+            ->leftJoin('c.members', 'm')
+            ->andWhere('c.id = :community')
+            ->setParameter('community', $community)
+            ->andWhere('m.id = :user')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult();
+
+        return $qb[0][1] > 0;
     }
 }

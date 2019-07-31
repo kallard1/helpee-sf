@@ -42,13 +42,21 @@
         {% if app.user not in community.members %}
             <div class="row">
                 <div class="form-group col-12">
-                    <a href="" class="btn btn-light-pink text-white col-12">{{ 'community.show.join'|trans }}</a>
+                    <a href="{{ path('community_join', {'slug': community.slug}) }}"
+                       class="btn btn-light-pink text-white col-12">{{ 'community.show.join'|trans }}</a>
                 </div>
             </div>
         {% else %}
+
             <h4 class="text-dark-pink text-center">
                 <span class="badge badge-pill badge-dark-pink">Last ads</span>
             </h4>
+
+            {% if ads|length == 0 %}
+                <div class="text-center">
+                    <h5>No ad yet</h5>
+                </div>
+            {% endif %}
 
             {% for ad in ads %}
                 <a title="{{ ad.title }}" rel="nofollow" href="{{ path('ad_show', {'slug': ad.slug}) }}">
@@ -68,6 +76,13 @@
                     </div>
                 </a>
             {% endfor %}
+
+            <div class="row">
+                <div class="form-group col-12">
+                    <a href="{{ path('ad_new') }}"
+                       class="btn btn-light-pink text-white col-12">{{ 'nav.new_ad'|trans }}</a>
+                </div>
+            </div>
         {% endif %}
     </div>
 {% endblock %}
