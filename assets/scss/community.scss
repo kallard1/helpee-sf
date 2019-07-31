@@ -1,13 +1,15 @@
-a {
-  color: #000000;
+div.jumbotron {
+  a {
+    color: #000000;
 
 
-  &:hover .card-title {
-    color: rgba(233, 57, 89, 1);
-  }
+    &:hover .card-title {
+      color: rgba(233, 57, 89, 1);
+    }
 
-  &:hover {
-    text-decoration: none;
-    color:           #000000;
+    &:hover {
+      text-decoration: none;
+      color:           #000000;
+    }
   }
 }
