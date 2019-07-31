@@ -210,6 +210,16 @@
                 <target>Profil</target>
             </trans-unit>
 
+            <trans-unit id="profile.button.edit-password">
+                <source>profile.button.edit-password</source>
+                <target>Modifier le mot de passe</target>
+            </trans-unit>
+
+            <trans-unit id="profile.button.edit-email">
+                <source>profile.button.edit-email</source>
+                <target>Modifier l'email</target>
+            </trans-unit>
+
             <trans-unit id="profile.index.address">
                 <source>profile.index.address</source>
                 <target>Adresse :</target>
