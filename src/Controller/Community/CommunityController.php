@@ -8,6 +8,7 @@ use App\Entity\Ad\Ad;
 use App\Entity\City;
 use App\Entity\Community;
 use App\Form\CommunityType;
+use App\Repository\CommunityRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -71,6 +72,24 @@ class CommunityController extends AbstractController
 
         return $this->render('community/new.html.twig', [
             'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/list", defaults={"page": "1"}, methods={"GET"}, name="_list")
+     * @Route("/list/{page<[1-9]\d*>}", methods={"GET"}, name="_list_paginated")
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     *
+     * @param int                                       $page
+     *
+     * @param \App\Repository\CommunityRepository       $community
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function list(Request $request, int $page, CommunityRepository $community): Response
+    {
+        return $this->render('community/list.html.twig', [
+            'paginator' => $community->getActiveCommunities($page),
         ]);
     }
 

@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="jumbotron">
+        {% for community in paginator.results %}
+            <div class="card mb-2">
+                <div class="card-body">
+                    <div class="col-12">
+                        <div class="card-title">{{ community.name }}</div>
+                        <div class="card-text row">
+                            <div class="col-10">
+                                <p class="community-city">{{ community.city.name }} </p>
+                                <p class="community-members">{{ 'community.show.num_of_members'|trans({'count': community.members|length}) }}</p>
+                            </div>
+                            <div class="col-1 align-middle">
+                                <a class="mdi mdi-chevron-right mdi-48px text-dark-pink"
+                                   href="{{ path('community_show', {'slug': community.slug}) }}"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+        {% if paginator.hasToPaginate %}
+            <nav aria-label="Page navigation communities">
+                <ul class="pagination justify-content-center">
+                    {% if paginator.hasPreviousPage %}
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link"
+                               href="{{ path('community_list_paginated', {page: paginator.previousPage}) }}"
+                               tabindex="-1" aria-disabled="true">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    {% endif %}
+
+                    {% for i in 1..paginator.lastPage %}
+                        {% if i == paginator.currentPage %}
+                            <li class="page-item active" aria-current="page">
+                                <span class="page-link">{{ i }} <span class="sr-only">(current)</span></span>
+                            </li>
+                        {% else %}
+                            <li class="page-item"><a class="page-link"
+                                        href="{{ path('community_list_paginated', {page: i}) }}">{{ i }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if paginator.hasNextPage %}
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link"
+                               href="{{ path('community_list_paginated', {page: paginator.nextPage}) }}" tabindex="-1"
+                               aria-disabled="true">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}
+
