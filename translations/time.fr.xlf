@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+    <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+        <body>
+            <!-- Date diff -->
+            <trans-unit id="diff.ago.minute">
+                <source>diff.ago.minute</source>
+                <target>Il y a 1 minute|Il y a %count% minutes</target>
+            </trans-unit>
+
+            <trans-unit id="diff.ago.hour">
+                <source>diff.ago.hour</source>
+                <target>Il y a 1 heure|Il y a %count% heures</target>
+            </trans-unit>
+
+            <trans-unit id="diff.ago.day">
+                <source>diff.ago.day</source>
+                <target>Il y a 1 jour|Il y a %count% jours</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

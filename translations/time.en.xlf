@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <!-- Date diff -->
+            <trans-unit id="diff.ago.minute">
+                <source>diff.ago.minute</source>
+                <target>1 minute ago|%count% minutes ago</target>
+            </trans-unit>
+
+            <trans-unit id="diff.ago.hour">
+                <source>diff.ago.hour</source>
+                <target>1 hour ago|%count% hours ago</target>
+            </trans-unit>
+
+            <trans-unit id="diff.ago.day">
+                <source>diff.ago.day</source>
+                <target>1 day ago|%count% days ago</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
