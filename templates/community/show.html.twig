@@ -39,34 +39,36 @@
             </div>
         </div>
 
-        <h4 class="text-dark-pink text-center">
-            <span class="badge badge-pill badge-dark-pink">Last ads</span>
-        </h4>
-
-        {% for ad in ads %}
-            <a title="{{ ad.title }}" rel="nofollow" href="{{ path('ad_show', {'slug': ad.slug}) }}">
-                <div class="card" style="margin-bottom: 0.5rem;">
-                    <div class="card-body">
-                        <div class="card-title bold">{{ ad.title }}</div>
-                        <div class="card-text text-dark-pink">{{ ad.uev }} UEV</div>
-                        <div class="card-text">{{ ad.category.label }}</div>
-
-                        {% if ad.createdAt|date("d/m/Y") == "now"|date("d/m/Y") %}
-                            <div class="card-text small">Today, {{ ad.createdAt|date("H:m") }}</div>
-                        {% else %}
-                            <div class="card-text small">{{ ad.createdAt|localizeddate('long', 'short', null, 'UTC') }}
-                                par {{ ad.user.firstname }} {{ ad.user.lastname }}</div>
-                        {% endif %}
-                    </div>
+        {% if app.user not in community.members %}
+            <div class="row">
+                <div class="form-group col-12">
+                    <a href="" class="btn btn-light-pink text-white col-12">{{ 'community.show.join'|trans }}</a>
                 </div>
-            </a>
-        {% endfor %}
-    </div>
+            </div>
+        {% else %}
+            <h4 class="text-dark-pink text-center">
+                <span class="badge badge-pill badge-dark-pink">Last ads</span>
+            </h4>
 
-    {% if app.user in community.members %}
-    {% else %}
-        <a href="" class="btn btn-light-pink">{{ 'community.show.join'|trans }}</a>
-    {% endif %}
+            {% for ad in ads %}
+                <a title="{{ ad.title }}" rel="nofollow" href="{{ path('ad_show', {'slug': ad.slug}) }}">
+                    <div class="card" style="margin-bottom: 0.5rem;">
+                        <div class="card-body">
+                            <div class="card-title bold">{{ ad.title }}</div>
+                            <div class="card-text text-dark-pink">{{ ad.uev }} UEV</div>
+                            <div class="card-text">{{ ad.category.label }}</div>
+
+                            {% if ad.createdAt|date("d/m/Y") == "now"|date("d/m/Y") %}
+                                <div class="card-text small">Today, {{ ad.createdAt|date("H:m") }}</div>
+                            {% else %}
+                                <div class="card-text small">{{ ad.createdAt|localizeddate('long', 'short', null, 'UTC') }}
+                                    par {{ ad.user.firstname }} {{ ad.user.lastname }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        {% endif %}
     </div>
 {% endblock %}
 
