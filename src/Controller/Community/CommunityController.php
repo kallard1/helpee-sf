@@ -103,7 +103,7 @@ class CommunityController extends AbstractController
     {
         return $this->render('community/show.html.twig', [
             'community' => $community,
-            'ads' => $this->getDoctrine()->getManager()->getRepository(Ad::class)->getActiveAds(5),
+            'ads' => $this->getDoctrine()->getManager()->getRepository(Ad::class)->getActiveAds($community, 5),
         ]);
     }
 }
