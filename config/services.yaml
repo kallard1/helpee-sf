@@ -5,7 +5,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
   locale: 'fr'
-  redis_url: '%env(resolve:REDIS_URL)%'
+  redis_url: 'redis://%env(REDIS_HOST)%:%env(int:REDIS_PORT)%'
   personal_images_directory: '%kernel.project_dir%/public/uploads/personal_images'
 services:
   # default configuration for services in *this* file
@@ -34,3 +34,20 @@ services:
               - { name: doctrine.event_subscriber, connection: default }
           calls:
               - [ setAnnotationReader, [ "@annotation_reader" ] ]
+
+  Redis:
+    class: Redis
+    calls:
+      - method: connect
+        arguments:
+          - '%env(REDIS_HOST)%'
+          - '%env(int:REDIS_PORT)%'
+      # If you need key prefix, uncomment line belows
+      # - method: setOption
+      #   arguments:
+      #       - !php/const Redis::OPT_PREFIX
+      #       - 'my_prefix'
+
+  Symfony\Component\HttpFoundation\Session\Storage\Handler\RedisSessionHandler:
+    arguments:
+      - '@Redis'
