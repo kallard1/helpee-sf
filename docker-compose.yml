@@ -1,0 +1,58 @@
+version: '2'
+services:
+  php:
+    container_name: php_helpee
+    build: ./docker/php
+    expose:
+      - '9000'
+      - '9200'
+    ports:
+      - '9000:9000'
+    volumes:
+      - ./:/var/www/helpee-sf
+      - ./docker/php/conf:/usr/local/etc/php
+    working_dir: /var/www/helpee-sf
+    external_links:
+      - postgres11
+    links:
+      - redis
+    networks:
+      - local_default
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.0.1
+    environment:
+      - cluster.name=helpee_search
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - 9200:9200
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:6.0.1
+    links:
+      - elasticsearch
+    ports:
+      - 5601:5601
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - 6379:6379
+    hostname: redis
+    volumes:
+      - redis-data:/data
+    networks:
+      - local_default
+
+volumes:
+  redis-data:
+
+networks:
+  local_default:
+    external: true
