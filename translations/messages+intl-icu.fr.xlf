@@ -326,6 +326,26 @@
             </trans-unit>
 
             <!-- Ad - New -->
+            <trans-unit id="ad.new.title">
+                <source>ad.new.title</source>
+                <target>Titre</target>
+            </trans-unit>
+
+            <trans-unit id="ad.new.category">
+                <source>ad.new.category</source>
+                <target>Catégorie</target>
+            </trans-unit>
+
+            <trans-unit id="ad.new.description">
+                <source>ad.new.description</source>
+                <target>Description</target>
+            </trans-unit>
+
+            <trans-unit id="ad.new.uev">
+                <source>ad.new.uev</source>
+                <target>UEV</target>
+            </trans-unit>
+
             <trans-unit id="ad.flash.message.success">
                 <source>ad.flash.message.success</source>
                 <target>Annonce créée</target>

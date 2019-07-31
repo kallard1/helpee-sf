@@ -3,7 +3,7 @@
 <div class="row">
     <div class="form-group col-12">
         {{ form_widget(form.title, {'attr': {'class': 'form-control-lg'}}) }}
-        {{ form_label(form.title) }}
+        {{ form_label(form.title, 'ad.new.title') }}
     </div>
 </div>
 {% if app.user.communities|length > 1 %}
@@ -41,7 +41,7 @@
 <div class="row">
     <div class="form-group col-12">
         {{ form_widget(form.uev, {'attr': {'class': 'form-control-lg'}}) }}
-        {{ form_label(form.uev) }}
+        {{ form_label(form.uev, "ad.new.uev") }}
     </div>
 </div>
 
