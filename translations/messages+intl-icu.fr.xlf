@@ -314,6 +314,16 @@
                 <target>Description</target>
             </trans-unit>
 
+            <trans-unit id="community.label.city">
+                <source>community.label.city</source>
+                <target>Ville</target>
+            </trans-unit>
+
+            <trans-unit id="community.button.create">
+                <source>community.button.create</source>
+                <target>Créer une communauté</target>
+            </trans-unit>
+
             <!-- Community - Show -->
             <trans-unit id="community.show.administrator.icon">
                 <source>community.show.administrator.icon</source>
