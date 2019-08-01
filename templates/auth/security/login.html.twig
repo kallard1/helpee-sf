@@ -12,14 +12,16 @@
             <div class="row">
                 <div class="col-12 form-group">
                     <label for="username">{{ 'security.login.email'|trans }}</label>
-                    <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control form-control-lg"
+                    <input type="text" id="username" name="_username" value="{{ last_username }}"
+                           class="form-control form-control-lg"
                            required="required" autocomplete="username"/>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 form-group">
                     <label for="password">{{ 'security.login.password'|trans }}</label>
-                    <input type="password" id="password" name="_password" class="form-control form-control-lg" required="required"
+                    <input type="password" id="password" name="_password" class="form-control form-control-lg"
+                           required="required"
                            autocomplete="off"/>
                 </div>
             </div>
@@ -31,5 +33,9 @@
                 </div>
             </div>
         </form>
+
+        <p>Pas encore inscrit ?</p>
+
+        <p class="small">Rejoignez-nous vite en cliquant <a href="{{ path('registration') }}">ici</a> et créez votre espace personnel </p>
     </div>
 {% endblock %}
