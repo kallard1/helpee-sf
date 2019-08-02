@@ -14,6 +14,9 @@
 
 Le fichier `docker-compose.yml` contient toutes les configurations nécessaires pour le bon fonctionnement du projet.
 
+Ne pas ouvrir le fichier `src/DataFixtures/CityFixtures.php` car il doit charger **~40000 lignes** de code et cela peut
+prendre du temps voir faire planter votre éditeur de texte
+
 ---
 
 ##1 - Le dotenv
@@ -70,3 +73,15 @@ Pré-requis :
 Pour installer les dépendances node il suffit de faire `yarn install`
 
 La compilation des assets se fait avec la commande `yarn build`
+
+##5 - Peupler la base de données<br>
+Pour y insérer les données de base (catégories, régions, départements, villes, ...) il faut executer les fixtures 
+`docker exec -it php_helpee php bin/console doctrine:fixtures:load -n`
+
+Le flag `-n` permet d'executer la commande de chargement des fixtures sans demander validation.
+
+À utiliser **avec précautions** (et ne pas l'utiliser en production) car il vide le contenu des tables avant de les remplir.
+
+La commande peut prendre un certain temps car il y a énormément de données à importer (surtout pour les villes).
+
+
