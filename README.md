@@ -29,7 +29,8 @@ Explication des variables d'environnement :
 APP_ENV : Défini sur l'environnement de « test ». Elle peut être défini avec « dev » et « prod » pour les environnements
 de test et de production 
 
-APP_SECRET : C'est une chaîne de caractère aléatoire et obligatoire cela permet de renforcer la sécurité (tokens CSRF, salage des mots de passe...).
+APP_SECRET : C'est une chaîne de caractère aléatoire et obligatoire cela permet de renforcer la sécurité
+(tokens CSRF, salage des mots de passe...).
 Il est recommandé de mettre au minimum 32 caractères.
 
 DATABASE_URL : Ce sont les informations de connexion à la base de donnée
@@ -57,8 +58,8 @@ Pré-requis :
 - Docker
 - Docker Compose
 
-Lors de la première execution si les images ne sont pas disponible sur la machine, docker va les télécharger automatiquement.
-Cela peut prendre plus ou moins de temps selon la connexion.
+Lors de la première execution si les images ne sont pas disponible sur la machine, docker va les télécharger
+automatiquement. Cela peut prendre plus ou moins de temps selon la connexion.
 
 Pour lancer les containers : `docker-compose up -d`<br>
 Pour arrêter les containers : `docker-compose stop`<br>
@@ -80,7 +81,8 @@ Pour y insérer les données de base (catégories, régions, départements, vill
 
 Le flag `-n` permet d'executer la commande de chargement des fixtures sans demander validation.
 
-À utiliser **avec précautions** (et ne pas l'utiliser en production) car il vide le contenu des tables avant de les remplir.
+À utiliser **avec précautions** (et ne surtout pas l'utiliser en production) car cette commande vide le contenu des
+tables avant de les remplir.
 
 La commande peut prendre un certain temps car il y a énormément de données à importer (surtout pour les villes).
 
