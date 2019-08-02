@@ -32,7 +32,8 @@ class HomeController extends AbstractController
             $this->getParameter('redis_url')
         );
 
-        if ($client->get('ads.categories') === null) {
+
+        if ($client->get('ads.categories') === null || $client->get('ads.categories') === false) {
             $categories = $entityManager->getRepository(Category::class)->findAll();
 
             $data = [];
@@ -63,6 +64,9 @@ class HomeController extends AbstractController
 
         $form = $this->createForm(AdType::class, $ad);
         $form->handleRequest($request);
+
+
+        dump($client->get('ads.categories'));
 
         return $this->render('homepage/index.html.twig', [
             'categories' => json_decode($client->get('ads.categories')),
