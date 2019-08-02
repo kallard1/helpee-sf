@@ -32,7 +32,6 @@ class HomeController extends AbstractController
             $this->getParameter('redis_url')
         );
 
-
         if ($client->get('ads.categories') === null || $client->get('ads.categories') === false) {
             $categories = $entityManager->getRepository(Category::class)->findAll();
 
