@@ -64,9 +64,6 @@ class HomeController extends AbstractController
         $form = $this->createForm(AdType::class, $ad);
         $form->handleRequest($request);
 
-
-        dump($client->get('ads.categories'));
-
         return $this->render('homepage/index.html.twig', [
             'categories' => json_decode($client->get('ads.categories')),
             'count_communities' => count($communities),
