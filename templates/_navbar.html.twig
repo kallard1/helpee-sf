@@ -46,9 +46,6 @@
                        href="#">{{ 'nav.communities'|trans({'count': app.user.communities|length}) }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{{ 'nav.favorite_ads'|trans }}</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link {{ (app.request.get('_route') == 'profile_main') ? 'active' : '' }}" href="{{ path('profile_main') }}">{{ 'nav.my_profile'|trans }}</a>
                 </li>
                 <li class="nav-item">
