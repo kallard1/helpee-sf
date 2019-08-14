@@ -8,14 +8,17 @@
 {% block body %}
     <div class="jumbotron">
         <div class="row">
-            <div class="btn-group btn-group-toggle btn-group-lg col-12" data-toggle="buttons">
-                <label class="btn btn-dark-pink col-6">
-                    <input type="radio" name="search" id="search" autocomplete="off"
-                           checked/>{{ 'button.look-for'|trans }}
+            <div class="btn-group btn-group-toggle btn-group-sm col-12" role="group" data-toggle="buttons">
+                <label class="btn btn-light-pink col-6 active">
+                    <input type="radio" name="search" id="search" autocomplete="off" checked/>
+                    <span class="mdi mdi-magnify mdi-18px"></span>
+                    {{ 'button.look-for'|trans }}
                 </label>
 
-                <label class="btn btn-light-pink col-6">
-                    <input type="radio" name="search" id="propose" autocomplete="off"/> {{ 'button.propose'|trans }}
+                <label class="btn btn-yellow text-white col-6">
+                    <input type="radio" name="search" id="propose" autocomplete="off"/>
+                    <span class="mdi mdi-plus mdi-18px"></span>
+                    {{ 'button.propose'|trans }}
                 </label>
             </div>
         </div>
@@ -23,7 +26,7 @@
         <form action="" id="form-search" style="margin-top: 15px">
             <div class="row">
                 <div class="form-group col-12">
-                    <select name="_category" id="categories" class="form-control form-control-lg">
+                    <select name="_category" id="categories" class="form-control form-control-xs">
                         <option selected disabled>{{ 'homepage.select.category'|trans }}</option>
                         {% if categories %}
                             {% for category in categories %}
@@ -41,7 +44,7 @@
 
             <div class="row">
                 <div class="form-group col-12">
-                    <input type="text" id="keywords" name="keywords" class="form-control form-control-lg">
+                    <input type="text" id="keywords" name="keywords" class="form-control form-control-xs">
                     <label for="keywords">{{ "keywords"|trans }}</label>
                 </div>
             </div>
@@ -55,7 +58,7 @@
 
             <div class="row">
                 <div class="form-group col-12">
-                    <button type="submit" class="btn col-12 btn-light-pink btn-lg">{{ "search"|trans }}</button>
+                    <button type="submit" class="btn col-12 btn-orange text-white btn-xs">{{ "search"|trans }}</button>
                 </div>
             </div>
         </form>
@@ -102,17 +105,28 @@
                     <div class="carousel-caption d-none d-md-block">
                         <h4 class="m-1 text-black-50">Inscrivez-vous et devenez membre</h4>
                     </div>
+                    <div class="carousel-caption d-block d-md-none">
+                        <p class="m-1">Inscrivez-vous et devenez membre</p>
+                    </div>
                 </div>
                 <div class="carousel-item">
                     <img src="{{ asset('build/images/slide2.png') }}" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h4 class="m-1 text-black-50">Prenez part à des communautés près de chez vous</h4>
                     </div>
+
+                    <div class="carousel-caption d-block d-md-none">
+                        <p class="m-1">Prenez part à des communautés près de chez vous</p>
+                    </div>
                 </div>
                 <div class="carousel-item">
                     <img src="{{ asset('build/images/slide3.png') }}" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h4 class="m-1 text-black-50">Recherchez et/ou proposez des services</h4>
+                    </div>
+
+                    <div class="carousel-caption d-block d-md-none">
+                        <p class="m-1">Recherchez et/ou proposez des services</p>
                     </div>
                 </div>
             </div>
