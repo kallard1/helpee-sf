@@ -126,11 +126,16 @@ hr {
 .nav-pills {
   .nav-link {
     &.active {
-      background-color: $dark-pink;
+      background-color: $orange;
     }
   }
 }
 
 a.nav-link {
   color: $orange;
+}
+
+.bg-light-grey {
+  border-top: #dcdada 1px solid !important;
+  background-color: $mine-shaft !important;
 }
