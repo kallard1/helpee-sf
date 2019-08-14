@@ -116,9 +116,21 @@ hr {
 }
 
 .carousel-caption.d-block {
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
+  left:       0;
+  right:      0;
+  width:      100%;
+  height:     100%;
   background: rgba(0, 0, 0, 0.3);
+}
+
+.nav-pills {
+  .nav-link {
+    &.active {
+      background-color: $dark-pink;
+    }
+  }
+}
+
+a.nav-link {
+  color: $orange;
 }
