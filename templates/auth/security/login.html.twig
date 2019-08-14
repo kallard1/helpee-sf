@@ -13,21 +13,21 @@
                 <div class="col-12 form-group">
                     <label for="username">{{ 'security.login.email'|trans }}</label>
                     <input type="text" id="username" name="_username" value="{{ last_username }}"
-                           class="form-control form-control-lg"
+                           class="form-control form-control-xs"
                            required="required" autocomplete="username"/>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 form-group">
                     <label for="password">{{ 'security.login.password'|trans }}</label>
-                    <input type="password" id="password" name="_password" class="form-control form-control-lg"
+                    <input type="password" id="password" name="_password" class="form-control form-control-xs"
                            required="required"
                            autocomplete="off"/>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 form-group">
-                    <button type="submit" class="btn btn-light-pink btn-lg col-12" name="_submit">
+                    <button type="submit" class="btn btn-orange text-white btn-xs col-12" name="_submit">
                         {{ 'security.login.sign_in'|trans }}
                     </button>
                 </div>
