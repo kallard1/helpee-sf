@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="form-group col-12">
-        {{ form_widget(form.title, {'attr': {'class': 'form-control-lg'}}) }}
+        {{ form_widget(form.title, {'attr': {'class': 'form-control-xs'}}) }}
         {{ form_label(form.title, 'ad.new.title') }}
     </div>
 </div>
@@ -10,7 +10,7 @@
     <div class="row">
         <div class="form-group col-12">
 
-            <select name="_community" id="community" class="form-control form-control-lg">
+            <select name="_community" id="community" class="form-control form-control-xs">
                 {% for community in app.user.communities %}
                     <option value="{{ community.id }}">{{ community.name }}</option>
                 {% endfor %}
@@ -26,21 +26,21 @@
 
 <div class="row">
     <div class="form-group col-12">
-        {{ form_widget(form.category, {'attr': {'class': 'form-control-lg'}}) }}
+        {{ form_widget(form.category, {'attr': {'class': 'form-control-xs'}}) }}
         {{ form_label(form.category, 'ad.new.category') }}
     </div>
 </div>
 
 <div class="row">
     <div class="form-group col-12">
-        {{ form_widget(form.description, {'attr': {'class': 'form-control-lg', 'style': 'height: 30vh'}}) }}
+        {{ form_widget(form.description, {'attr': {'class': 'form-control-xs', 'style': 'height: 30vh'}}) }}
         {{ form_label(form.description, 'ad.new.description') }}
     </div>
 </div>
 
 <div class="row">
     <div class="form-group col-12">
-        {{ form_widget(form.uev, {'attr': {'class': 'form-control-lg'}}) }}
+        {{ form_widget(form.uev, {'attr': {'class': 'form-control-xs'}}) }}
         {{ form_label(form.uev, "ad.new.uev") }}
     </div>
 </div>
