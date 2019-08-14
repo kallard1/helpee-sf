@@ -6,14 +6,14 @@
         {{ form_start(form) }}
         <div class="row">
             <div class="form-group col-12">
-                {{ form_widget(form.description, {'attr': {'class': 'form-control-lg', 'style': 'height: 55vh'}}) }}
+                {{ form_widget(form.description, {'attr': {'class': 'form-control-xs', 'style': 'height: 55vh'}}) }}
                 {{ form_label(form.description, 'profile.label.description') }}
             </div>
         </div>
         <div class="row">
             <div class="form-group col-12">
                 <button type="submit"
-                        class="btn btn-light-pink btn-lg col-12">{{ 'profile.description.button.submit'|trans }}</button>
+                        class="btn btn-orange text-white btn-xs col-12">{{ 'profile.description.button.submit'|trans }}</button>
             </div>
         </div>
         {{ form_end(form) }}
