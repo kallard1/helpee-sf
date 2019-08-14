@@ -366,6 +366,11 @@
                 <target>UEV</target>
             </trans-unit>
 
+            <trans-unit id="ad.button.publish">
+                <source>ad.button.publish</source>
+                <target>Publier</target>
+            </trans-unit>
+
             <trans-unit id="ad.flash.message.success">
                 <source>ad.flash.message.success</source>
                 <target>Annonce créée</target>
