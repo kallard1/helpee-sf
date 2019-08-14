@@ -375,6 +375,14 @@
                 <source>ad.flash.message.success</source>
                 <target>Annonce créée</target>
             </trans-unit>
+            <trans-unit id="0">
+                <source>profile.btn.community.join</source>
+                <target>Rejoindre une communauté</target>
+            </trans-unit>
+            <trans-unit id="1">
+                <source>profile.btn.community.create</source>
+                <target>Créer une communauté</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
