@@ -131,11 +131,22 @@ hr {
   }
 }
 
+.navbar-light {
+  .navbar-nav {
+    .nav-link {
+      color: $dark-gray;
+      &.active {
+        color: $orange;
+      }
+    }
+  }
+}
+
 a.nav-link {
-  color: $orange;
+  color: $dark-gray;
 }
 
 .bg-light-grey {
-  border-top: #dcdada 1px solid !important;
+  border-top:       #dcdada 1px solid !important;
   background-color: $mine-shaft !important;
 }
