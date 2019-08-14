@@ -46,12 +46,12 @@
   justify-content:  center;
   width:            40px;
   height:           40px;
-  background-color: #e93959;
+  background-color: rgba(252, 160, 9, 1);
   border-radius:    50%;
   border:           none;
   margin-top:       -20px;
 
   & > a {
-    color: white;
+    color: rgba(255, 255, 255, 1);
   }
 }
