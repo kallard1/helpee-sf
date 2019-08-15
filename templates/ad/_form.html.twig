@@ -1,3 +1,7 @@
+{% if app.user.communities|length == 0 %}
+    <p>Vous n'appartenez à aucune communauté.</p>
+    <p>Veuillez en <a href="{{ path('community_new') }}">créer</a> ou en <a href="{{ path('community_list') }}">rejoindre une</a>.</p>
+{% else %}
 {{ form_start(form, {"action": path('ad_new'), "attr": {"id": "form-propose"}}) }}
 
 <div class="row">
@@ -6,48 +10,49 @@
         {{ form_label(form.title, 'ad.new.title') }}
     </div>
 </div>
-{% if app.user.communities|length > 1 %}
+    {% if app.user.communities|length > 1 %}
+        <div class="row">
+            <div class="form-group col-12">
+
+                <select name="_community" id="community" class="form-control form-control-xs">
+                    {% for community in app.user.communities %}
+                        <option value="{{ community.id }}">{{ community.name }}</option>
+                    {% endfor %}
+                </select>
+                <label for="community">Community</label>
+            </div>
+        </div>
+    {% else %}
+        {% for community in app.user.communities %}
+            <input type="hidden" name="_community" value="{{ community.id }}"/>
+        {% endfor %}
+    {% endif %}
+
     <div class="row">
         <div class="form-group col-12">
-
-            <select name="_community" id="community" class="form-control form-control-xs">
-                {% for community in app.user.communities %}
-                    <option value="{{ community.id }}">{{ community.name }}</option>
-                {% endfor %}
-            </select>
-            <label for="community">Community</label>
+            {{ form_widget(form.category, {'attr': {'class': 'form-control-xs'}}) }}
+            {{ form_label(form.category, 'ad.new.category') }}
         </div>
     </div>
-{% else %}
-    {% for community in app.user.communities %}
-        <input type="hidden" name="_community" value="{{ community.id }}"/>
-    {% endfor %}
+
+    <div class="row">
+        <div class="form-group col-12">
+            {{ form_widget(form.description, {'attr': {'class': 'form-control-xs', 'style': 'height: 30vh'}}) }}
+            {{ form_label(form.description, 'ad.new.description') }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-12">
+            {{ form_widget(form.uev, {'attr': {'class': 'form-control-xs'}}) }}
+            {{ form_label(form.uev, "ad.new.uev") }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-12">
+            <button type="submit" class="btn btn-orange text-white btn-xs col-12">{{ "ad.button.publish"|trans }}</button>
+        </div>
+    </div>
+    {{ form_end(form) }}
 {% endif %}
-
-<div class="row">
-    <div class="form-group col-12">
-        {{ form_widget(form.category, {'attr': {'class': 'form-control-xs'}}) }}
-        {{ form_label(form.category, 'ad.new.category') }}
-    </div>
-</div>
-
-<div class="row">
-    <div class="form-group col-12">
-        {{ form_widget(form.description, {'attr': {'class': 'form-control-xs', 'style': 'height: 30vh'}}) }}
-        {{ form_label(form.description, 'ad.new.description') }}
-    </div>
-</div>
-
-<div class="row">
-    <div class="form-group col-12">
-        {{ form_widget(form.uev, {'attr': {'class': 'form-control-xs'}}) }}
-        {{ form_label(form.uev, "ad.new.uev") }}
-    </div>
-</div>
-
-<div class="row">
-    <div class="form-group col-12">
-        <button type="submit" class="btn btn-light-pink btn-xs col-12">{{ "ad.button.publish"|trans }}</button>
-    </div>
-</div>
-{{ form_end(form) }}
