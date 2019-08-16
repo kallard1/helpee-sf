@@ -47,4 +47,72 @@ class AdRepository extends ServiceEntityRepository
 
         return $request->getQuery()->getResult();
     }
+
+    public function findAds($category, $keywords, $city)
+    {
+        var_dump($category, $keywords, $city);
+
+        $query = $this->sanitizeSearchQuery($keywords);
+        $query = $this->extractSearchTerms($query);
+
+        $request = $this->createQueryBuilder('ads')
+            ->leftJoin('ads.category', 'adc')
+            ->addSelect('adc');
+
+
+        if ($category != "" || $category != null) {
+            $request->andWhere('adc.slug = :slug')
+                ->setParameter('slug', $category);
+        }
+
+        if ($keywords != "" || $keywords != null) {
+            foreach ($query as $keyword) {
+                $request->andWhere('ads.title LIKE :keyword')
+                    ->setParameter('keyword', '%' . $keyword . '%');
+            }
+        }
+
+        if ($city != "" || $city != null) {
+            $request
+                ->leftJoin('ads.community', 'c')
+                ->addSelect('c')
+                ->leftJoin('c.city', 'city')
+                ->addSelect('city')
+                ->andWhere('city.id = :id')
+                ->setParameter('id', $city);
+        }
+
+        dump($request->getQuery());
+
+        return $request->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * Removes all non-alphanumeric characters except whitespaces.
+     *
+     * @param string $query
+     *
+     * @return string
+     */
+    private function sanitizeSearchQuery(string $query): string
+    {
+        return trim(preg_replace('/[[:space:]]+/', ' ', $query));
+    }
+
+    /**
+     * Splits the search query into terms and removes the ones which are irrelevant.
+     *
+     * @param string $searchQuery
+     *
+     * @return array
+     */
+    private function extractSearchTerms(string $searchQuery): array
+    {
+        $terms = array_unique(explode(' ', $searchQuery));
+
+        return array_filter($terms, function ($term) {
+            return 2 <= mb_strlen($term);
+        });
+    }
 }
