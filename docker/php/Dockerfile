@@ -11,6 +11,7 @@ RUN apt-get update \
 RUN docker-php-ext-install \
         ctype \
         iconv \
+        intl \
         json \
         opcache \
         pdo_pgsql \
