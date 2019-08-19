@@ -50,14 +50,16 @@ class AdRepository extends ServiceEntityRepository
 
     public function findAds($category, $keywords, $city)
     {
-        var_dump($category, $keywords, $city);
-
         $query = $this->sanitizeSearchQuery($keywords);
         $query = $this->extractSearchTerms($query);
 
         $request = $this->createQueryBuilder('ads')
             ->leftJoin('ads.category', 'adc')
-            ->addSelect('adc');
+            ->addSelect('adc')
+            ->leftJoin('ads.community', 'c')
+            ->addSelect('c')
+            ->leftJoin('c.city', 'city')
+            ->addSelect('city');
 
 
         if ($category != "" || $category != null) {
@@ -74,15 +76,9 @@ class AdRepository extends ServiceEntityRepository
 
         if ($city != "" || $city != null) {
             $request
-                ->leftJoin('ads.community', 'c')
-                ->addSelect('c')
-                ->leftJoin('c.city', 'city')
-                ->addSelect('city')
                 ->andWhere('city.id = :id')
                 ->setParameter('id', $city);
         }
-
-        dump($request->getQuery());
 
         return $request->getQuery()
             ->getResult();

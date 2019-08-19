@@ -135,6 +135,7 @@ hr {
   .navbar-nav {
     .nav-link {
       color: $dark-gray;
+
       &.active {
         color: $orange;
       }
@@ -149,4 +150,20 @@ a.nav-link {
 .bg-light-grey {
   border-top:       #dcdada 1px solid !important;
   background-color: $mine-shaft !important;
+}
+
+div.jumbotron {
+  a {
+    color: #000000;
+
+
+    &:hover .card-title {
+      color: rgba(233, 57, 89, 1);
+    }
+
+    &:hover {
+      text-decoration: none;
+      color:           #000000;
+    }
+  }
 }
