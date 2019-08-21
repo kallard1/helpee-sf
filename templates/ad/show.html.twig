@@ -33,7 +33,7 @@
         {% if ad.user.id != app.user.id %}
         <div class="row">
             <div class="form-group col-12">
-                <a href="#" class="col-12 btn btn-orange btn-xs text-white">Contacter</a>
+                <a href="{{ path('messages_new', {'slug': ad.slug}) }}" class="col-12 btn btn-orange btn-xs text-white">Contacter</a>
             </div>
         </div>
         {% endif %}
