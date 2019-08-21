@@ -30,12 +30,13 @@
                 </div>
             </div>
         </div>
-
+        {% if ad.user.id != app.user.id %}
         <div class="row">
             <div class="form-group col-12">
                 <a href="#" class="col-12 btn btn-orange btn-xs text-white">Contacter</a>
             </div>
         </div>
+        {% endif %}
     </div>
 {% endblock %}
 
