@@ -21,7 +21,7 @@
                 <p class="card-subtitle">{{ community.city.name }}</p>
                 <p class="card-subtitle">{{ 'community.show.num_of_members'|trans({'count': community.members|length}) }}</p>
                 {% if community.creator.id != app.user.id %}
-                    <p class="card-subtitle">{{ 'community.show.administrator'|trans }}{{ community.creator.firstname }} {{ community.creator.lastname }}</p>
+                    <p class="card-subtitle">{{ 'community.show.administrator'|trans }} {{ community.creator.firstname }} {{ community.creator.lastname }}</p>
                 {% endif %}
 
             </div>
