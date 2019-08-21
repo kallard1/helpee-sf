@@ -44,11 +44,9 @@
 
         <hr>
         <div class="button">
-            <button class="btn-circle" type="submit">
-                <a href="{{ path('profile_edit_description') }}">
-                    <span class="mdi mdi-pencil mdi-24px"></span>
-                </a>
-            </button>
+            <a href="{{ path('profile_edit_description') }}" class="btn-circle text-white">
+                <span class="mdi mdi-pencil mdi-24px"></span>
+            </a>
         </div>
         <div class="row col-12">
             <p>{{ app.user.informationUser.description | raw }}</p>
