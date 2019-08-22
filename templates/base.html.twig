@@ -10,9 +10,6 @@
     {% endblock %}
 </head>
 <body>
-<noscript>
-    You need to enable JavaScript to run this app.
-</noscript>
 <header>
     <div class="content-header">
         <a href="{{ path('homepage') }}">
@@ -21,6 +18,13 @@
     </div>
 </header>
 <div class="container">
+
+    <noscript>
+        <div class="alert alert-danger" role="alert">
+            You need to enable JavaScript to run this app.
+        </div>
+    </noscript>
+
     {% for label, messages in app.flashes %}
         {% for message in messages %}
             <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
