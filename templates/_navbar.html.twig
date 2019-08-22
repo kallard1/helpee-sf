@@ -15,11 +15,13 @@
                 <span class="mdi mdi-home mdi-36px"></span>
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ path('messages_inbox') }}">
-                <span class="mdi mdi-message-outline mdi-36px"></span>
-            </a>
-        </li>
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('messages_inbox') }}">
+                    <span class="mdi mdi-message-outline mdi-36px"></span>
+                </a>
+            </li>
+        {% endif %}
 
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" data-target="#navbarCollapse"
