@@ -167,3 +167,21 @@ div.jumbotron {
     }
   }
 }
+
+.chat-form {
+  .btn {
+    border-radius: 0 0.25rem 0.25rem 0;
+    border-color:  #ced4da;
+    margin-left:   -1px;
+  }
+
+  .form-control {
+    border-radius: 0.25rem 0 0 0.25rem;
+
+  }
+}
+
+div.chat-content {
+  height: 18.7rem;
+  overflow-y: scroll;
+}

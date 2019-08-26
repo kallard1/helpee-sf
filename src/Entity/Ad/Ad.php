@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity\Ad;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
@@ -72,6 +73,12 @@ class Ad {
     private $community;
 
     /**
+     * One ad has many messages.
+     * @ORM\OneToMany(targetEntity="App\Entity\Ad\Message\Thread", mappedBy="ad")
+     */
+    private $threads;
+
+    /**
      * @var \DateTime
      *
      * @Gedmo\Timestampable(on="create")
@@ -90,6 +97,7 @@ class Ad {
     public function __construct()
     {
         $this->enabled = true;
+        $this->threads = new ArrayCollection();
     }
 
     /**

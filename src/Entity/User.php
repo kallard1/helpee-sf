@@ -114,6 +114,16 @@ class User implements UserInterface, Serializable
     private $orders;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Ad\Message\Thread", mappedBy="createdBy")
+     */
+    private $threads;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Ad\Message\Message", mappedBy="sender")
+     */
+    private $messages;
+
+    /**
      * @var \DateTime
      *
      * @Gedmo\Timestampable(on="create")
@@ -134,6 +144,8 @@ class User implements UserInterface, Serializable
         $this->communities = new ArrayCollection();
         $this->hobbies = new ArrayCollection();
         $this->orders = new ArrayCollection();
+        $this->threads = new ArrayCollection();
+        $this->messages = new ArrayCollection();
     }
 
     /**

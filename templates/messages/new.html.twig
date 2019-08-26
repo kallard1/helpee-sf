@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="jumbotron">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ ad.title }}</h5>
+                <p class="card-text">{{ ad.description }}</p>
+                <span class="align-middle btn btn-light-pink">{{ ad.uev }} UEV</span>
+            </div>
+        </div>
+
+        {{ form_start(form)}}
+            <div class="row">
+                <div class="form-group mt-1 col-12">
+                    {{ form_widget(form.body, {'attr': {'class': 'form-control-xs'}}) }}
+                    {{ form_label(form.body) }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-12">
+                    <button type="submit" class="btn btn-orange text-white btn-xs col-12">Envoyer</button>
+                </div>
+            </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+

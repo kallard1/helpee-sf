@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="jumbotron">
+        {% if messages|length == 0 %}
+            <p>Vous n'avez aucun message.</p>
+        {% endif %}
+        {% for message in messages %}
+            <a href="{{ path('messages_read', {'id': message.id}) }}">
+                <div class="card mb-1">
+                    <div class="card-body row">
+                        <div class="col-4">
+                            {% if message.messages[0].sender.personalImage is not null %}
+                                <img src="{{ asset('uploads/personal_images/' ~ app.user.personalImage) }}" width="84"
+                                     height="84"
+                                     alt="Votre image de profil"/>
+                            {% else %}
+                                <img src="{{ asset('build/images/img-profile.png') }}" width="84" height="84"
+                                     alt="Votre image de profil temporaire"/>
+                            {% endif %}
+                        </div>
+                        <div class="col-8">
+                            <h5 class="card-title">{{ message.messages[0].sender.firstname }} {{ message.messages[0].sender.lastname }}</h5>
+                            <div class="card-text">{{ message.messages[0].body|truncate(25, false, "...") }}</div>
+                            <div class="card-text small">{{ message.messages[0].createdAt|date("d/m/Y H:m") }}</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}
