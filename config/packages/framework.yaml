@@ -12,7 +12,8 @@ framework:
     cookie_samesite: lax
     cookie_lifetime: 3600
 
-  #esi: true
-  #fragments: true
+  esi: true
+  fragments: true
   php_errors:
     log: true
+
