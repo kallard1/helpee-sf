@@ -2,6 +2,12 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is a part of Helpee
+ * @author  Kevin Allard <contact@allard-kevin.fr>
+ * @license 2018
+ */
+
 namespace App\Repository\Ad;
 
 use App\Entity\Ad\Ad;
@@ -61,20 +67,19 @@ class AdRepository extends ServiceEntityRepository
             ->leftJoin('c.city', 'city')
             ->addSelect('city');
 
-
-        if ($category != "" || $category != null) {
+        if ('' != $category || null != $category) {
             $request->andWhere('adc.slug = :slug')
                 ->setParameter('slug', $category);
         }
 
-        if ($keywords != "" || $keywords != null) {
+        if ('' != $keywords || null != $keywords) {
             foreach ($query as $keyword) {
                 $request->andWhere('ads.title LIKE :keyword')
-                    ->setParameter('keyword', '%' . $keyword . '%');
+                    ->setParameter('keyword', '%'.$keyword.'%');
             }
         }
 
-        if ($city != "" || $city != null) {
+        if ('' != $city || null != $city) {
             $request
                 ->andWhere('city.id = :id')
                 ->setParameter('id', $city);

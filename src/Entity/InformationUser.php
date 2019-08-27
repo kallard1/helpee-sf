@@ -2,16 +2,21 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is a part of Helpee
+ * @author  Kevin Allard <contact@allard-kevin.fr>
+ * @license 2018
+ */
+
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * Class InformationUser
+ * Class InformationUser.
  *
- * @package App\Entity
- * @ORM\Entity()
+ * @ORM\Entity
  * @ORM\Table(name="informations_users")
  */
 class InformationUser
@@ -26,6 +31,7 @@ class InformationUser
 
     /**
      * One User has One Address.
+     *
      * @ORM\OneToOne(targetEntity="User", inversedBy="informationUser", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */

@@ -2,20 +2,25 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is a part of Helpee
+ * @author  Kevin Allard <contact@allard-kevin.fr>
+ * @license 2018
+ */
+
 namespace App\Entity;
 
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Serializable;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * Class User
+ * Class User.
  *
- * @package App\Entity
- * @ORM\Entity()
+ * @ORM\Entity
  * @ORM\Table(name="users")
  */
 class User implements UserInterface, Serializable
@@ -67,7 +72,7 @@ class User implements UserInterface, Serializable
      * @var bool
      * @ORM\Column(name="is_verified", type="boolean", nullable=true)
      */
-    private $verified ;
+    private $verified;
 
     /**
      * @var string
@@ -95,20 +100,22 @@ class User implements UserInterface, Serializable
     /**
      * @ORM\ManyToMany(targetEntity="Hobby")
      * @ORM\JoinTable(name="hobbies_users",
-     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="hobby_id", referencedColumnName="id")}
-     *      )
+     *     joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="hobby_id", referencedColumnName="id")}
+     * )
      */
     private $hobbies;
 
     /**
      * Many Users have Many Groups.
+     *
      * @ORM\ManyToMany(targetEntity="Community", mappedBy="members")
      */
     private $communities;
 
     /**
      * One user has many orders. This is the inverse side.
+     *
      * @ORM\OneToMany(targetEntity="Order", mappedBy="user")
      */
     private $orders;
@@ -359,7 +366,8 @@ class User implements UserInterface, Serializable
      *
      * @return $this
      */
-    public function addHobby(Hobby $hobby) {
+    public function addHobby(Hobby $hobby)
+    {
         $this->hobbies[] = $hobby;
 
         return $this;
@@ -368,7 +376,8 @@ class User implements UserInterface, Serializable
     /**
      * @param Hobby $hobby
      */
-    public function removeHobby(Hobby $hobby) {
+    public function removeHobby(Hobby $hobby)
+    {
         $this->hobbies->removeElement($hobby);
     }
 
@@ -385,7 +394,8 @@ class User implements UserInterface, Serializable
      *
      * @return $this
      */
-    public function addCommunity(Community $community) {
+    public function addCommunity(Community $community)
+    {
         $this->communities[] = $community;
 
         return $this;
@@ -394,7 +404,8 @@ class User implements UserInterface, Serializable
     /**
      * @param \App\Entity\Community $community
      */
-    public function removeCommunity(Community $community) {
+    public function removeCommunity(Community $community)
+    {
         $this->communities->removeElement($community);
     }
 
@@ -411,7 +422,8 @@ class User implements UserInterface, Serializable
      *
      * @return $this
      */
-    public function addOrder(Order $order) {
+    public function addOrder(Order $order)
+    {
         $this->orders[] = $order;
         $order->setUser($this);
 
@@ -443,10 +455,12 @@ class User implements UserInterface, Serializable
     }
 
     /**
-     * String representation of object
+     * String representation of object.
      *
-     * @link  https://php.net/manual/en/serializable.serialize.php
+     * @see  https://php.net/manual/en/serializable.serialize.php
+     *
      * @return string the string representation of the object or null
+     *
      * @since 5.1.0
      */
     public function serialize()
@@ -455,15 +469,14 @@ class User implements UserInterface, Serializable
     }
 
     /**
-     * Constructs the object
+     * Constructs the object.
      *
-     * @link  https://php.net/manual/en/serializable.unserialize.php
+     * @see  https://php.net/manual/en/serializable.unserialize.php
      *
      * @param string $serialized <p>
      *                           The string representation of the object.
      *                           </p>
      *
-     * @return void
      * @since 5.1.0
      */
     public function unserialize($serialized)

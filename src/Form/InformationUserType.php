@@ -2,6 +2,12 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is a part of Helpee
+ * @author  Kevin Allard <contact@allard-kevin.fr>
+ * @license 2018
+ */
+
 namespace App\Form;
 
 use App\Entity\InformationUser;
@@ -17,9 +23,9 @@ class InformationUserType extends AbstractType
         $builder
             ->add('address', TextType::class)
             ->add('address1', TextType::class, [
-                'required' => false
+                'required' => false,
             ])
-            ->add('phone',  TextType::class);
+            ->add('phone', TextType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)

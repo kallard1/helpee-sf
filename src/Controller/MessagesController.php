@@ -2,6 +2,12 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is a part of Helpee
+ * @author  Kevin Allard <contact@allard-kevin.fr>
+ * @license 2018
+ */
+
 namespace App\Controller;
 
 use App\Entity\Ad\Ad;
@@ -9,7 +15,6 @@ use App\Entity\Ad\Message\Message;
 use App\Entity\Ad\Message\Thread;
 use App\Entity\User;
 use App\Form\MessageType;
-use App\Repository\Ad\ThreadRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,36 +22,37 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class MessagesController
+ * Class MessagesController.
  *
- * @package App\Controller
  * @Route("/messages", name="messages")
  * @IsGranted("ROLE_USER")
  */
 class MessagesController extends AbstractController
 {
-
     /**
      * @Route("/", methods={"GET"}, name="_inbox")
+     *
      * @param \Symfony\Component\HttpFoundation\Request $request
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function inbox(Request $request): Response
     {
-        return $this->render("messages/inbox.html.twig", [
+        return $this->render('messages/inbox.html.twig', [
             'messages' => $this->getDoctrine()->getManager()->getRepository(Thread::class)->getUserThreads($this->getUser()),
         ]);
     }
 
     /**
      * @Route("/new/{slug}", methods={"GET", "POST"}, name="_new")
+     *
      * @param \Symfony\Component\HttpFoundation\Request $request
      * @param \App\Entity\Ad\Ad                         $ad
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function new(Request $request, Ad $ad): Response {
+    public function new(Request $request, Ad $ad): Response
+    {
         $thread = new Thread();
         $message = new Message();
 
@@ -71,7 +77,7 @@ class MessagesController extends AbstractController
             $em->flush();
         }
 
-        return $this->render("messages/new.html.twig", [
+        return $this->render('messages/new.html.twig', [
             'ad' => $ad,
             'form' => $form->createView(),
         ]);
@@ -79,6 +85,7 @@ class MessagesController extends AbstractController
 
     /**
      * @Route("/read/{id}", methods={"GET", "POST"}, name="_read")
+     *
      * @param \Symfony\Component\HttpFoundation\Request $request
      * @param \App\Entity\Ad\Message\Thread             $thread
      *
@@ -101,7 +108,7 @@ class MessagesController extends AbstractController
             $em->flush();
         }
 
-        return $this->render("messages/read.html.twig", [
+        return $this->render('messages/read.html.twig', [
             'thread' => $em->getRepository(Thread::class)->getThread($thread)[0],
             'form' => $form->createView(),
         ]);

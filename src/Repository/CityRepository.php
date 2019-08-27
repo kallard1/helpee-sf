@@ -2,6 +2,12 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is a part of Helpee
+ * @author  Kevin Allard <contact@allard-kevin.fr>
+ * @license 2018
+ */
+
 namespace App\Repository;
 
 use App\Entity\City;
@@ -10,7 +16,6 @@ use Doctrine\Common\Persistence\ManagerRegistry;
 
 class CityRepository extends ServiceEntityRepository
 {
-
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, City::class);
@@ -23,7 +28,7 @@ class CityRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('c')
             ->orWhere('lower(c.name) LIKE lower(:query)')
             ->orWhere('lower(c.zip_code) LIKE lower(:query)')
-            ->setParameter('query', '%' . $query . '%')
+            ->setParameter('query', '%'.$query.'%')
             ->orderBy('c.name', 'ASC')
             ->setMaxResults($limit)
             ->getQuery()
@@ -57,5 +62,4 @@ class CityRepository extends ServiceEntityRepository
             return 2 <= mb_strlen($term);
         });
     }
-
 }

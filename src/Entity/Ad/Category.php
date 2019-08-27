@@ -2,15 +2,20 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is a part of Helpee
+ * @author  Kevin Allard <contact@allard-kevin.fr>
+ * @license 2018
+ */
+
 namespace App\Entity\Ad;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * Class Category
+ * Class Category.
  *
- * @package App\Entity\Ad
  * @Gedmo\Tree(type="nested")
  * @ORM\Entity(repositoryClass="App\Repository\Ad\CategoryRepository")
  * @ORM\Table(name="ads_categories")
@@ -142,7 +147,7 @@ class Category
     /**
      * @param mixed $parent
      */
-    public function setParent(Category $parent = null): void
+    public function setParent(self $parent = null): void
     {
         $this->parent = $parent;
     }

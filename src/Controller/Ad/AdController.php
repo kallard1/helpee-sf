@@ -2,6 +2,12 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is a part of Helpee
+ * @author  Kevin Allard <contact@allard-kevin.fr>
+ * @license 2018
+ */
+
 namespace App\Controller\Ad;
 
 use App\Entity\Ad\Ad;
@@ -14,9 +20,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
- * Class AdController
+ * Class AdController.
  *
- * @package App\Controller\Ad
  * @Route("/ad", name="ad")
  */
 class AdController extends AbstractController
@@ -35,6 +40,7 @@ class AdController extends AbstractController
 
     /**
      * @Route("/new", methods={"GET", "POST"}, name="_new")
+     *
      * @param \Symfony\Component\HttpFoundation\Request $request
      *
      * @return \Symfony\Component\HttpFoundation\Response
@@ -64,13 +70,14 @@ class AdController extends AbstractController
             return $this->redirectToRoute('homepage');
         }
 
-        return $this->render("ad/new.html.twig", [
+        return $this->render('ad/new.html.twig', [
             'form' => $form->createView(),
         ]);
     }
 
     /**
      * @Route("/{slug}", methods={"GET"}, name="_show")
+     *
      * @param \App\Entity\Ad\Ad $ad
      *
      * @return \Symfony\Component\HttpFoundation\Response
@@ -78,7 +85,7 @@ class AdController extends AbstractController
     public function show(Ad $ad): Response
     {
         return $this->render('ad/show.html.twig', [
-            'ad' => $ad
+            'ad' => $ad,
         ]);
     }
 }

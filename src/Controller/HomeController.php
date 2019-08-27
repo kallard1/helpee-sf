@@ -2,6 +2,12 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is a part of Helpee
+ * @author  Kevin Allard <contact@allard-kevin.fr>
+ * @license 2018
+ */
+
 namespace App\Controller;
 
 use App\Entity\Ad\Ad;
@@ -32,16 +38,16 @@ class HomeController extends AbstractController
             $this->getParameter('redis_url')
         );
 
-        if ($client->get('ads.categories') === null || $client->get('ads.categories') === false) {
+        if (null === $client->get('ads.categories') || false === $client->get('ads.categories')) {
             $categories = $entityManager->getRepository(Category::class)->findAll();
 
             $data = [];
             foreach ($categories as $category) {
                 $data[] = [
-                    "id" => $category->getId(),
-                    "label" => $category->getLabel(),
-                    "slug" => $category->getSlug(),
-                    "level" => $category->getLevel(),
+                    'id' => $category->getId(),
+                    'label' => $category->getLabel(),
+                    'slug' => $category->getSlug(),
+                    'level' => $category->getLevel(),
                 ];
             }
 
@@ -52,7 +58,7 @@ class HomeController extends AbstractController
         $communities = $entityManager->getRepository(Community::class)->findAll();
         $sum_uev = $entityManager->getRepository(Ad::class)->sumUEV();
 
-        if ($sum_uev[1] === NULL) {
+        if (null === $sum_uev[1]) {
             $sum_uev = 0;
         } else {
             $sum_uev = $sum_uev[1];
@@ -66,8 +72,8 @@ class HomeController extends AbstractController
 
         return $this->render('homepage/index.html.twig', [
             'categories' => json_decode($client->get('ads.categories')),
-            'count_communities' => count($communities),
-            'count_users' => count($users),
+            'count_communities' => \count($communities),
+            'count_users' => \count($users),
             'count_uev' => $sum_uev,
             'form' => $form->createView(),
         ]);

@@ -2,6 +2,12 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is a part of Helpee
+ * @author  Kevin Allard <contact@allard-kevin.fr>
+ * @license 2018
+ */
+
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -9,13 +15,20 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * Class Order
+ * Class Order.
  *
- * @package App\Entity
- * @ORM\Entity()
+ * @ORM\Entity
  * @ORM\Table(name="orders")
  */
-class Order {
+class Order
+{
+    /**
+     * Many orders have one order. This is the owning side.
+     *
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="orders")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    protected $user;
     /**
      * @var
      * @ORM\Id
@@ -23,13 +36,6 @@ class Order {
      * @ORM\Column(type="guid")
      */
     private $id;
-
-    /**
-     * Many orders have one order. This is the owning side.
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="orders")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     */
-    protected $user;
 
     /**
      * @var string
@@ -131,6 +137,4 @@ class Order {
     {
         $this->expiredAt = $expiredAt;
     }
-
-
 }

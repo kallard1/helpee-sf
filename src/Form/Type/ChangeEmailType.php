@@ -2,6 +2,12 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is a part of Helpee
+ * @author  Kevin Allard <contact@allard-kevin.fr>
+ * @license 2018
+ */
+
 namespace App\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
@@ -13,7 +19,6 @@ class ChangeEmailType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', EmailType::class)
-        ;
+            ->add('email', EmailType::class);
     }
 }

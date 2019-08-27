@@ -2,19 +2,25 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is a part of Helpee
+ * @author  Kevin Allard <contact@allard-kevin.fr>
+ * @license 2018
+ */
+
 namespace App\Entity\Blog;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * Class Comment
+ * Class Comment.
  *
- * @package App\Entity\Blog
- * @ORM\Entity()
+ * @ORM\Entity
  * @ORM\Table(name="blog_comments")
  */
-class Comment {
+class Comment
+{
     /**
      * @var
      * @ORM\Id
@@ -44,7 +50,7 @@ class Comment {
     private $content;
 
     /**
-     * @var boolean
+     * @var bool
      * @ORM\Column(type="boolean", nullable=false)
      */
     private $published;

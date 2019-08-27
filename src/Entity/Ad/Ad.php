@@ -2,6 +2,12 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is a part of Helpee
+ * @author  Kevin Allard <contact@allard-kevin.fr>
+ * @license 2018
+ */
+
 namespace App\Entity\Ad;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -9,13 +15,13 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * Class Ad
+ * Class Ad.
  *
- * @package App\Entity\Ad
  * @ORM\Entity(repositoryClass="App\Repository\Ad\AdRepository")
  * @ORM\Table(name="ads")
  */
-class Ad {
+class Ad
+{
     /**
      * @var
      * @ORM\Id
@@ -55,13 +61,13 @@ class Ad {
     private $description;
 
     /**
-     * @var boolean
+     * @var bool
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $enabled;
 
     /**
-     * @var integer
+     * @var int
      * @ORM\Column(type="integer", nullable=false)
      */
     private $uev;
@@ -74,6 +80,7 @@ class Ad {
 
     /**
      * One ad has many messages.
+     *
      * @ORM\OneToMany(targetEntity="App\Entity\Ad\Message\Thread", mappedBy="ad")
      */
     private $threads;

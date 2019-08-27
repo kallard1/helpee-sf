@@ -2,6 +2,12 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is a part of Helpee
+ * @author  Kevin Allard <contact@allard-kevin.fr>
+ * @license 2018
+ */
+
 namespace App\Controller\Auth;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,6 +32,7 @@ class SecurityController extends AbstractController
 
     /**
      * @Route("/login", methods={"GET", "POST"}, name="login")
+     *
      * @param \Symfony\Component\Security\Http\Authentication\AuthenticationUtils $authenticationUtils
      *
      * @return \Symfony\Component\HttpFoundation\Response

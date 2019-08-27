@@ -2,6 +2,12 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is a part of Helpee
+ * @author  Kevin Allard <contact@allard-kevin.fr>
+ * @license 2018
+ */
+
 namespace App\Controller\Auth;
 
 use App\Entity\City;
@@ -16,9 +22,8 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
- * Class RegisterController
+ * Class RegisterController.
  *
- * @package App\Controller\Auth
  * @Route("/register")
  */
 class RegisterController extends AbstractController
@@ -43,7 +48,8 @@ class RegisterController extends AbstractController
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response {
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    {
         if (null !== $this->getUser()) {
             return $this->redirectToRoute('homepage');
         }

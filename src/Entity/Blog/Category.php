@@ -2,19 +2,25 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is a part of Helpee
+ * @author  Kevin Allard <contact@allard-kevin.fr>
+ * @license 2018
+ */
+
 namespace App\Entity\Blog;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * Class Category
+ * Class Category.
  *
- * @package App\Entity\Blog
- * @ORM\Entity()
+ * @ORM\Entity
  * @ORM\Table(name="blog_categories")
  */
-class Category {
+class Category
+{
     /**
      * @var
      * @ORM\Id

@@ -2,15 +2,20 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is a part of Helpee
+ * @author  Kevin Allard <contact@allard-kevin.fr>
+ * @license 2018
+ */
+
 namespace App\Entity\Ad\Message;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * Class Message
+ * Class Message.
  *
- * @package App\Entity\Ad\Message
  * @ORM\Entity(repositoryClass="App\Repository\Ad\MessageRepository")
  * @ORM\Table(name="ads_messages_threads")
  */
@@ -26,6 +31,7 @@ class Message
 
     /**
      * Many messages have one thread.
+     *
      * @ORM\ManyToOne(targetEntity="App\Entity\Ad\Message\Thread", inversedBy="messages")
      * @ORM\JoinColumn(name="thread_id", referencedColumnName="id", nullable=false)
      */

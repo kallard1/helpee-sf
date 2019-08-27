@@ -2,6 +2,12 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is a part of Helpee
+ * @author  Kevin Allard <contact@allard-kevin.fr>
+ * @license 2018
+ */
+
 namespace App\Controller\Community;
 
 use App\Entity\Ad\Ad;
@@ -17,9 +23,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
- * Class CommunityController
+ * Class CommunityController.
  *
- * @package App\Controller\Community
  * @Route("/community", name="community")
  * @IsGranted("ROLE_USER")
  */
@@ -39,6 +44,7 @@ class CommunityController extends AbstractController
 
     /**
      * @Route("/new", methods={"GET", "POST"}, name="_new")
+     *
      * @param \Symfony\Component\HttpFoundation\Request $request
      *
      * @return \Symfony\Component\HttpFoundation\Response
@@ -76,12 +82,11 @@ class CommunityController extends AbstractController
     }
 
     /**
-     * @Route("/list", defaults={"page": "1"}, methods={"GET"}, name="_list")
+     * @Route("/list", defaults={"page" = "1"}, methods={"GET"}, name="_list")
      * @Route("/list/{page<[1-9]\d*>}", methods={"GET"}, name="_list_paginated")
+     *
      * @param \Symfony\Component\HttpFoundation\Request $request
-     *
      * @param int                                       $page
-     *
      * @param \App\Repository\CommunityRepository       $community
      *
      * @return \Symfony\Component\HttpFoundation\Response
@@ -95,6 +100,7 @@ class CommunityController extends AbstractController
 
     /**
      * @Route("/{slug}", methods={"GET"}, name="_show")
+     *
      * @param \App\Entity\Community $community
      *
      * @return \Symfony\Component\HttpFoundation\Response
@@ -109,6 +115,7 @@ class CommunityController extends AbstractController
 
     /**
      * @Route("/{slug}/join", name="_join")
+     *
      * @param \App\Entity\Community $community
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse

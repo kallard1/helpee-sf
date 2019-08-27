@@ -2,19 +2,25 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is a part of Helpee
+ * @author  Kevin Allard <contact@allard-kevin.fr>
+ * @license 2018
+ */
+
 namespace App\Entity\Blog;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * Class Post
+ * Class Post.
  *
- * @package App\Entity\Blog
- * @ORM\Entity()
+ * @ORM\Entity
  * @ORM\Table(name="blog_posts")
  */
-class Post {
+class Post
+{
     /**
      * @var
      * @ORM\Id
@@ -50,7 +56,7 @@ class Post {
     private $content;
 
     /**
-     * @var boolean
+     * @var bool
      * @ORM\Column(name="is_published", type="boolean", nullable=true)
      */
     private $published;
@@ -62,13 +68,13 @@ class Post {
     private $publishedAt;
 
     /**
-     * @var boolean
+     * @var bool
      * @ORM\Column(name="is_deleted", type="boolean", nullable=true)
      */
     private $deleted;
 
     /**
-     * @var boolean
+     * @var bool
      * @ORM\Column(name="can_comment", type="boolean", nullable=true)
      */
     private $comment;

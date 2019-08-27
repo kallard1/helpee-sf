@@ -2,6 +2,12 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is a part of Helpee
+ * @author  Kevin Allard <contact@allard-kevin.fr>
+ * @license 2018
+ */
+
 namespace App\Entity\Ad\Message;
 
 use App\Entity\User;
@@ -11,13 +17,13 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * Class Thread
+ * Class Thread.
  *
- * @package App\Ad\Message
  * @ORM\Entity(repositoryClass="App\Repository\Ad\ThreadRepository")
  * @ORM\Table(name="ads_thread")
  */
-class Thread {
+class Thread
+{
     /**
      * @var
      * @ORM\Id
@@ -28,6 +34,7 @@ class Thread {
 
     /**
      * Many messages have one ad.
+     *
      * @ORM\ManyToOne(targetEntity="App\Entity\Ad\Ad", inversedBy="threads")
      * @ORM\JoinColumn(name="ad_id", referencedColumnName="id", nullable=false)
      */
@@ -41,12 +48,14 @@ class Thread {
 
     /**
      * One thread has many messages.
+     *
      * @ORM\OneToMany(targetEntity="App\Entity\Ad\Message\Message", mappedBy="thread")
      */
     private $messages;
 
     /**
      * Many messages have one ad.
+     *
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="threads")
      * @ORM\JoinColumn(name="user_creator_id", referencedColumnName="id", nullable=false)
      */
@@ -121,7 +130,7 @@ class Thread {
 
     public function addParticipants($participants)
     {
-        if (!is_array($participants) && !$participants instanceof \Traversable) {
+        if (!\is_array($participants) && !$participants instanceof \Traversable) {
             throw new \InvalidArgumentException('Participants must be an array or instance of Traversable');
         }
         foreach ($participants as $participant) {

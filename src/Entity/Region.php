@@ -2,16 +2,21 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is a part of Helpee
+ * @author  Kevin Allard <contact@allard-kevin.fr>
+ * @license 2018
+ */
+
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * Class Region
+ * Class Region.
  *
- * @package App\Entity
- * @ORM\Entity()
+ * @ORM\Entity
  * @ORM\Table(name="regions")
  */
 class Region

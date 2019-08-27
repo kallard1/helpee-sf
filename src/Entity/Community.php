@@ -2,6 +2,12 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is a part of Helpee
+ * @author  Kevin Allard <contact@allard-kevin.fr>
+ * @license 2018
+ */
+
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -9,13 +15,13 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * Class Community
+ * Class Community.
  *
- * @package App\Entity
  * @ORM\Entity(repositoryClass="App\Repository\CommunityRepository")
  * @ORM\Table(name="communities")
  */
-class Community {
+class Community
+{
     /**
      * @var
      * @ORM\Id
@@ -56,6 +62,7 @@ class Community {
 
     /**
      * Many Groups have Many Users.
+     *
      * @ORM\ManyToMany(targetEntity="User", inversedBy="communities", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="communities_users")
      */
@@ -67,7 +74,7 @@ class Community {
     private $ads;
 
     /**
-     * @var boolean
+     * @var bool
      * @ORM\Column(name="is_enabled", type="boolean", nullable=false)
      */
     private $enabled;
@@ -174,7 +181,8 @@ class Community {
     /**
      * @param \App\Entity\User $user
      */
-    public function removeMember(User $user) {
+    public function removeMember(User $user)
+    {
         $this->members->removeElement($user);
     }
 

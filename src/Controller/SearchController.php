@@ -2,6 +2,12 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is a part of Helpee
+ * @author  Kevin Allard <contact@allard-kevin.fr>
+ * @license 2018
+ */
+
 namespace App\Controller;
 
 use App\Entity\City;
@@ -14,15 +20,15 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class SearchController
+ * Class SearchController.
  *
- * @package App\Controller
  * @Route("/search", name="search")
  */
 class SearchController extends AbstractController
 {
     /**
      * @Route("/city", methods={"GET"}, name="_city")
+     *
      * @param \Symfony\Component\HttpFoundation\Request $request
      * @param \App\Repository\CityRepository            $city
      *
@@ -33,13 +39,14 @@ class SearchController extends AbstractController
         $query = $request->query->get('q', '');
         $limit = $request->query->get('page', 10);
 
-        $foundCities = $city->findBySearchQuery($query, (int)$limit);
+        $foundCities = $city->findBySearchQuery($query, (int) $limit);
 
         return $this->json($foundCities);
     }
 
     /**
      * @Route("/ad", methods={"POST"}, name="_ad")
+     *
      * @param \Symfony\Component\HttpFoundation\Request $request
      * @param \App\Repository\Ad\AdRepository           $ad
      *
@@ -51,7 +58,7 @@ class SearchController extends AbstractController
         $keywords = $request->request->get('_keywords');
         $city = $request->request->get('_city');
 
-        return $this->render("search/ad/result.html.twig", [
+        return $this->render('search/ad/result.html.twig', [
             'ads' => $ad->findAds($category, $keywords, $city),
         ]);
     }

@@ -2,6 +2,12 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is a part of Helpee
+ * @author  Kevin Allard <contact@allard-kevin.fr>
+ * @license 2018
+ */
+
 namespace App\Controller\Profile;
 
 use App\Form\Type\ChangeDescriptionType;
@@ -17,15 +23,13 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
- * Class ProfileController
+ * Class ProfileController.
  *
- * @package App\Controller\Profile
  * @Route("/profile", name="profile")
  * @IsGranted("ROLE_USER")
  */
 class ProfileController extends AbstractController
 {
-
     /**
      * @Route("/", methods={"GET"}, name="_main")
      *
@@ -66,6 +70,7 @@ class ProfileController extends AbstractController
 
     /**
      * @Route("/edit-email", methods={"GET", "POST"}, name="_edit_email")
+     *
      * @param \Symfony\Component\HttpFoundation\Request $request
      *
      * @return \Symfony\Component\HttpFoundation\Response
@@ -92,6 +97,7 @@ class ProfileController extends AbstractController
 
     /**
      * @Route("/edit-description", methods={"GET", "POST"}, name="_edit_description")
+     *
      * @param \Symfony\Component\HttpFoundation\Request $request
      *
      * @return \Symfony\Component\HttpFoundation\Response
@@ -118,7 +124,9 @@ class ProfileController extends AbstractController
 
     /**
      * @Route("/edit-personal-image", methods={"GET", "POST"}, name="_edit_personal_image")
+     *
      * @param \Symfony\Component\HttpFoundation\Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function changePersonalImage(Request $request): Response
@@ -133,7 +141,7 @@ class ProfileController extends AbstractController
             if ($personalImage) {
                 $originalFilename = pathinfo($personalImage->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
-                $newFilename = $safeFilename . '-' . uniqid() . '.' . $personalImage->guessExtension();
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$personalImage->guessExtension();
 
                 try {
                     $personalImage->move(
@@ -141,7 +149,6 @@ class ProfileController extends AbstractController
                         $newFilename
                     );
                 } catch (FileException $e) {
-
                 }
 
                 $user->setPersonalImage($newFilename);
@@ -152,7 +159,7 @@ class ProfileController extends AbstractController
         }
 
         return $this->render('profile/edit-personal-image.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ]);
     }
 }

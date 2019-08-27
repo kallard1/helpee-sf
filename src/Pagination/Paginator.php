@@ -2,6 +2,12 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is a part of Helpee
+ * @author  Kevin Allard <contact@allard-kevin.fr>
+ * @license 2018
+ */
+
 namespace App\Pagination;
 
 use Doctrine\ORM\QueryBuilder as DoctrineQueryBuilder;
@@ -67,7 +73,7 @@ class Paginator
      */
     public function getLastPage(): int
     {
-        return (int)ceil($this->numResults / $this->pageSize);
+        return (int) ceil($this->numResults / $this->pageSize);
     }
 
     /**
