@@ -57,14 +57,23 @@ class SearchController extends AbstractController
      */
     public function searchAds(Request $request, AdRepository $adRepository): Response
     {
-        $category = $request->query->get('category');
-        $keywords = $request->query->get('keywords');
-        $city = $request->query->get('city');
+        $terms = [];
 
-        dump($category, $keywords, $city);
+        if ($request->query->get('category')) {
+            $terms["category"] = $request->query->get('category');
+        }
+
+        if ($request->query->get('keywords')) {
+            $terms["keywords"] = $request->query->get('keywords');
+        }
+
+        if ($request->query->get('city')) {
+            $terms["city"] = $request->query->get('city');
+        }
+
         return $this->render(
             'search/ad/result.html.twig', [
-                'ads' => $adRepository->findAds($category, $keywords, $city),
+                'ads' => $adRepository->findAds($terms),
             ]
         );
     }

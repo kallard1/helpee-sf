@@ -81,17 +81,12 @@ class AdRepository extends ServiceEntityRepository
     /**
      * Find Ads.
      *
-     * @param string $category category.
-     * @param string $keywords keywords.
-     * @param string $city     city.
+     * @param array $terms Terms
      *
      * @return mixed
      */
-    public function findAds(string $category, string $keywords, string $city)
+    public function findAds(array $terms = [])
     {
-        $query = $this->sanitizeSearchQuery($keywords);
-        $query = $this->extractSearchTerms($query);
-
         $request = $this->createQueryBuilder('ads')
             ->leftJoin('ads.category', 'adc')
             ->addSelect('adc')
@@ -100,22 +95,25 @@ class AdRepository extends ServiceEntityRepository
             ->leftJoin('c.city', 'city')
             ->addSelect('city');
 
-        if ('' != $category || null != $category) {
+        if (array_key_exists('category', $terms) && ('' != $terms["category"] || null != $terms["category"])) {
             $request->andWhere('adc.slug = :slug')
-                ->setParameter('slug', $category);
+                ->setParameter('slug', $terms["category"]);
         }
 
-        if ('' != $keywords || null != $keywords) {
+        if (array_key_exists('keywords', $terms) && ('' != $terms["keywords"] || null != $terms["keywords"])) {
+            $query = $this->sanitizeSearchQuery($terms["keywords"]);
+            $query = $this->extractSearchTerms($query);
+
             foreach ($query as $keyword) {
                 $request->andWhere('ads.title LIKE :keyword')
                     ->setParameter('keyword', '%'.$keyword.'%');
             }
         }
 
-        if ('' != $city || null != $city) {
+        if (array_key_exists('city', $terms) && ('' != $terms["city"] || null != $terms["city"])) {
             $request
                 ->andWhere('city.id = :id')
-                ->setParameter('id', $city);
+                ->setParameter('id', $terms["city"]);
         }
 
         return $request->getQuery()
