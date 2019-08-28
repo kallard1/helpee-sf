@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * This file is a part of Helpee
+ *
  * @author  Kevin Allard <contact@allard-kevin.fr>
  * @license 2018
  */
@@ -39,28 +40,33 @@ class SearchController extends AbstractController
         $query = $request->query->get('q', '');
         $limit = $request->query->get('page', 10);
 
-        $foundCities = $city->findBySearchQuery($query, (int) $limit);
+        $foundCities = $city->findBySearchQuery($query, (int)$limit);
 
         return $this->json($foundCities);
     }
 
     /**
-     * @Route("/ad", methods={"POST"}, name="_ad")
+     * Search Ads.
      *
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @param \App\Repository\Ad\AdRepository           $ad
+     * @param \Symfony\Component\HttpFoundation\Request $request      Request.
+     * @param \App\Repository\Ad\AdRepository           $adRepository Ad Repository.
+     *
+     * @Route("/ad", methods={"GET"}, name="_ad")
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function searchAds(Request $request, AdRepository $ad): Response
+    public function searchAds(Request $request, AdRepository $adRepository): Response
     {
-        $category = $request->request->get('_category');
-        $keywords = $request->request->get('_keywords');
-        $city = $request->request->get('_city');
+        $category = $request->query->get('category');
+        $keywords = $request->query->get('keywords');
+        $city = $request->query->get('city');
 
-        return $this->render('search/ad/result.html.twig', [
-            'ads' => $ad->findAds($category, $keywords, $city),
-        ]);
+        dump($category, $keywords, $city);
+        return $this->render(
+            'search/ad/result.html.twig', [
+                'ads' => $adRepository->findAds($category, $keywords, $city),
+            ]
+        );
     }
 
 //    /**

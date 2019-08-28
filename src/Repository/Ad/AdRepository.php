@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * This file is a part of Helpee
+ *
  * @author  Kevin Allard <contact@allard-kevin.fr>
  * @license 2018
  */
@@ -16,13 +17,28 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\NonUniqueResultException;
 
+/**
+ * Class AdRepository
+ *
+ * @package App\Repository\Ad
+ */
 class AdRepository extends ServiceEntityRepository
 {
+    /**
+     * AdRepository constructor.
+     *
+     * @param \Doctrine\Common\Persistence\ManagerRegistry $registry Registry.
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Ad::class);
     }
 
+    /**
+     * Return UEV sum.
+     *
+     * @return mixed
+     */
     public function sumUEV()
     {
         try {
@@ -36,6 +52,14 @@ class AdRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+     * Get active Ads.
+     *
+     * @param \App\Entity\Community $community Community.
+     * @param int                   $limit     Limit.
+     *
+     * @return mixed
+     */
     public function getActiveAds(Community $community, int $limit = 0)
     {
         $request = $this->createQueryBuilder('ads')
@@ -54,7 +78,16 @@ class AdRepository extends ServiceEntityRepository
         return $request->getQuery()->getResult();
     }
 
-    public function findAds($category, $keywords, $city)
+    /**
+     * Find Ads.
+     *
+     * @param string $category category.
+     * @param string $keywords keywords.
+     * @param string $city     city.
+     *
+     * @return mixed
+     */
+    public function findAds(string $category, string $keywords, string $city)
     {
         $query = $this->sanitizeSearchQuery($keywords);
         $query = $this->extractSearchTerms($query);
