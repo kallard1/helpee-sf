@@ -32,48 +32,56 @@ class Ad
 
     /**
      * @ORM\ManyToOne(targetEntity="Category", cascade={"persist", "remove"})
+     *
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id", nullable=false)
      */
     private $category;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", cascade={"persist", "remove"})
+     *
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
      */
     private $user;
 
     /**
      * @var string
+     *
      * @ORM\Column(type="string", nullable=false)
      */
     private $title;
 
     /**
      * @Gedmo\Slug(fields={"title"})
+     *
      * @ORM\Column(length=128, unique=true)
      */
     private $slug;
 
     /**
      * @var string
+     *
      * @ORM\Column(type="text", nullable=false)
      */
     private $description;
 
     /**
      * @var bool
+     *
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $enabled;
 
     /**
      * @var int
+     *
      * @ORM\Column(type="integer", nullable=false)
      */
     private $uev;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Community", inversedBy="ads")
+     *
      * @ORM\JoinColumn(name="community_id", referencedColumnName="id")
      */
     private $community;
@@ -84,6 +92,11 @@ class Ad
      * @ORM\OneToMany(targetEntity="App\Entity\Ad\Message\Thread", mappedBy="ad")
      */
     private $threads;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $transactionDate;
 
     /**
      * @var \DateTime
@@ -101,6 +114,9 @@ class Ad
      */
     private $updatedAt;
 
+    /**
+     * Ad constructor.
+     */
     public function __construct()
     {
         $this->enabled = true;
@@ -233,6 +249,30 @@ class Ad
     public function setCommunity($community): void
     {
         $this->community = $community;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getThreads()
+    {
+        return $this->threads;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTransactionDate()
+    {
+        return $this->transactionDate;
+    }
+
+    /**
+     * @param mixed $transactionDate
+     */
+    public function setTransactionDate($transactionDate): void
+    {
+        $this->transactionDate = $transactionDate;
     }
 
     /**
