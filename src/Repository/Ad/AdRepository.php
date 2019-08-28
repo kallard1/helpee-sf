@@ -125,7 +125,7 @@ class AdRepository extends ServiceEntityRepository
     /**
      * Removes all non-alphanumeric characters except whitespaces.
      *
-     * @param string $query
+     * @param string $query Query.
      *
      * @return string
      */
@@ -137,7 +137,7 @@ class AdRepository extends ServiceEntityRepository
     /**
      * Splits the search query into terms and removes the ones which are irrelevant.
      *
-     * @param string $searchQuery
+     * @param string $searchQuery Search terms query.
      *
      * @return array
      */
@@ -145,8 +145,11 @@ class AdRepository extends ServiceEntityRepository
     {
         $terms = array_unique(explode(' ', $searchQuery));
 
-        return array_filter($terms, function ($term) {
-            return 2 <= mb_strlen($term);
-        });
+        return array_filter(
+            $terms,
+            function ($term) {
+                return 2 <= mb_strlen($term);
+            }
+        );
     }
 }
