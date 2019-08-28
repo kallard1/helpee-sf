@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * This file is a part of Helpee
+ *
  * @author  Kevin Allard <contact@allard-kevin.fr>
  * @license 2018
  */
@@ -70,9 +71,9 @@ class RegisterController extends AbstractController
             $city = $this->getDoctrine()->getManager()->getRepository(City::class)->findOneBy(['id' => $city]);
             $informationUser->setCity($city);
 
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
 
             $this->addFlash(
                 'success',
@@ -82,8 +83,10 @@ class RegisterController extends AbstractController
             return $this->redirectToRoute('homepage');
         }
 
-        return $this->render('auth/register/registration.html.twig', [
-            'form' => $form->createView(),
-        ]);
+        return $this->render(
+            'auth/register/registration.html.twig', [
+                'form' => $form->createView(),
+            ]
+        );
     }
 }
