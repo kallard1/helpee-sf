@@ -9,10 +9,20 @@
         </div>
         <div class="row">
             <div class="col-8">
-                <h4>{{ ad.title }}</h4>
+                <h4>
+                    {% if not ad.enabled %}
+                        <span class="badge badge-danger">Desactivée</span>
+                    {% endif %}
+                    {% if ad.transactionDate is not null %}
+                        <span class="badge badge-success">Terminée</span>
+                    {% endif %}
+                    {{ ad.title }}
+                </h4>
                 <p class="small">posté par : {{ ad.user.firstname }} {{ ad.user.lastname }}</p>
                 <p class="small">Le {{ ad.createdAt|localizeddate('long', 'short', null, 'UTC') }}</p>
-                <p class="small"><a href="{{ path('community_show', {'slug': ad.community.slug}) }}">{{ ad.community.name }}</a> à {{ ad.community.city.name }}</p>
+                <p class="small"><a
+                            href="{{ path('community_show', {'slug': ad.community.slug}) }}">{{ ad.community.name }}</a>
+                    à {{ ad.community.city.name }}</p>
             </div>
             <div class="col-4">
                 <span class="align-middle col-12 btn btn-light-pink">{{ ad.uev }} UEV</span>
@@ -31,11 +41,19 @@
             </div>
         </div>
         {% if app.user and ad.user.id != app.user.id %}
-        <div class="row">
-            <div class="form-group col-12">
-                <a href="{{ path('messages_new', {'slug': ad.slug}) }}" class="col-12 btn btn-orange btn-xs text-white">Contacter</a>
+            <div class="row">
+                <div class="form-group col-12">
+                    <a href="{{ path('messages_new', {'slug': ad.slug}) }}"
+                       class="col-12 btn btn-orange btn-xs text-white">Contacter</a>
+                </div>
             </div>
-        </div>
+
+            <div class="row">
+                <div class="form-group col-12">
+                    <a href="{{ path('contract_create', {'slug': ad.slug}) }}"
+                       class="col-12 btn btn-orange btn-xs text-white">Commander</a>
+                </div>
+            </div>
         {% endif %}
     </div>
 {% endblock %}
