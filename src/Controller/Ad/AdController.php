@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /**
  * This file is a part of Helpee
+ *
  * @author  Kevin Allard <contact@allard-kevin.fr>
  * @license 2018
  */
@@ -31,7 +32,7 @@ class AdController extends AbstractController
     /**
      * RegisterController constructor.
      *
-     * @param \Symfony\Contracts\Translation\TranslatorInterface $translator
+     * @param \Symfony\Contracts\Translation\TranslatorInterface $translator $translator.
      */
     public function __construct(TranslatorInterface $translator)
     {
@@ -39,11 +40,15 @@ class AdController extends AbstractController
     }
 
     /**
-     * @Route("/new", methods={"GET", "POST"}, name="_new")
+     * Create a new ad.
      *
-     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param \Symfony\Component\HttpFoundation\Request $request Request
      *
      * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @Route("/new", methods={"GET", "POST"}, name="_new")
+     *
+     * @SuppressWarnings(PHPMD.ShortVariable)
      */
     public function new(Request $request): Response
     {
@@ -70,22 +75,31 @@ class AdController extends AbstractController
             return $this->redirectToRoute('homepage');
         }
 
-        return $this->render('ad/new.html.twig', [
-            'form' => $form->createView(),
-        ]);
+        return $this->render(
+            'ad/new.html.twig', [
+                'form' => $form->createView(),
+            ]
+        );
     }
 
     /**
-     * @Route("/{slug}", methods={"GET"}, name="_show")
+     * Read an Ad.
      *
-     * @param \App\Entity\Ad\Ad $ad
+     * @param \App\Entity\Ad\Ad $ad Ad.
      *
      * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @Route("/{slug}", methods={"GET"}, name="_show")
+     *
+     * @SuppressWarnings(PHPMD.ShortVariable)
      */
     public function show(Ad $ad): Response
     {
-        return $this->render('ad/show.html.twig', [
-            'ad' => $ad,
-        ]);
+        return $this->render(
+            'ad/show.html.twig',
+            [
+                'ad' => $ad,
+            ]
+        );
     }
 }
