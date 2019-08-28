@@ -14,6 +14,7 @@ namespace App\Controller\Ad;
 use App\Entity\Ad\Ad;
 use App\Entity\Community;
 use App\Form\AdType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,6 +25,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  * Class AdController.
  *
  * @Route("/ad", name="ad")
+ *
+ * @IsGranted("ROLE_USER")
  */
 class AdController extends AbstractController
 {
@@ -78,6 +81,21 @@ class AdController extends AbstractController
         return $this->render(
             'ad/new.html.twig', [
                 'form' => $form->createView(),
+            ]
+        );
+    }
+
+    /**
+     * @Route("/list", methods={"GET"}, name="_list")
+     */
+    public function list(): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        return $this->render(
+            "ad/list.html.twig",
+            [
+                'ads' => $entityManager->getRepository(Ad::class)->findBy(['user' => $this->getUser()])
             ]
         );
     }
