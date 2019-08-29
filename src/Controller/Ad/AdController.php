@@ -68,6 +68,9 @@ class AdController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
 
             $community = $entityManager->getRepository(Community::class)->findOneBy(['id' => $request->request->get('_community')]);
+            $category = $entityManager->getRepository(Category::class)->findOneBy(['slug' => $request->request->get('_category')]);
+
+            $ad->setCategory($category);
             $ad->setCommunity($community);
 
             $entityManager->persist($ad);

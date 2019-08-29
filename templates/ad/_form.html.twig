@@ -30,8 +30,19 @@
 
     <div class="row">
         <div class="form-group col-12">
-            {{ form_widget(form.category, {'attr': {'class': 'form-control-xs'}}) }}
-            {{ form_label(form.category, 'ad.new.category') }}
+            <select name="_category" id="ad_category" class="form-control form-control-xs">
+                <option selected disabled>{{ 'homepage.select.category'|trans }}</option>
+                {% if categories %}
+                    {% for category in categories %}
+                        {% if category.level == 0 and category.slug != "autres" %}
+                            <option disabled>[{{ category.label }}]</option>
+                        {% else %}
+                            <option value="{{ category.slug }}">{{ category.label }}</option>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </select>
+            <label for="ad_category" class="active">{{ 'homepage.label.category'|trans }}</label>
         </div>
     </div>
 
