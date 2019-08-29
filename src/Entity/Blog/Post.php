@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 /**
  * This file is a part of Helpee
+ *
  * @author  Kevin Allard <contact@allard-kevin.fr>
+ *
  * @license 2018
  */
 
@@ -22,7 +24,6 @@ use Gedmo\Mapping\Annotation as Gedmo;
 class Post
 {
     /**
-     * @var
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
      * @ORM\Column(type="guid")
@@ -30,71 +31,64 @@ class Post
     private $id;
 
     /**
-     * @var string
      * @ORM\ManyToOne(targetEntity="Category", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     private $category;
 
     /**
-     * @var string
      * @ORM\ManyToOne(targetEntity="App\Entity\User", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true)
      */
     private $user;
 
     /**
-     * @var string
      * @ORM\Column(type="string", nullable=false)
      */
     private $title;
 
     /**
-     * @var string
      * @ORM\Column(type="text", nullable=false)
      */
     private $content;
 
     /**
-     * @var bool
      * @ORM\Column(name="is_published", type="boolean", nullable=true)
      */
     private $published;
 
     /**
-     * @var \DateTime
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $publishedAt;
 
     /**
-     * @var bool
      * @ORM\Column(name="is_deleted", type="boolean", nullable=true)
      */
     private $deleted;
 
     /**
-     * @var bool
      * @ORM\Column(name="can_comment", type="boolean", nullable=true)
      */
     private $comment;
 
     /**
-     * @var \DateTime
-     *
      * @Gedmo\Timestampable(on="create")
+     *
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
 
     /**
-     * @var \DateTime
-     *
      * @Gedmo\Timestampable(on="update")
+     *
      * @ORM\Column(type="datetime")
      */
     private $updatedAt;
 
+    /**
+     * Post constructor.
+     */
     public function __construct()
     {
         $this->published = false;

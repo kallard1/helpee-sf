@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 /**
  * This file is a part of Helpee
+ *
  * @author  Kevin Allard <contact@allard-kevin.fr>
+ *
  * @license 2018
  */
 
@@ -25,7 +27,6 @@ use Gedmo\Mapping\Annotation as Gedmo;
 class Thread
 {
     /**
-     * @var
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
      * @ORM\Column(type="guid")
@@ -62,27 +63,27 @@ class Thread
     private $createdBy;
 
     /**
-     * @var bool
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $isDeleted = false;
 
     /**
-     * @var \DateTime
-     *
      * @Gedmo\Timestampable(on="create")
+     *
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
 
     /**
-     * @var \DateTime
-     *
      * @Gedmo\Timestampable(on="update")
+     *
      * @ORM\Column(type="datetime")
      */
     private $updatedAt;
 
+    /**
+     * Thread constructor.
+     */
     public function __construct()
     {
         $this->participants = new ArrayCollection();
@@ -121,6 +122,11 @@ class Thread
         return $this->participants;
     }
 
+    /**
+     * @param \App\Entity\User $user
+     *
+     * @return $this
+     */
     public function addParticipant(User $user)
     {
         $this->participants[] = $user;
@@ -128,7 +134,12 @@ class Thread
         return $this;
     }
 
-    public function addParticipants($participants)
+    /**
+     * @param array $participants
+     *
+     * @return $this
+     */
+    public function addParticipants(array $participants)
     {
         if (!\is_array($participants) && !$participants instanceof \Traversable) {
             throw new \InvalidArgumentException('Participants must be an array or instance of Traversable');
@@ -140,6 +151,11 @@ class Thread
         return $this;
     }
 
+    /**
+     * @param \App\Entity\User $user
+     *
+     * @return mixed
+     */
     public function isParticipant(User $user)
     {
         return $this->getParticipants()->contains($user);

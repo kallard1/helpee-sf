@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 /**
  * This file is a part of Helpee
+ *
  * @author  Kevin Allard <contact@allard-kevin.fr>
+ *
  * @license 2018
  */
 
@@ -22,7 +24,6 @@ use Gedmo\Mapping\Annotation as Gedmo;
 class Comment
 {
     /**
-     * @var
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
      * @ORM\Column(type="guid")
@@ -30,43 +31,37 @@ class Comment
     private $id;
 
     /**
-     * @var string
      * @ORM\ManyToOne(targetEntity="App\Entity\User", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
 
     /**
-     * @var string
      * @ORM\ManyToOne(targetEntity="Post", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="post_id", referencedColumnName="id")
      */
     private $post;
 
     /**
-     * @var string
      * @ORM\Column(type="string", nullable=true)
      */
     private $content;
 
     /**
-     * @var bool
      * @ORM\Column(type="boolean", nullable=false)
      */
     private $published;
 
     /**
-     * @var \DateTime
-     *
      * @Gedmo\Timestampable(on="create")
+     *
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
 
     /**
-     * @var \DateTime
-     *
      * @Gedmo\Timestampable(on="update")
+     *
      * @ORM\Column(type="datetime")
      */
     private $updatedAt;

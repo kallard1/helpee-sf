@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 /**
  * This file is a part of Helpee
+ *
  * @author  Kevin Allard <contact@allard-kevin.fr>
+ *
  * @license 2018
  */
 
@@ -22,7 +24,6 @@ use Gedmo\Mapping\Annotation as Gedmo;
 class Region
 {
     /**
-     * @var
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
      * @ORM\Column(type="guid")
@@ -30,35 +31,32 @@ class Region
     private $id;
 
     /**
-     * @var string
      * @ORM\Column(type="string", nullable=false)
      */
     private $code;
 
     /**
-     * @var string
      * @ORM\Column(type="string", nullable=false)
      */
     private $name;
 
     /**
      * @Gedmo\Slug(fields={"name"})
+     *
      * @ORM\Column(length=128, unique=true)
      */
     private $slug;
 
     /**
-     * @var \DateTime
-     *
      * @Gedmo\Timestampable(on="create")
+     *
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
 
     /**
-     * @var \DateTime
-     *
      * @Gedmo\Timestampable(on="update")
+     *
      * @ORM\Column(type="datetime")
      */
     private $updatedAt;

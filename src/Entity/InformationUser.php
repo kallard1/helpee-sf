@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 /**
  * This file is a part of Helpee
+ *
  * @author  Kevin Allard <contact@allard-kevin.fr>
+ *
  * @license 2018
  */
 
@@ -22,7 +24,6 @@ use Gedmo\Mapping\Annotation as Gedmo;
 class InformationUser
 {
     /**
-     * @var
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
      * @ORM\Column(type="guid")
@@ -38,28 +39,24 @@ class InformationUser
     private $user;
 
     /**
-     * @var string
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
 
     /**
-     * @var float
      * @ORM\Column(type="float", nullable=false)
      */
     private $uev = 0.00;
 
     /**
-     * @var string
      * @ORM\Column(type="string", nullable=false)
      */
     private $address;
 
     /**
-     * @var string
      * @ORM\Column(type="string", nullable=true)
      */
-    private $address_1;
+    private $address1;
 
     /**
      * @ORM\ManyToOne(targetEntity="City")
@@ -68,23 +65,20 @@ class InformationUser
     private $city;
 
     /**
-     * @var string
      * @ORM\Column(type="string", nullable=true)
      */
     private $phone;
 
     /**
-     * @var \DateTime
-     *
      * @Gedmo\Timestampable(on="create")
+     *
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
 
     /**
-     * @var \DateTime
-     *
      * @Gedmo\Timestampable(on="update")
+     *
      * @ORM\Column(type="datetime")
      */
     private $updatedAt;
@@ -166,15 +160,15 @@ class InformationUser
      */
     public function getAddress1(): ?string
     {
-        return $this->address_1;
+        return $this->address1;
     }
 
     /**
-     * @param string $address_1
+     * @param string $address1
      */
-    public function setAddress1(string $address_1): void
+    public function setAddress1(string $address1): void
     {
-        $this->address_1 = $address_1;
+        $this->address1 = $address1;
     }
 
     /**

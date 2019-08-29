@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 /**
  * This file is a part of Helpee
+ *
  * @author  Kevin Allard <contact@allard-kevin.fr>
+ *
  * @license 2018
  */
 
@@ -23,7 +25,6 @@ use Gedmo\Mapping\Annotation as Gedmo;
 class Community
 {
     /**
-     * @var
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
      * @ORM\Column(type="guid")
@@ -31,19 +32,18 @@ class Community
     private $id;
 
     /**
-     * @var string
      * @ORM\Column(type="string", nullable=false)
      */
     private $name;
 
     /**
      * @Gedmo\Slug(fields={"name"})
+     *
      * @ORM\Column(length=128, unique=true)
      */
     private $slug;
 
     /**
-     * @var string
      * @ORM\Column(type="text", nullable=false)
      */
     private $description;
@@ -74,27 +74,29 @@ class Community
     private $ads;
 
     /**
-     * @var bool
      * @ORM\Column(name="is_enabled", type="boolean", nullable=false)
      */
     private $enabled;
 
     /**
-     * @var \DateTime
      *
      * @Gedmo\Timestampable(on="create")
+     *
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
 
     /**
-     * @var \DateTime
      *
      * @Gedmo\Timestampable(on="update")
+     *
      * @ORM\Column(type="datetime")
      */
     private $updatedAt;
 
+    /**
+     * Community constructor.
+     */
     public function __construct()
     {
         $this->members = new ArrayCollection();
@@ -203,11 +205,11 @@ class Community
     }
 
     /**
-     * @param bool $is_enabled
+     * @param bool $isEnabled
      */
-    public function setEnabled(bool $is_enabled): void
+    public function setEnabled(bool $isEnabled): void
     {
-        $this->enabled = $is_enabled;
+        $this->enabled = $isEnabled;
     }
 
     /**

@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 /**
  * This file is a part of Helpee
+ *
  * @author  Kevin Allard <contact@allard-kevin.fr>
+ *
  * @license 2018
  */
 
@@ -24,7 +26,6 @@ class City
     public const NUM_ITEMS = 10;
 
     /**
-     * @var
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
      * @ORM\Column(type="guid")
@@ -38,53 +39,47 @@ class City
     private $department;
 
     /**
-     * @var string
      * @ORM\Column(type="string", nullable=true)
      */
-    private $insee_code;
+    private $inseeCode;
 
     /**
-     * @var string
      * @ORM\Column(type="string", nullable=true)
      */
-    private $zip_code;
+    private $zipCode;
 
     /**
-     * @var string
      * @ORM\Column(type="string", nullable=false)
      */
     private $name;
 
     /**
      * @Gedmo\Slug(fields={"name"})
+     *
      * @ORM\Column(length=128, unique=true)
      */
     private $slug;
 
     /**
-     * @var float
      * @ORM\Column(type="float", nullable=false)
      */
     private $latitude;
 
     /**
-     * @var float
      * @ORM\Column(type="float", nullable=false)
      */
     private $longitude;
 
     /**
-     * @var \DateTime
-     *
      * @Gedmo\Timestampable(on="create")
+     *
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
 
     /**
-     * @var \DateTime
-     *
      * @Gedmo\Timestampable(on="update")
+     *
      * @ORM\Column(type="datetime")
      */
     private $updatedAt;
@@ -118,15 +113,15 @@ class City
      */
     public function getInseeCode(): ?string
     {
-        return $this->insee_code;
+        return $this->inseeCode;
     }
 
     /**
-     * @param string $insee_code
+     * @param string $inseeCode
      */
-    public function setInseeCode(?string $insee_code): void
+    public function setInseeCode(?string $inseeCode): void
     {
-        $this->insee_code = $insee_code;
+        $this->inseeCode = $inseeCode;
     }
 
     /**
@@ -134,15 +129,15 @@ class City
      */
     public function getZipCode(): ?string
     {
-        return $this->zip_code;
+        return $this->zipCode;
     }
 
     /**
-     * @param string $zip_code
+     * @param string $zipCode
      */
-    public function setZipCode(?string $zip_code): void
+    public function setZipCode(?string $zipCode): void
     {
-        $this->zip_code = $zip_code;
+        $this->zipCode = $zipCode;
     }
 
     /**

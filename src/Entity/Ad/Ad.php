@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 /**
  * This file is a part of Helpee
+ *
  * @author  Kevin Allard <contact@allard-kevin.fr>
+ *
  * @license 2018
  */
 
@@ -23,7 +25,6 @@ use Gedmo\Mapping\Annotation as Gedmo;
 class Ad
 {
     /**
-     * @var
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
      * @ORM\Column(type="guid")
@@ -45,7 +46,6 @@ class Ad
     private $user;
 
     /**
-     * @var string
      *
      * @ORM\Column(type="string", nullable=false)
      */
@@ -59,21 +59,18 @@ class Ad
     private $slug;
 
     /**
-     * @var string
      *
      * @ORM\Column(type="text", nullable=false)
      */
     private $description;
 
     /**
-     * @var bool
      *
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $enabled;
 
     /**
-     * @var int
      *
      * @ORM\Column(type="integer", nullable=false)
      */
@@ -99,17 +96,15 @@ class Ad
     private $transactionDate;
 
     /**
-     * @var \DateTime
-     *
      * @Gedmo\Timestampable(on="create")
+     *
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
 
     /**
-     * @var \DateTime
-     *
      * @Gedmo\Timestampable(on="update")
+     *
      * @ORM\Column(type="datetime")
      */
     private $updatedAt;

@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 /**
  * This file is a part of Helpee
+ *
  * @author  Kevin Allard <contact@allard-kevin.fr>
+ *
  * @license 2018
  */
 
@@ -30,7 +32,6 @@ class Order
      */
     protected $user;
     /**
-     * @var
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
      * @ORM\Column(type="guid")
@@ -38,29 +39,30 @@ class Order
     private $id;
 
     /**
-     * @var string
      * @ORM\Column(type="guid", nullable=false)
      */
     private $transaction;
 
     /**
-     * @var \DateTime
-     *
      * @Gedmo\Timestampable(on="create")
+     *
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
 
     /**
-     * @var \DateTime
      *
      * @Gedmo\Timestampable(on="update")
+     *
      * @ORM\Column(type="datetime")
      */
     private $updatedAt;
 
     private $expiredAt;
 
+    /**
+     * Order constructor.
+     */
     public function __construct()
     {
         $this->user = new ArrayCollection();
