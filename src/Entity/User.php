@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 /**
  * This file is a part of Helpee
+ *
  * @author  Kevin Allard <contact@allard-kevin.fr>
+ *
  * @license 2018
  */
 
@@ -26,7 +28,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class User implements UserInterface, Serializable
 {
     /**
-     * @var
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
      * @ORM\Column(type="guid")
@@ -34,13 +35,11 @@ class User implements UserInterface, Serializable
     private $id;
 
     /**
-     * @var string
      * @ORM\Column(type="string", length=75, nullable=false)
      */
     private $firstname;
 
     /**
-     * @var string
      * @ORM\Column(type="string", length=75, nullable=false)
      */
     private $lastname;
@@ -51,43 +50,36 @@ class User implements UserInterface, Serializable
     private $plainPassword;
 
     /**
-     * @var string
      * @ORM\Column(type="string", length=255, nullable=false)
      */
     private $password;
 
     /**
-     * @var string
      * @ORM\Column(type="string", length=255, nullable=false)
      */
     private $email;
 
     /**
-     * @var string
      * @ORM\Column(type="string", nullable=true)
      */
     private $personalImage;
 
     /**
-     * @var bool
      * @ORM\Column(name="is_verified", type="boolean", nullable=true)
      */
     private $verified;
 
     /**
-     * @var string
      * @ORM\Column(type="string", nullable=true)
      */
-    private $verification_token;
+    private $verificationToken;
 
     /**
-     * @var bool
      * @ORM\Column(name="is_banned", type="boolean", nullable=true)
      */
     private $banned;
 
     /**
-     * @var array
      * @ORM\Column(type="json", nullable=false)
      */
     private $roles = [];
@@ -134,6 +126,7 @@ class User implements UserInterface, Serializable
      * @var \DateTime
      *
      * @Gedmo\Timestampable(on="create")
+     *
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
@@ -142,10 +135,14 @@ class User implements UserInterface, Serializable
      * @var \DateTime
      *
      * @Gedmo\Timestampable(on="update")
+     *
      * @ORM\Column(type="datetime")
      */
     private $updatedAt;
 
+    /**
+     * User constructor.
+     */
     public function __construct()
     {
         $this->communities = new ArrayCollection();
@@ -268,11 +265,11 @@ class User implements UserInterface, Serializable
     }
 
     /**
-     * @param bool $is_verified
+     * @param bool $isVerified
      */
-    public function setVerified(bool $is_verified): void
+    public function setVerified(bool $isVerified): void
     {
-        $this->verified = $is_verified;
+        $this->verified = $isVerified;
     }
 
     /**
@@ -280,15 +277,15 @@ class User implements UserInterface, Serializable
      */
     public function getVerificationToken(): ?string
     {
-        return $this->verification_token;
+        return $this->verificationToken;
     }
 
     /**
-     * @param string $verification_token
+     * @param string $verificationToken
      */
-    public function setVerificationToken(string $verification_token): void
+    public function setVerificationToken(string $verificationToken): void
     {
-        $this->verification_token = $verification_token;
+        $this->verificationToken = $verificationToken;
     }
 
     /**
@@ -300,11 +297,11 @@ class User implements UserInterface, Serializable
     }
 
     /**
-     * @param bool $is_banned
+     * @param bool $isBanned
      */
-    public function setBanned(bool $is_banned): void
+    public function setBanned(bool $isBanned): void
     {
-        $this->banned = $is_banned;
+        $this->banned = $isBanned;
     }
 
     /**
@@ -461,7 +458,7 @@ class User implements UserInterface, Serializable
     /**
      * String representation of object.
      *
-     * @see  https://php.net/manual/en/serializable.serialize.php
+     * @see   https://php.net/manual/en/serializable.serialize.php
      *
      * @return string the string representation of the object or null
      *
@@ -475,16 +472,16 @@ class User implements UserInterface, Serializable
     /**
      * Constructs the object.
      *
-     * @see  https://php.net/manual/en/serializable.unserialize.php
-     *
      * @param string $serialized <p>
      *                           The string representation of the object.
      *                           </p>
      *
-     * @see  https://php.net/manual/en/serializable.unserialize.php
+     * @return null
      *
      * @since 5.1.0
-     * @return null
+     *
+     * @see   https://php.net/manual/en/serializable.unserialize.php
+     *
      */
     public function unserialize($serialized)
     {
@@ -519,7 +516,7 @@ class User implements UserInterface, Serializable
      * This is important if, at any given point, sensitive information like
      * the plain-text password is stored on this object.
      *
-     * @return null
+     * @return void
      */
     public function eraseCredentials()
     {
