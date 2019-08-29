@@ -36,21 +36,6 @@ class AdType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('category', EntityType::class, [
-                'multiple' => false,
-                'class' => Category::class,
-                'choice_label' => 'label',
-                'choice_value' => 'id',
-                'query_builder' => function (EntityRepository $entityRepository) {
-                    $qb = $entityRepository->createQueryBuilder('c')
-                        ->addOrderBy('c.root', 'ASC')
-                        ->addOrderBy('c.lft', 'ASC');
-
-                    return $qb;
-                },
-                'required' => true,
-                'expanded' => false,
-            ])
             ->add('title', TextType::class)
             ->add('description', TextareaType::class)
             ->add('uev', NumberType::class);
@@ -61,8 +46,11 @@ class AdType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
-            'data_class' => Ad::class,
-        ]);
+        $resolver->setDefaults(
+            [
+                "data_class" => Ad::class,
+                "allow_extra_fields" => true
+            ]
+        );
     }
 }
