@@ -8,7 +8,6 @@
     "ext-intl": "*",
     "ext-json": "*",
     "doctrine/doctrine-migrations-bundle": "^2.0",
-    "friendsofsymfony/elastica-bundle": "^5.1",
     "predis/predis": "^1.1",
     "sensio/framework-extra-bundle": "^5.1",
     "stof/doctrine-extensions-bundle": "^1.3",
