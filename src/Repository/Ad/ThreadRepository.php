@@ -17,8 +17,17 @@ use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
+/**
+ * Class ThreadRepository
+ *
+ */
 class ThreadRepository extends ServiceEntityRepository
 {
+    /**
+     * ThreadRepository constructor.
+     *
+     * @param \Doctrine\Common\Persistence\ManagerRegistry $registry
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Thread::class);

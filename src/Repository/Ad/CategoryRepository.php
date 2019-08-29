@@ -14,8 +14,15 @@ namespace App\Repository\Ad;
 
 use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 
+/**
+ * Class CategoryRepository
+ *
+ */
 class CategoryRepository extends NestedTreeRepository
 {
+    /**
+     * @return array
+     */
     public function findAll()
     {
         return $this->findBy([], ['root' => 'ASC', 'lft' => 'ASC']);

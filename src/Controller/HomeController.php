@@ -44,12 +44,12 @@ class HomeController extends AbstractController
 
         $users = $entityManager->getRepository(User::class)->findAll();
         $communities = $entityManager->getRepository(Community::class)->findAll();
-        $sum_uev = $entityManager->getRepository(Ad::class)->sumUEV();
+        $sumUEV = $entityManager->getRepository(Ad::class)->sumUEV();
 
-        if (null === $sum_uev[1]) {
-            $sum_uev = 0;
+        if (null === $sumUEV[1]) {
+            $sumUEV = 0;
         } else {
-            $sum_uev = $sum_uev[1];
+            $sumUEV = $sumUEV[1];
         }
 
         $ad = new Ad();
@@ -64,7 +64,7 @@ class HomeController extends AbstractController
                 'categories' => $this->getRedisCategories(),
                 'count_communities' => \count($communities),
                 'count_users' => \count($users),
-                'count_uev' => $sum_uev,
+                'count_uev' => $sumUEV,
                 'form' => $form->createView(),
             ]
         );

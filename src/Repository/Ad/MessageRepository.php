@@ -16,8 +16,17 @@ use App\Entity\Ad\Message\Message;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
+/**
+ * Class MessageRepository
+ *
+ */
 class MessageRepository extends ServiceEntityRepository
 {
+    /**
+     * MessageRepository constructor.
+     *
+     * @param \Doctrine\Common\Persistence\ManagerRegistry $registry
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Message::class);

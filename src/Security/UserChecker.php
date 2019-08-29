@@ -17,6 +17,10 @@ use Symfony\Component\Security\Core\Exception\DisabledException;
 use Symfony\Component\Security\Core\User\UserCheckerInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+/**
+ * Class UserChecker
+ *
+ */
 class UserChecker implements UserCheckerInterface
 {
     /**

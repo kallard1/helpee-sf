@@ -5,9 +5,8 @@
 
     <file>src</file>
 
-    <exclude-pattern>Migrations/*</exclude-pattern>
-    <exclude-pattern>DataFixtures/*</exclude-pattern>
-    <exclude-pattern>Kernel.php</exclude-pattern>
+    <exclude-pattern>src/Migrations/*</exclude-pattern>
+    <exclude-pattern>src/Kernel.php</exclude-pattern>
 
     <arg name="basepath" value="."/>
     <arg name="colors"/>
