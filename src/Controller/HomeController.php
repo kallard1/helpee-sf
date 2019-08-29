@@ -10,19 +10,20 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Controller\Traits\RedisPopulate;
 use App\Entity\Ad\Ad;
-use App\Entity\Ad\Category;
 use App\Entity\Community;
 use App\Entity\User;
 use App\Form\AdType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Cache\Adapter\RedisAdapter;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
+    use RedisPopulate;
+
     /**
      * @Route("/", name="homepage")
      *
@@ -33,26 +34,6 @@ class HomeController extends AbstractController
     public function index(Request $request): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
-
-        $client = RedisAdapter::createConnection(
-            $this->getParameter('redis_url')
-        );
-
-        if (null === $client->get('ads.categories') || false === $client->get('ads.categories')) {
-            $categories = $entityManager->getRepository(Category::class)->findAll();
-
-            $data = [];
-            foreach ($categories as $category) {
-                $data[] = [
-                    'id' => $category->getId(),
-                    'label' => $category->getLabel(),
-                    'slug' => $category->getSlug(),
-                    'level' => $category->getLevel(),
-                ];
-            }
-
-            $client->set('ads.categories', json_encode($data));
-        }
 
         $users = $entityManager->getRepository(User::class)->findAll();
         $communities = $entityManager->getRepository(Community::class)->findAll();
@@ -70,12 +51,15 @@ class HomeController extends AbstractController
         $form = $this->createForm(AdType::class, $ad);
         $form->handleRequest($request);
 
-        return $this->render('homepage/index.html.twig', [
-            'categories' => json_decode($client->get('ads.categories')),
-            'count_communities' => \count($communities),
-            'count_users' => \count($users),
-            'count_uev' => $sum_uev,
-            'form' => $form->createView(),
-        ]);
+        return $this->render(
+            'homepage/index.html.twig',
+            [
+                'categories' => $this->getRedisCategories(),
+                'count_communities' => \count($communities),
+                'count_users' => \count($users),
+                'count_uev' => $sum_uev,
+                'form' => $form->createView(),
+            ]
+        );
     }
 }

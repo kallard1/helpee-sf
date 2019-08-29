@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Ad;
 
+use App\Controller\Traits\RedisPopulate;
 use App\Entity\Ad\Ad;
 use App\Entity\Community;
 use App\Form\AdType;
@@ -30,7 +31,9 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 class AdController extends AbstractController
 {
-    private $translator;
+    use RedisPopulate;
+
+    private $_translator;
 
     /**
      * RegisterController constructor.
@@ -80,6 +83,7 @@ class AdController extends AbstractController
 
         return $this->render(
             'ad/new.html.twig', [
+                'categories' => $this->getRedisCategories(),
                 'form' => $form->createView(),
             ]
         );
