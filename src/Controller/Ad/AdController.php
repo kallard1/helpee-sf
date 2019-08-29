@@ -39,7 +39,7 @@ class AdController extends AbstractController
     /**
      * RegisterController constructor.
      *
-     * @param \Symfony\Contracts\Translation\TranslatorInterface $translator $translator.
+     * @param \Symfony\Contracts\Translation\TranslatorInterface $translator $translator Translator.
      */
     public function __construct(TranslatorInterface $translator)
     {
@@ -54,8 +54,6 @@ class AdController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\Response
      *
      * @Route("/new", methods={"GET", "POST"}, name="_new")
-     *
-     * @SuppressWarnings(PHPMD.ShortVariable)
      */
     public function new(Request $request): Response
     {
@@ -94,6 +92,10 @@ class AdController extends AbstractController
     }
 
     /**
+     * Get user ad list.
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
      * @Route("/list", methods={"GET"}, name="_list")
      */
     public function list(): Response
@@ -116,8 +118,6 @@ class AdController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\Response
      *
      * @Route("/{slug}", methods={"GET"}, name="_show")
-     *
-     * @SuppressWarnings(PHPMD.ShortVariable)
      */
     public function show(Ad $ad): Response
     {
