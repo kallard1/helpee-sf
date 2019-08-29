@@ -5,6 +5,7 @@ declare(strict_types=1);
 /**
  * This file is a part of Helpee
  * @author  Kevin Allard <contact@allard-kevin.fr>
+ *
  * @license 2018
  */
 
@@ -18,8 +19,16 @@ use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
+/**
+ * Class ChangePasswordType
+ *
+ */
 class ChangePasswordType extends AbstractType
 {
+    /**
+     * @param \Symfony\Component\Form\FormBuilderInterface $builder
+     * @param array                                        $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder

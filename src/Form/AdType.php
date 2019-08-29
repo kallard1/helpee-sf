@@ -6,6 +6,7 @@ declare(strict_types=1);
  * This file is a part of Helpee
  *
  * @author  Kevin Allard <contact@allard-kevin.fr>
+ *
  * @license 2018
  */
 
@@ -25,7 +26,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * Class AdType
  *
- * @package App\Form
  */
 class AdType extends AbstractType
 {
