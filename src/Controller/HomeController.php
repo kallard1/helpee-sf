@@ -6,12 +6,13 @@ declare(strict_types=1);
  * This file is a part of Helpee
  *
  * @author  Kevin Allard <contact@allard-kevin.fr>
+ *
  * @license 2018
  */
 
 namespace App\Controller;
 
-use App\Controller\Traits\RedisPopulate;
+use App\Controller\Traits\RedisPopulateTrait;
 use App\Entity\Ad\Ad;
 use App\Entity\Community;
 use App\Entity\User;
@@ -23,12 +24,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class HomeController
- *
- * @package App\Controller
  */
 class HomeController extends AbstractController
 {
-    use RedisPopulate;
+    use RedisPopulateTrait;
 
     /**
      * Show homepage.

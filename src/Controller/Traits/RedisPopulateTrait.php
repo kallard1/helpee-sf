@@ -8,24 +8,22 @@ use App\Entity\Ad\Category;
 use Symfony\Component\Cache\Adapter\RedisAdapter;
 
 /**
- * Trait populateCategories
- *
- * @package App\Controller\Traits
+ * Trait populateCategories.
  */
-trait RedisPopulate
+trait RedisPopulateTrait
 {
-    private $_client;
+    private $client;
 
     /**
      * Set categories into Redis.
      *
      * @return void
      */
-    private function _setRedisCategories()
+    private function setRedisCategories()
     {
         $entityManager = $this->getDoctrine()->getManager();
 
-        if (null === $this->_client->get('ads.categories') || false === $this->_client->get('ads.categories')) {
+        if (null === $this->client->get('ads.categories') || false === $this->client->get('ads.categories')) {
             $categories = $entityManager->getRepository(Category::class)->findAll();
 
             $data = [];
@@ -38,7 +36,7 @@ trait RedisPopulate
                 ];
             }
 
-            $this->_client->set('ads.categories', json_encode($data));
+            $this->client->set('ads.categories', json_encode($data));
         }
     }
 
@@ -49,14 +47,14 @@ trait RedisPopulate
      */
     public function getRedisCategories()
     {
-        $this->_client = RedisAdapter::createConnection(
+        $this->client = RedisAdapter::createConnection(
             $this->getParameter('redis_url')
         );
 
-        if (null === $this->_client->get('ads.categories') || false === $this->_client->get('ads.categories')) {
-            $this->_setRedisCategories();
+        if (null === $this->client->get('ads.categories') || false === $this->client->get('ads.categories')) {
+            $this->setRedisCategories();
         }
 
-        return json_decode($this->_client->get('ads.categories'));
+        return json_decode($this->client->get('ads.categories'));
     }
 }

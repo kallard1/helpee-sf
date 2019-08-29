@@ -6,6 +6,7 @@ declare(strict_types=1);
  * This file is a part of Helpee
  *
  * @author  Kevin Allard <contact@allard-kevin.fr>
+ *
  * @license 2018
  */
 
@@ -83,10 +84,6 @@ class RegisterController extends AbstractController
             return $this->redirectToRoute('homepage');
         }
 
-        return $this->render(
-            'auth/register/registration.html.twig', [
-                'form' => $form->createView(),
-            ]
-        );
+        return $this->render('auth/register/registration.html.twig', ['form' => $form->createView()]);
     }
 }

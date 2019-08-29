@@ -6,15 +6,14 @@ declare(strict_types=1);
  * This file is a part of Helpee
  *
  * @author  Kevin Allard <contact@allard-kevin.fr>
+ *
  * @license 2018
  */
 
 namespace App\Controller;
 
-use App\Entity\City;
 use App\Repository\Ad\AdRepository;
 use App\Repository\CityRepository;
-use FOS\ElasticaBundle\Manager\RepositoryManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -40,7 +39,7 @@ class SearchController extends AbstractController
         $query = $request->query->get('q', '');
         $limit = $request->query->get('page', 10);
 
-        $foundCities = $city->findBySearchQuery($query, (int)$limit);
+        $foundCities = $city->findBySearchQuery($query, (int) $limit);
 
         return $this->json($foundCities);
     }
@@ -71,27 +70,6 @@ class SearchController extends AbstractController
             $terms["city"] = $request->query->get('city');
         }
 
-        return $this->render(
-            'search/ad/result.html.twig', [
-                'ads' => $adRepository->findAds($terms),
-            ]
-        );
+        return $this->render('search/ad/result.html.twig', ['ads' => $adRepository->findAds($terms)]);
     }
-
-//    /**
-//     * @Route("/city", methods={"GET"}, name="_city")
-//     * @param \Symfony\Component\HttpFoundation\Request              $request
-//     *
-//     * @param \FOS\ElasticaBundle\Manager\RepositoryManagerInterface $finder
-//     *
-//     * @return \Symfony\Component\HttpFoundation\Response
-//     */
-//    public function searchCity(Request $request, RepositoryManagerInterface $finder): Response
-//    {
-//        $query = $request->query->get('q', '');
-//        $limit = $request->query->get('page', 10);
-//
-//        $repository = $finder->getRepository(City::class);
-//        return $this->json("");
-//    }
 }

@@ -6,12 +6,13 @@ declare(strict_types=1);
  * This file is a part of Helpee
  *
  * @author  Kevin Allard <contact@allard-kevin.fr>
+ *
  * @license 2018
  */
 
 namespace App\Controller\Ad;
 
-use App\Controller\Traits\RedisPopulate;
+use App\Controller\Traits\RedisPopulateTrait;
 use App\Entity\Ad\Ad;
 use App\Entity\Ad\Category;
 use App\Entity\Community;
@@ -32,9 +33,9 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 class AdController extends AbstractController
 {
-    use RedisPopulate;
+    use RedisPopulateTrait;
 
-    private $_translator;
+    private $translator;
 
     /**
      * RegisterController constructor.
@@ -43,7 +44,7 @@ class AdController extends AbstractController
      */
     public function __construct(TranslatorInterface $translator)
     {
-        $this->_translator = $translator;
+        $this->translator = $translator;
     }
 
     /**
@@ -77,18 +78,13 @@ class AdController extends AbstractController
 
             $this->addFlash(
                 'success',
-                $this->_translator->trans('ad.flash.message.success')
+                $this->translator->trans('ad.flash.message.success')
             );
 
             return $this->redirectToRoute('homepage');
         }
 
-        return $this->render(
-            'ad/new.html.twig', [
-                'categories' => $this->getRedisCategories(),
-                'form' => $form->createView(),
-            ]
-        );
+        return $this->render('ad/new.html.twig', ['categories' => $this->getRedisCategories(), 'form' => $form->createView()]);
     }
 
     /**

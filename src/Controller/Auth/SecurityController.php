@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 /**
  * This file is a part of Helpee
+ *
  * @author  Kevin Allard <contact@allard-kevin.fr>
+ *
  * @license 2018
  */
 
@@ -16,6 +18,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
+/**
+ * Class SecurityController
+ */
 class SecurityController extends AbstractController
 {
     private $authChecker;
@@ -54,8 +59,7 @@ class SecurityController extends AbstractController
      */
     public function checkAction()
     {
-        throw new \RuntimeException('You must configure the check path to be handled by the firewall using '.
-            'form_login in your security firewall configuration.');
+        throw new \RuntimeException('You must configure the check path to be handled by the firewall using form_login in your security firewall configuration.');
     }
 
     /**
