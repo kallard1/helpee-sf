@@ -439,6 +439,8 @@ class User implements UserInterface, Serializable
     }
 
     /**
+     * Get updated date document.
+     *
      * @return \DateTime
      */
     public function getCreatedAt(): DateTime
@@ -447,6 +449,8 @@ class User implements UserInterface, Serializable
     }
 
     /**
+     * Get updated date document.
+     *
      * @return \DateTime
      */
     public function getUpdatedAt(): DateTime
@@ -477,7 +481,10 @@ class User implements UserInterface, Serializable
      *                           The string representation of the object.
      *                           </p>
      *
+     * @see  https://php.net/manual/en/serializable.unserialize.php
+     *
      * @since 5.1.0
+     * @return null
      */
     public function unserialize($serialized)
     {
@@ -511,6 +518,8 @@ class User implements UserInterface, Serializable
      *
      * This is important if, at any given point, sensitive information like
      * the plain-text password is stored on this object.
+     *
+     * @return null
      */
     public function eraseCredentials()
     {

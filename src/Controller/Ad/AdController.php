@@ -13,6 +13,7 @@ namespace App\Controller\Ad;
 
 use App\Controller\Traits\RedisPopulate;
 use App\Entity\Ad\Ad;
+use App\Entity\Ad\Category;
 use App\Entity\Community;
 use App\Form\AdType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -42,7 +43,7 @@ class AdController extends AbstractController
      */
     public function __construct(TranslatorInterface $translator)
     {
-        $this->translator = $translator;
+        $this->_translator = $translator;
     }
 
     /**
@@ -78,7 +79,7 @@ class AdController extends AbstractController
 
             $this->addFlash(
                 'success',
-                $this->translator->trans('ad.flash.message.success')
+                $this->_translator->trans('ad.flash.message.success')
             );
 
             return $this->redirectToRoute('homepage');
@@ -102,7 +103,7 @@ class AdController extends AbstractController
         return $this->render(
             "ad/list.html.twig",
             [
-                'ads' => $entityManager->getRepository(Ad::class)->findBy(['user' => $this->getUser()])
+                'ads' => $entityManager->getRepository(Ad::class)->findBy(['user' => $this->getUser()]),
             ]
         );
     }
