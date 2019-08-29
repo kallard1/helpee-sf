@@ -3,10 +3,11 @@
 declare(strict_types=1);
 
 /**
- * This file is a part of Helpee
+ * This file is a part of Helpee.
  *
  * @author  Kevin Allard <contact@allard-kevin.fr>
- * @license 2018
+ *
+ * @license 2018-2019 - Helpee
  */
 
 namespace App\Repository\Ad;
@@ -18,16 +19,14 @@ use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\NonUniqueResultException;
 
 /**
- * Class AdRepository
- *
- * @package App\Repository\Ad
+ * Class AdRepository.
  */
 class AdRepository extends ServiceEntityRepository
 {
     /**
      * AdRepository constructor.
      *
-     * @param \Doctrine\Common\Persistence\ManagerRegistry $registry Registry.
+     * @param \Doctrine\Common\Persistence\ManagerRegistry $registry registry
      */
     public function __construct(ManagerRegistry $registry)
     {
@@ -55,8 +54,8 @@ class AdRepository extends ServiceEntityRepository
     /**
      * Get active Ads.
      *
-     * @param \App\Entity\Community $community Community.
-     * @param int                   $limit     Limit.
+     * @param \App\Entity\Community $community community
+     * @param int                   $limit     limit
      *
      * @return mixed
      */
@@ -95,13 +94,13 @@ class AdRepository extends ServiceEntityRepository
             ->leftJoin('c.city', 'city')
             ->addSelect('city');
 
-        if (array_key_exists('category', $terms) && ('' != $terms["category"] || null != $terms["category"])) {
+        if (\array_key_exists('category', $terms) && ('' != $terms['category'] || null != $terms['category'])) {
             $request->andWhere('adc.slug = :slug')
-                ->setParameter('slug', $terms["category"]);
+                ->setParameter('slug', $terms['category']);
         }
 
-        if (array_key_exists('keywords', $terms) && ('' != $terms["keywords"] || null != $terms["keywords"])) {
-            $query = $this->sanitizeSearchQuery($terms["keywords"]);
+        if (\array_key_exists('keywords', $terms) && ('' != $terms['keywords'] || null != $terms['keywords'])) {
+            $query = $this->sanitizeSearchQuery($terms['keywords']);
             $query = $this->extractSearchTerms($query);
 
             foreach ($query as $keyword) {
@@ -110,10 +109,10 @@ class AdRepository extends ServiceEntityRepository
             }
         }
 
-        if (array_key_exists('city', $terms) && ('' != $terms["city"] || null != $terms["city"])) {
+        if (\array_key_exists('city', $terms) && ('' != $terms['city'] || null != $terms['city'])) {
             $request
                 ->andWhere('city.id = :id')
-                ->setParameter('id', $terms["city"]);
+                ->setParameter('id', $terms['city']);
         }
 
         return $request->getQuery()
@@ -123,7 +122,7 @@ class AdRepository extends ServiceEntityRepository
     /**
      * Removes all non-alphanumeric characters except whitespaces.
      *
-     * @param string $query Query.
+     * @param string $query query
      *
      * @return string
      */
@@ -135,7 +134,7 @@ class AdRepository extends ServiceEntityRepository
     /**
      * Splits the search query into terms and removes the ones which are irrelevant.
      *
-     * @param string $searchQuery Search terms query.
+     * @param string $searchQuery search terms query
      *
      * @return array
      */

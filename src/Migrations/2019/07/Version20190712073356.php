@@ -2,6 +2,14 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is a part of Helpee.
+ *
+ * @author  Kevin Allard <contact@allard-kevin.fr>
+ *
+ * @license 2018-2019 - Helpee
+ */
+
 namespace DoctrineMigrations;
 
 use Doctrine\DBAL\Schema\Schema;
@@ -12,15 +20,15 @@ use Doctrine\Migrations\AbstractMigration;
  */
 final class Version20190712073356 extends AbstractMigration
 {
-    public function getDescription() : string
+    public function getDescription(): string
     {
         return '';
     }
 
-    public function up(Schema $schema) : void
+    public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'postgresql', 'Migration can only be executed safely on \'postgresql\'.');
+        $this->abortIf('postgresql' !== $this->connection->getDatabasePlatform()->getName(), 'Migration can only be executed safely on \'postgresql\'.');
 
         $this->addSql('CREATE TABLE departments (id UUID NOT NULL, region_id UUID DEFAULT NULL, code VARCHAR(255) NOT NULL, name VARCHAR(255) NOT NULL, slug VARCHAR(128) NOT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, updated_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_16AEB8D4989D9B62 ON departments (slug)');
@@ -86,10 +94,10 @@ final class Version20190712073356 extends AbstractMigration
         $this->addSql('ALTER TABLE communities ADD CONSTRAINT FK_ECE312B8BAC62AF FOREIGN KEY (city_id) REFERENCES cities (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
     }
 
-    public function down(Schema $schema) : void
+    public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'postgresql', 'Migration can only be executed safely on \'postgresql\'.');
+        $this->abortIf('postgresql' !== $this->connection->getDatabasePlatform()->getName(), 'Migration can only be executed safely on \'postgresql\'.');
 
         $this->addSql('ALTER TABLE cities DROP CONSTRAINT FK_D95DB16BAE80F5DF');
         $this->addSql('ALTER TABLE hobbies_users DROP CONSTRAINT FK_46DAFC3CA76ED395');

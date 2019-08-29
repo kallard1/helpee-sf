@@ -2,6 +2,14 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is a part of Helpee.
+ *
+ * @author  Kevin Allard <contact@allard-kevin.fr>
+ *
+ * @license 2018-2019 - Helpee
+ */
+
 namespace DoctrineMigrations;
 
 use Doctrine\DBAL\Schema\Schema;
@@ -12,15 +20,15 @@ use Doctrine\Migrations\AbstractMigration;
  */
 final class Version20190716102752 extends AbstractMigration
 {
-    public function getDescription() : string
+    public function getDescription(): string
     {
         return '';
     }
 
-    public function up(Schema $schema) : void
+    public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'postgresql', 'Migration can only be executed safely on \'postgresql\'.');
+        $this->abortIf('postgresql' !== $this->connection->getDatabasePlatform()->getName(), 'Migration can only be executed safely on \'postgresql\'.');
 
         $this->addSql('CREATE TABLE community_user (community_id UUID NOT NULL, user_id UUID NOT NULL, PRIMARY KEY(community_id, user_id))');
         $this->addSql('CREATE INDEX IDX_4CC23C83FDA7B0BF ON community_user (community_id)');
@@ -30,10 +38,10 @@ final class Version20190716102752 extends AbstractMigration
         $this->addSql('DROP TABLE users_communities');
     }
 
-    public function down(Schema $schema) : void
+    public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'postgresql', 'Migration can only be executed safely on \'postgresql\'.');
+        $this->abortIf('postgresql' !== $this->connection->getDatabasePlatform()->getName(), 'Migration can only be executed safely on \'postgresql\'.');
 
         $this->addSql('CREATE TABLE users_communities (user_id UUID NOT NULL, community_id UUID NOT NULL, PRIMARY KEY(user_id, community_id))');
         $this->addSql('CREATE INDEX idx_f97b0dd9a76ed395 ON users_communities (user_id)');

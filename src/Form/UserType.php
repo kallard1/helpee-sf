@@ -3,11 +3,11 @@
 declare(strict_types=1);
 
 /**
- * This file is a part of Helpee
+ * This file is a part of Helpee.
  *
  * @author  Kevin Allard <contact@allard-kevin.fr>
  *
- * @license 2018
+ * @license 2018-2019 - Helpee
  */
 
 namespace App\Form;
@@ -22,8 +22,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class UserType
- *
+ * Class UserType.
  */
 class UserType extends AbstractType
 {

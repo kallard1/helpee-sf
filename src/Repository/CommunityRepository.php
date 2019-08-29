@@ -3,9 +3,11 @@
 declare(strict_types=1);
 
 /**
- * This file is a part of Helpee
+ * This file is a part of Helpee.
+ *
  * @author  Kevin Allard <contact@allard-kevin.fr>
- * @license 2018
+ *
+ * @license 2018-2019 - Helpee
  */
 
 namespace App\Repository;
@@ -16,13 +18,26 @@ use App\Pagination\Paginator;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
+/**
+ * Class CommunityRepository.
+ */
 class CommunityRepository extends ServiceEntityRepository
 {
+    /**
+     * CommunityRepository constructor.
+     *
+     * @param \Doctrine\Common\Persistence\ManagerRegistry $registry
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Community::class);
     }
 
+    /**
+     * @param int $page
+     *
+     * @return \App\Pagination\Paginator
+     */
     public function getActiveCommunities(int $page = 1): Paginator
     {
         $qb = $this->createQueryBuilder('c')
@@ -32,6 +47,12 @@ class CommunityRepository extends ServiceEntityRepository
         return (new Paginator($qb))->paginate($page);
     }
 
+    /**
+     * @param \App\Entity\Community $community
+     * @param \App\Entity\User      $user
+     *
+     * @return bool
+     */
     public function userInCommunity(Community $community, User $user)
     {
         $qb = $this->createQueryBuilder('c')

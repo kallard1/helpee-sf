@@ -2,6 +2,14 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is a part of Helpee.
+ *
+ * @author  Kevin Allard <contact@allard-kevin.fr>
+ *
+ * @license 2018-2019 - Helpee
+ */
+
 namespace App\DataFixtures\Ad;
 
 use App\Entity\Ad\Category;
@@ -10,9 +18,8 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 class CategoryFixtures extends Fixture
 {
-
     /**
-     * Load data fixtures with the passed EntityManager
+     * Load data fixtures with the passed EntityManager.
      *
      * @param ObjectManager $manager
      */

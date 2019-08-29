@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 /**
  * This file is a part of Helpee.
+ *
  * @author  Kevin Allard <contact@allard-kevin.fr>
  *
- * @license 2018
+ * @license 2018-2019 - Helpee
  */
 
 namespace App\Form\Type;
@@ -16,8 +17,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
- * Class ChangeDescriptionType
- *
+ * Class ChangeDescriptionType.
  */
 class ChangeDescriptionType extends AbstractType
 {

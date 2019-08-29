@@ -2,6 +2,14 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is a part of Helpee.
+ *
+ * @author  Kevin Allard <contact@allard-kevin.fr>
+ *
+ * @license 2018-2019 - Helpee
+ */
+
 namespace App\DataFixtures;
 
 use App\Entity\Department;
@@ -12,10 +20,9 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 class DepartmentFixtures extends Fixture implements DependentFixtureInterface
 {
-
     /**
      * This method must return an array of fixtures classes
-     * on which the implementing class depends on
+     * on which the implementing class depends on.
      *
      * @return array
      */
@@ -27,7 +34,7 @@ class DepartmentFixtures extends Fixture implements DependentFixtureInterface
     }
 
     /**
-     * Load data fixtures with the passed EntityManager
+     * Load data fixtures with the passed EntityManager.
      *
      * @param ObjectManager $manager
      */
