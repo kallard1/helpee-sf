@@ -54,7 +54,7 @@ class InformationUser
     private $address;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(name="address_1", type="string", nullable=true)
      */
     private $address1;
 
