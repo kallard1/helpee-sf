@@ -51,3 +51,7 @@ services:
   Symfony\Component\HttpFoundation\Session\Storage\Handler\RedisSessionHandler:
     arguments:
       - '@Redis'
+
+  Elastica\Client:
+    $config:
+      host: 'elasticsearch'

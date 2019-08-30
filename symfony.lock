@@ -111,6 +111,9 @@
     "egulias/email-validator": {
         "version": "2.1.8"
     },
+    "elasticsearch/elasticsearch": {
+        "version": "v6.7.2"
+    },
     "fig/link-util": {
         "version": "1.0.0"
     },
@@ -119,6 +122,12 @@
     },
     "gedmo/doctrine-extensions": {
         "version": "v2.4.37"
+    },
+    "guzzlehttp/ringphp": {
+        "version": "1.1.1"
+    },
+    "guzzlehttp/streams": {
+        "version": "3.0.0"
     },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
@@ -155,6 +164,12 @@
     },
     "psr/log": {
         "version": "1.1.0"
+    },
+    "react/promise": {
+        "version": "v2.7.1"
+    },
+    "ruflin/elastica": {
+        "version": "6.1.1"
     },
     "sensio/framework-extra-bundle": {
         "version": "5.2",

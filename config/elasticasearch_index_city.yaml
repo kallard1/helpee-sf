@@ -1,0 +1,14 @@
+settings:
+  index:
+    number_of_shards: 1
+    number_of_replicas: 0
+mappings:
+  city:
+    dynamic: false
+    properties:
+      insee_code: &en_text
+        type: text
+        analyzer: english
+      zip_code: *en_text
+      name: *en_text
+      slug: *en_text

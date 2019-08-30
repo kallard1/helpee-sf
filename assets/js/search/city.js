@@ -26,7 +26,7 @@ $(document).ready(function () {
       cache: true
     },
     escapeMarkup: function (markup) { return markup },
-    minimumInputLength: 3,
+    minimumInputLength: 2,
     templateResult: formatRepo,
     templateSelection: formatRepoSelection
   })
@@ -39,7 +39,7 @@ function formatRepo (repo) {
 
   return `<div class='select2-result-repository clearfix'>
     <div class='select2-result-repository__meta'>
-        <div class='select2-result-repository__title'>${repo.zipCode} - ${repo.name}</div>
+        <div class='select2-result-repository__title'>${repo.zip_code} - ${repo.name}</div>
       </div>
     </div>`
 }
