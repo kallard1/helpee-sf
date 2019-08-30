@@ -15,8 +15,7 @@ namespace App\Repository\Ad;
 use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 
 /**
- * Class CategoryRepository
- *
+ * Class CategoryRepository.
  */
 class CategoryRepository extends NestedTreeRepository
 {

@@ -17,8 +17,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * Class MessageRepository
- *
+ * Class MessageRepository.
  */
 class MessageRepository extends ServiceEntityRepository
 {
