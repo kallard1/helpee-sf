@@ -44,7 +44,7 @@ class City
     private $inseeCode;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(name="zip_code", type="string", nullable=true)
      */
     private $zipCode;
 
