@@ -3,11 +3,11 @@
 declare(strict_types=1);
 
 /**
- * This file is a part of Helpee
+ * This file is a part of Helpee.
  *
  * @author  Kevin Allard <contact@allard-kevin.fr>
  *
- * @license 2018
+ * @license 2018-2019 - Helpee
  */
 
 namespace App\Controller\Community;
@@ -38,7 +38,7 @@ class CommunityController extends AbstractController
     /**
      * CommunityController constructor.
      *
-     * @param \Symfony\Contracts\Translation\TranslatorInterface $translator Translator.
+     * @param \Symfony\Contracts\Translation\TranslatorInterface $translator
      */
     public function __construct(TranslatorInterface $translator)
     {
@@ -48,7 +48,7 @@ class CommunityController extends AbstractController
     /**
      * Create a new community.
      *
-     * @param \Symfony\Component\HttpFoundation\Request $request Request.
+     * @param \Symfony\Component\HttpFoundation\Request $request
      *
      * @return \Symfony\Component\HttpFoundation\Response
      *
@@ -89,9 +89,9 @@ class CommunityController extends AbstractController
     /**
      * Get list of all communities with paginate.
      *
-     * @param \Symfony\Component\HttpFoundation\Request $request   Request.
-     * @param int                                       $page      Page.
-     * @param \App\Repository\CommunityRepository       $community Community.
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param int                                       $page
+     * @param \App\Repository\CommunityRepository       $community
      *
      * @return \Symfony\Component\HttpFoundation\Response
      *
@@ -107,7 +107,7 @@ class CommunityController extends AbstractController
     /**
      * Show community details.
      *
-     * @param \App\Entity\Community $community Community.
+     * @param \App\Entity\Community $community
      *
      * @return \Symfony\Component\HttpFoundation\Response
      *
@@ -115,13 +115,16 @@ class CommunityController extends AbstractController
      */
     public function show(Community $community): Response
     {
-        return $this->render('community/show.html.twig', ['community' => $community, 'ads' => $this->getDoctrine()->getManager()->getRepository(Ad::class)->getActiveAds($community, 5)]);
+        return $this->render('community/show.html.twig', [
+            'community' => $community,
+            'ads' => $this->getDoctrine()->getManager()->getRepository(Ad::class)->getActiveAds($community, 5),
+        ]);
     }
 
     /**
      * Join a community.
      *
-     * @param \App\Entity\Community $community Community.
+     * @param \App\Entity\Community $community
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      *

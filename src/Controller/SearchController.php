@@ -3,11 +3,11 @@
 declare(strict_types=1);
 
 /**
- * This file is a part of Helpee
+ * This file is a part of Helpee.
  *
  * @author  Kevin Allard <contact@allard-kevin.fr>
  *
- * @license 2018
+ * @license 2018-2019 - Helpee
  */
 
 namespace App\Controller;
@@ -47,8 +47,8 @@ class SearchController extends AbstractController
     /**
      * Search Ads.
      *
-     * @param \Symfony\Component\HttpFoundation\Request $request      Request.
-     * @param \App\Repository\Ad\AdRepository           $adRepository Ad Repository.
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param \App\Repository\Ad\AdRepository           $adRepository
      *
      * @Route("/ad", methods={"GET"}, name="_ad")
      *
@@ -59,15 +59,15 @@ class SearchController extends AbstractController
         $terms = [];
 
         if ($request->query->get('category')) {
-            $terms["category"] = $request->query->get('category');
+            $terms['category'] = $request->query->get('category');
         }
 
         if ($request->query->get('keywords')) {
-            $terms["keywords"] = $request->query->get('keywords');
+            $terms['keywords'] = $request->query->get('keywords');
         }
 
         if ($request->query->get('city')) {
-            $terms["city"] = $request->query->get('city');
+            $terms['city'] = $request->query->get('city');
         }
 
         return $this->render('search/ad/result.html.twig', ['ads' => $adRepository->findAds($terms)]);

@@ -3,11 +3,11 @@
 declare(strict_types=1);
 
 /**
- * This file is a part of Helpee
+ * This file is a part of Helpee.
  *
  * @author  Kevin Allard <contact@allard-kevin.fr>
  *
- * @license 2018
+ * @license 2018-2019 - Helpee
  */
 
 namespace App\Entity;
@@ -476,12 +476,8 @@ class User implements UserInterface, Serializable
      *                           The string representation of the object.
      *                           </p>
      *
-     * @return null
-     *
      * @since 5.1.0
-     *
      * @see   https://php.net/manual/en/serializable.unserialize.php
-     *
      */
     public function unserialize($serialized)
     {
@@ -515,8 +511,6 @@ class User implements UserInterface, Serializable
      *
      * This is important if, at any given point, sensitive information like
      * the plain-text password is stored on this object.
-     *
-     * @return void
      */
     public function eraseCredentials()
     {

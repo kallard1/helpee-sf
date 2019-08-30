@@ -3,11 +3,11 @@
 declare(strict_types=1);
 
 /**
- * This file is a part of Helpee
+ * This file is a part of Helpee.
  *
  * @author  Kevin Allard <contact@allard-kevin.fr>
  *
- * @license 2018
+ * @license 2018-2019 - Helpee
  */
 
 namespace App\Entity\Ad;
@@ -46,7 +46,6 @@ class Ad
     private $user;
 
     /**
-     *
      * @ORM\Column(type="string", nullable=false)
      */
     private $title;
@@ -59,19 +58,16 @@ class Ad
     private $slug;
 
     /**
-     *
      * @ORM\Column(type="text", nullable=false)
      */
     private $description;
 
     /**
-     *
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $enabled;
 
     /**
-     *
      * @ORM\Column(type="integer", nullable=false)
      */
     private $uev;

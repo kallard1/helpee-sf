@@ -3,11 +3,11 @@
 declare(strict_types=1);
 
 /**
- * This file is a part of Helpee
+ * This file is a part of Helpee.
  *
  * @author  Kevin Allard <contact@allard-kevin.fr>
  *
- * @license 2018
+ * @license 2018-2019 - Helpee
  */
 
 namespace App\Controller\Ad;
@@ -40,7 +40,7 @@ class AdController extends AbstractController
     /**
      * RegisterController constructor.
      *
-     * @param \Symfony\Contracts\Translation\TranslatorInterface $translator $translator Translator.
+     * @param \Symfony\Contracts\Translation\TranslatorInterface $translator $translator
      */
     public function __construct(TranslatorInterface $translator)
     {
@@ -50,7 +50,7 @@ class AdController extends AbstractController
     /**
      * Create a new ad.
      *
-     * @param \Symfony\Component\HttpFoundation\Request $request Request
+     * @param \Symfony\Component\HttpFoundation\Request $request
      *
      * @return \Symfony\Component\HttpFoundation\Response
      *
@@ -99,7 +99,7 @@ class AdController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
 
         return $this->render(
-            "ad/list.html.twig",
+            'ad/list.html.twig',
             [
                 'ads' => $entityManager->getRepository(Ad::class)->findBy(['user' => $this->getUser()]),
             ]
@@ -109,7 +109,7 @@ class AdController extends AbstractController
     /**
      * Read an Ad.
      *
-     * @param \App\Entity\Ad\Ad $ad Ad.
+     * @param \App\Entity\Ad\Ad $ad
      *
      * @return \Symfony\Component\HttpFoundation\Response
      *
