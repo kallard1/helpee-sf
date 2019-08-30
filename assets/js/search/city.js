@@ -37,11 +37,16 @@ function formatRepo (repo) {
     return repo.text
   }
 
-  return `<div class='select2-result-repository clearfix'>
+  const $container = $(`
+  <div class='select2-result-repository clearfix'>
     <div class='select2-result-repository__meta'>
-        <div class='select2-result-repository__title'>${repo.zip_code} - ${repo.name}</div>
+        <div class='select2-result-repository__title'></div>
       </div>
-    </div>`
+    </div>`)
+
+  $container.find(".select2-result-repository__title").text(`${repo.zip_code} - ${repo.name}`)
+
+  return $container;
 }
 
 function formatRepoSelection (repo) {

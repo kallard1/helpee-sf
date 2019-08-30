@@ -48,6 +48,7 @@ class CityIndexer
         return new Document(
             $city->getId(),
             [
+                'id' => $city->getId(),
                 'department_id' => $city->getDepartment(),
                 'insee_code' => $city->getInseeCode(),
                 'zip_code' => $city->getZipCode(),
