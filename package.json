@@ -28,6 +28,6 @@
         "elastica": "ruflin/elastica",
         "jquery": "^3.4.1",
         "popper.js": "^1.15.0",
-        "select2": "^4.0.7"
+        "select2": "^4.0.10"
     }
 }
