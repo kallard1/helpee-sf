@@ -54,4 +54,4 @@ services:
 
   Elastica\Client:
     $config:
-      host: 'elasticsearch'
+      host: '%env(ELASTICSEARCH_URL)%'
