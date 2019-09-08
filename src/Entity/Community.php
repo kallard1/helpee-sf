@@ -15,6 +15,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Community.
@@ -51,6 +52,8 @@ class Community
     /**
      * @ORM\ManyToOne(targetEntity="City")
      * @ORM\JoinColumn(name="city_id", referencedColumnName="id", nullable=false)
+     *
+     * @Assert\NotNull(message="Veuillez sélectionner une ville")
      */
     private $city;
 

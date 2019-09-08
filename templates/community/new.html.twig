@@ -4,6 +4,8 @@
     <div class="jumbotron">
         <h3>Nouvelle communauté</h3>
         {{ form_start(form) }}
+        {{ form_errors(form) }}
+
         <div class="row">
             <div class="form-group col-12">
                 {{ form_widget(form.name, {'attr': {'class': 'form-control-xs'}}) }}
@@ -27,7 +29,8 @@
 
         <div class="row">
             <div class="form-group col-12">
-                <button type="submit" class="btn btn-orange text-white btn-xs col-12">{{ 'community.button.create'|trans }}</button>
+                <button type="submit"
+                        class="btn btn-orange text-white btn-xs col-12">{{ 'community.button.create'|trans }}</button>
             </div>
         </div>
 
