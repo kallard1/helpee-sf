@@ -84,7 +84,7 @@ class MessagesController extends AbstractController
                 "Message envoyé."
             );
 
-            return $this->redirectToRoute('messages_read', [ "id" => $ad->getId() ]);
+            return $this->redirectToRoute("messages_read", [ "id" => $thread->getId() ]);
         }
 
         return $this->render('messages/new.html.twig', [
