@@ -43,7 +43,7 @@
 
             <trans-unit id="website_in_some_figures">
                 <source>website_in_some_figures</source>
-                <target>{site_name} en quelque chiffres</target>
+                <target>{site_name} en quelques chiffres</target>
             </trans-unit>
 
             <trans-unit id="num_of_communities">
