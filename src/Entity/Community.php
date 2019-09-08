@@ -34,6 +34,8 @@ class Community
 
     /**
      * @ORM\Column(type="string", nullable=false)
+     *
+     * @Assert\NotNull(message="Veuillez renseigner un nom.")
      */
     private $name;
 
@@ -46,6 +48,8 @@ class Community
 
     /**
      * @ORM\Column(type="text", nullable=false)
+     *
+     * @Assert\NotNull(message="Veuillez renseigner une description.")
      */
     private $description;
 
