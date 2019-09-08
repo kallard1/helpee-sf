@@ -15,6 +15,7 @@ namespace App\Entity\Ad;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Ad.
@@ -35,6 +36,8 @@ class Ad
      * @ORM\ManyToOne(targetEntity="Category", cascade={"persist", "remove"})
      *
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id", nullable=false)
+     *
+     * @Assert\NotNull(message="Vous devez selectionner une catégorie.")
      */
     private $category;
 
@@ -47,6 +50,8 @@ class Ad
 
     /**
      * @ORM\Column(type="string", nullable=false)
+     *
+     * @Assert\NotNull(message="Vous devez renseigner un titre.")
      */
     private $title;
 
@@ -59,6 +64,8 @@ class Ad
 
     /**
      * @ORM\Column(type="text", nullable=false)
+     *
+     * @Assert\NotNull(message="Vous devez renseigner une description.")
      */
     private $description;
 
@@ -69,6 +76,9 @@ class Ad
 
     /**
      * @ORM\Column(type="integer", nullable=false)
+     *
+     * @Assert\NotNull(message="Vous devez reseigner le nombre d'UEV.")
+     * @Assert\Positive(message="Le nombre d'UEV doit être supérieur à 0")
      */
     private $uev;
 
@@ -76,6 +86,8 @@ class Ad
      * @ORM\ManyToOne(targetEntity="App\Entity\Community", inversedBy="ads")
      *
      * @ORM\JoinColumn(name="community_id", referencedColumnName="id")
+     *
+     * @Assert\NotNull(message="Vous devez selectionner une communauté")
      */
     private $community;
 

@@ -3,7 +3,7 @@
     <p>Veuillez en <a href="{{ path('community_new') }}">créer</a> ou en <a href="{{ path('community_list') }}">rejoindre une</a>.</p>
 {% else %}
 {{ form_start(form, {"action": path('ad_new'), "attr": {"id": "form-propose"}}) }}
-
+{{ form_errors(form) }}
 <div class="row">
     <div class="form-group col-12">
         {{ form_widget(form.title, {'attr': {'class': 'form-control-xs'}}) }}
