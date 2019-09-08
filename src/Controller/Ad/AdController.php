@@ -17,8 +17,10 @@ use App\Entity\Ad\Ad;
 use App\Entity\Ad\Category;
 use App\Entity\Community;
 use App\Form\AdType;
+use App\Repository\Ad\AdRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -84,7 +86,10 @@ class AdController extends AbstractController
             return $this->redirectToRoute('homepage');
         }
 
-        return $this->render('ad/new.html.twig', ['categories' => $this->getRedisCategories(), 'form' => $form->createView()]);
+        return $this->render('ad/new.html.twig', [
+            'categories' => $this->getRedisCategories(),
+            'form' => $form->createView(),
+        ]);
     }
 
     /**
@@ -98,12 +103,12 @@ class AdController extends AbstractController
     {
         $entityManager = $this->getDoctrine()->getManager();
 
-        return $this->render(
-            'ad/list.html.twig',
-            [
-                'ads' => $entityManager->getRepository(Ad::class)->findBy(['user' => $this->getUser()]),
-            ]
-        );
+        return $this->render('ad/list.html.twig', [
+            'ads' => $entityManager->getRepository(Ad::class)->findBy([
+                'user' => $this->getUser(),
+                'enabled' => true,
+            ]),
+        ]);
     }
 
     /**
@@ -123,5 +128,33 @@ class AdController extends AbstractController
                 'ad' => $ad,
             ]
         );
+    }
+
+    /**
+     * @Route("/delete/{slug}", name="_delete")
+     *
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param \App\Entity\Ad\Ad                         $ad
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     *
+     * @throws \Exception
+     */
+    public function delete(Request $request, Ad $ad): RedirectResponse
+    {
+        if ($ad->getUser() !== $this->getUser()) {
+            throw new \Exception("Vous ne pouvez pas désactiver une annonce qui ne vous appartient pas.");
+        }
+
+        $em = $this->getDoctrine()->getManager();
+
+        $ad->setEnabled(false);
+
+        $em->persist($ad);
+        $em->flush();
+
+        $this->addFlash('success', "Annonce désactivée");
+
+        return $this->redirectToRoute('ad_list');
     }
 }

@@ -44,6 +44,13 @@
                        class="col-12 btn btn-orange btn-xs text-white">Contacter</a>
                 </div>
             </div>
+        {% else %}
+            <div class="row">
+                <div class="form-group col-12">
+                    <a href="{{ path('ad_delete', {'slug': ad.slug}) }}"
+                       class="col-12 btn btn-light-pink btn-xs text-white">Désactiver l'annonce</a>
+                </div>
+            </div>
         {% endif %}
     </div>
 {% endblock %}
