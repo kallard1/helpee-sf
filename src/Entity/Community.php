@@ -56,8 +56,6 @@ class Community
     /**
      * @ORM\ManyToOne(targetEntity="City")
      * @ORM\JoinColumn(name="city_id", referencedColumnName="id", nullable=false)
-     *
-     * @Assert\NotNull(message="Veuillez sélectionner une ville")
      */
     private $city;
 
