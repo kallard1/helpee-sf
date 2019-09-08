@@ -83,7 +83,7 @@ class AdController extends AbstractController
                 $this->translator->trans('ad.flash.message.success')
             );
 
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('ad_show', ["slug" => $ad->getSlug()]);
         }
 
         return $this->render('ad/new.html.twig', [
