@@ -11,10 +11,10 @@
         </div>
 
         {{ form_start(form)}}
-            <div class="row">
-                <div class="form-group mt-1 col-12">
+            <div class="row mt-1">
+                <div class="form-group mt-2 col-12">
                     {{ form_widget(form.body, {'attr': {'class': 'form-control-xs'}}) }}
-                    {{ form_label(form.body) }}
+                    {{ form_label(form.body, "Message") }}
                 </div>
             </div>
 
