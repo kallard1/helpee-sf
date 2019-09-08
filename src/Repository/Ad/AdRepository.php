@@ -92,7 +92,8 @@ class AdRepository extends ServiceEntityRepository
             ->leftJoin('ads.community', 'c')
             ->addSelect('c')
             ->leftJoin('c.city', 'city')
-            ->addSelect('city');
+            ->addSelect('city')
+            ->andWhere('ads.enabled = true');
 
         if (\array_key_exists('category', $terms) && ('' != $terms['category'] || null != $terms['category'])) {
             $request->andWhere('adc.slug = :slug')
