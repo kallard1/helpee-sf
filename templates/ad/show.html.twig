@@ -13,9 +13,6 @@
                     {% if not ad.enabled %}
                         <span class="badge badge-danger">Desactivée</span>
                     {% endif %}
-                    {% if ad.transactionDate is not null %}
-                        <span class="badge badge-success">Terminée</span>
-                    {% endif %}
                     {{ ad.title }}
                 </h4>
                 <p class="small">posté par : {{ ad.user.firstname }} {{ ad.user.lastname }}</p>
