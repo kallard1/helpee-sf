@@ -104,7 +104,7 @@ class AdRepository extends ServiceEntityRepository
             $query = $this->extractSearchTerms($query);
 
             foreach ($query as $keyword) {
-                $request->andWhere('ads.title LIKE :keyword')
+                $request->andWhere('lower(ads.title) LIKE lower(:keyword)')
                     ->setParameter('keyword', '%'.$keyword.'%');
             }
         }
