@@ -86,8 +86,6 @@ class Ad
      * @ORM\ManyToOne(targetEntity="App\Entity\Community", inversedBy="ads")
      *
      * @ORM\JoinColumn(name="community_id", referencedColumnName="id")
-     *
-     * @Assert\NotNull(message="Vous devez selectionner une communauté")
      */
     private $community;
 
