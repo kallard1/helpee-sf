@@ -87,11 +87,6 @@ class Ad
     private $threads;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $transactionDate;
-
-    /**
      * @Gedmo\Timestampable(on="create")
      *
      * @ORM\Column(type="datetime")
@@ -248,22 +243,6 @@ class Ad
     public function getThreads()
     {
         return $this->threads;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTransactionDate()
-    {
-        return $this->transactionDate;
-    }
-
-    /**
-     * @param mixed $transactionDate
-     */
-    public function setTransactionDate($transactionDate): void
-    {
-        $this->transactionDate = $transactionDate;
     }
 
     /**
