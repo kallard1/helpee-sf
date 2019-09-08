@@ -36,8 +36,6 @@ class Ad
      * @ORM\ManyToOne(targetEntity="Category", cascade={"persist", "remove"})
      *
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id", nullable=false)
-     *
-     * @Assert\NotNull(message="Vous devez selectionner une catégorie.")
      */
     private $category;
 
