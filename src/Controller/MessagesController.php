@@ -78,6 +78,13 @@ class MessagesController extends AbstractController
             $em->persist($thread);
             $em->persist($message);
             $em->flush();
+
+            $this->addFlash(
+                'success',
+                "Message envoyé."
+            );
+
+            return $this->redirectToRoute('messages_read', [ "id" => $ad->getId() ]);
         }
 
         return $this->render('messages/new.html.twig', [
