@@ -195,3 +195,7 @@ div.chat-content {
   height:     18.7rem;
   overflow-y: scroll;
 }
+
+.form-group > label {
+  z-index: 10;
+}
