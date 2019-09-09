@@ -116,6 +116,8 @@ class AdRepository extends ServiceEntityRepository
                 ->setParameter('id', $terms['city']);
         }
 
+        $request->orderBy('ads.createdAt', 'DESC');
+
         return $request->getQuery()
             ->getResult();
     }

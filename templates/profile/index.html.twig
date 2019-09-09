@@ -10,11 +10,12 @@
         <h3>{{ 'profile.title'|trans }}</h3>
         <div id="profile-image">
             {% if app.user.personalImage is not null and app.user.personalImage is not empty %}
-                <img src="{{ asset('uploads/personal_images/' ~ app.user.personalImage) }}" width="84" height="84"
+                <img onclick="location.href='{{ path('profile_edit_personal_image') }}'" src="{{ asset('uploads/personal_images/' ~ app.user.personalImage) }}" width="84" height="84"
                      alt="Votre image de profil"/>
             {% else %}
-                <img src="{{ asset('build/images/img-profile.png') }}" width="84" height="84"
+                <img onclick="location.href='{{ path('profile_edit_personal_image') }}'" src="{{ asset('build/images/img-profile.png') }}" width="84" height="84"
                      alt="Votre image de profil temporaire"/>
+            
             {% endif %}
         </div>
 
